@@ -124,7 +124,7 @@ body,
 }
 body {
   background: #eee;
-  font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 .outer {
@@ -482,7 +482,7 @@ body {
   background: none;
   color: #555;
   width: 100%;
-  font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
   outline: none;
 }
 .search-form-input::-webkit-search-results-decoration,
@@ -631,7 +631,7 @@ a.article-title:hover {
 .article-entry blockquote footer {
   font-size: 14px;
   margin: 1.6em 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {
   content: "—";
@@ -727,15 +727,9 @@ a.article-title:hover {
   font-family: FontAwesome;
   padding-right: 8px;
 }
-.article-share-link {
-  cursor: pointer;
-  float: right;
+.article-sharemodule {
+  float: left;
   margin-left: 20px;
-}
-.article-share-link:before {
-  content: "\f064";
-  font-family: FontAwesome;
-  padding-right: 6px;
 }
 #article-nav {
   position: relative;
@@ -836,7 +830,7 @@ a.article-title:hover {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0 15px;
   color: #555;
   outline: none;
@@ -1159,9 +1153,6 @@ a.article-title:hover {
 .article-entry .highlight .line {
   height: 22.400000000000002px;
 }
-.article-entry .highlight .line.marked {
-  background: #515151;
-}
 .article-entry .gist {
   margin: 0 -20px;
   border-style: solid;
@@ -1195,7 +1186,7 @@ a.article-title:hover {
 .article-entry .gist .gist-file .gist-meta {
   background: #2d2d2d;
   color: #999;
-  font: 0.85em -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
@@ -1349,6 +1340,28 @@ pre .javascript .function {
 }
 .widget ul ol,
 .widget ol ol {
+  list-style: decimal;
+}
+.widget-music {
+  font-size: 0.9em;
+}
+.widget-music ul,
+.widget-music ol {
+  list-style: none;
+  margin: 0;
+}
+.widget-music ul ul,
+.widget-music ol ul,
+.widget-music ul ol,
+.widget-music ol ol {
+  margin: 0 20px;
+}
+.widget-music ul ul,
+.widget-music ol ul {
+  list-style: disc;
+}
+.widget-music ul ol,
+.widget-music ol ol {
   list-style: decimal;
 }
 .category-list-count,
