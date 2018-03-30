@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>利用git hooks进行自动部署 | Paranoid&#39;s cottage</title>
+  <title>Tutorial_webapp_installFlarum | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这时候当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：error: cannot open .git/FETCH_HEAD: Permission denied">
+  <meta name="description" content="安装Flarum论坛软件 ##系统需求服务器： Apache (需要支持 mod_rewrite)、Nginx、LighttpdPHP 5.5+，需要开启的扩展：mbstring, pdo_mysql, openssl, json, gd, dom, fileinfoMySQL 5.5+ 开启Apache的mod_rewrite： 命令开启    sudo a2enmod rewrite sudo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用git hooks进行自动部署">
-<meta property="og:url" content="http://blog.fetdesign.com/2017/01/13/Tools_Git_git hooks自动部署/index.html">
+<meta property="og:title" content="Tutorial_webapp_installFlarum">
+<meta property="og:url" content="http://blog.fetdesign.com/2018/03/29/Tutorial-webapp-installFlarum/index.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="这时候当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：error: cannot open .git/FETCH_HEAD: Permission denied">
+<meta property="og:description" content="安装Flarum论坛软件 ##系统需求服务器： Apache (需要支持 mod_rewrite)、Nginx、LighttpdPHP 5.5+，需要开启的扩展：mbstring, pdo_mysql, openssl, json, gd, dom, fileinfoMySQL 5.5+ 开启Apache的mod_rewrite： 命令开启    sudo a2enmod rewrite sudo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-01-13T04:49:43.836Z">
+<meta property="og:updated_time" content="2018-03-30T13:22:09.633Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用git hooks进行自动部署">
-<meta name="twitter:description" content="这时候当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：error: cannot open .git/FETCH_HEAD: Permission denied">
+<meta name="twitter:title" content="Tutorial_webapp_installFlarum">
+<meta name="twitter:description" content="安装Flarum论坛软件 ##系统需求服务器： Apache (需要支持 mod_rewrite)、Nginx、LighttpdPHP 5.5+，需要开启的扩展：mbstring, pdo_mysql, openssl, json, gd, dom, fileinfoMySQL 5.5+ 开启Apache的mod_rewrite： 命令开启    sudo a2enmod rewrite sudo">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -67,14 +67,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Tools_Git_git hooks自动部署" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Tutorial-webapp-installFlarum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/13/Tools_Git_git hooks自动部署/" class="article-date">
-  <time datetime="2017-01-13T04:30:01.000Z" itemprop="datePublished">2017-01-13</time>
+    <a href="/2018/03/29/Tutorial-webapp-installFlarum/" class="article-date">
+  <time datetime="2018-03-29T09:58:36.000Z" itemprop="datePublished">2018-03-29</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Tools/">Tools</a>►<a class="article-category-link" href="/categories/Tools/Git/">Git</a>
+    <a class="article-category-link" href="/categories/Tutorial/">Tutorial</a>►<a class="article-category-link" href="/categories/Tutorial/webapp/">webapp</a>
   </div>
 
   </div>
@@ -85,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      利用git hooks进行自动部署
+      Tutorial_webapp_installFlarum
     </h1>
   
 
@@ -93,52 +93,134 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这时候当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：<br>error: cannot open .git/FETCH_HEAD: Permission denied<br><a id="more"></a><br>所以你需要先把ssh_user加到apache组中：</p>
-<pre><code>usermod -a -G apache ssh_user
-</code></pre><p>然后修改权限：</p>
-<pre><code>chmod -R g+w /var/www
-chown -R ssh_user:apache /var/www
-chmod -R g+s /var/www
-</code></pre><p>之所以放在这个目录，是因为apache这个用户的缺省目录就是/var/www，当然你可以把它改到另外一个目录下，可能会更安全一些。</p>
-<p>然后：</p>
-<pre><code>sudo -u apache git pull
-</code></pre><p>它会在apache的.ssh文件夹下产生一个known_hosts文件，然后如果你是用的ssh方式，你还需要把上面生成的deploy key里的两个文件id_rsa和id_rsa.pub拷到.ssh文件夹里去。然后反复多执行几遍以下命令，确保不再报任何错误。然后就可以尝试从客户端push一个新版本上去，看是否可以自动部署成功了。</p>
-<p>这里就得讲一下git的hook机制，当git服务器接到各种事件时触发，这里使用的hook是</p>
-<p>post-receive</p>
-<p>这个hook在git服务器受到push请求，并且接受完代码提交时触发。</p>
-<p>具体代码体现：</p>
-<p>在git远端仓库的hooks目录下新建post-receive文件：</p>
-<pre><code>#!/bin/sh
+        <p>安装Flarum论坛软件</p>
+<p>##系统需求<br>服务器： Apache (需要支持 mod_rewrite)、Nginx、Lighttpd<br>PHP 5.5+，需要开启的扩展：mbstring, pdo_mysql, openssl, json, gd, dom, fileinfo<br>MySQL 5.5+</p>
+<p>开启Apache的mod_rewrite：</p>
+<p>命令开启   </p>
+<pre><code>sudo a2enmod rewrite
+sudo /etc/init.d/apache2 restart
+</code></pre><p>设置php扩展：</p>
+<pre><code>mbstring.language = Chinese
+mbstring.internal_encoding = UTF-8
+mbstring.encoding_translation = On
+mbstring.http_input = UTF-8
+mbstring.http_output = UTF-8
+mbstring.detect_order = UTF-8
+mbstring.substitute_character = none
+</code></pre><p>/etc/init.d/php-fpm7.0 restart</p>
+<p>Nginx<br>添加下述配置到你的服务器配置块：<br>http{}中</p>
+<pre><code>server{
+        location / { try_files $uri $uri/ /index.php?$query_string; }
+        location /api { try_files $uri $uri/ /api.php?$query_string; }
+        location /admin { try_files $uri $uri/ /admin.php?$query_string; }
 
-#author: embbnux
-#Blog of Embbnux: http://www.embbnux.com
+        location /flarum {
+            deny all;
+            return 404;
+        }
 
-#判断是不是远端仓库
-IS_BARE=$(git rev-parse --is-bare-repository)
-if [ -z &quot;$IS_BARE&quot; ]; then
-echo &gt;&amp;2 &quot;fatal: post-receive: IS_NOT_BARE&quot;
-exit 1
-fi
+        location ~* \.php$ {
+            fastcgi_split_path_info ^(.+.php)(/.+)$;
+            fastcgi_pass unix:/var/run/php5-fpm.sock;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_param HTTP_PROXY &quot;&quot;; # Fix for https://httpoxy.org/ vulnerability
+            fastcgi_index index.php;
+        }
 
-unset GIT_DIR
-DeployPath=&quot;/var/web&quot;
+        location ~* \.html$ {
+            expires -1;
+        }
 
-echo &quot;===============================================&quot;
-cd $DeployPath
-echo &quot;deploying the test web&quot;
+        location ~* \.(css|js|gif|jpe?g|png)$ {
+            expires 1M;
+            add_header Pragma public;
+            add_header Cache-Control &quot;public, must-revalidate, proxy-revalidate&quot;;
+        }
 
-＃git stash
-#git pull origin master
-git fetch --all
-git reset --hard origin/master
-
-time=`date`
-echo &quot;web server pull at webserver at time: $time.&quot;
-echo &quot;================================================&quot;
-</code></pre><p>保存后赋予可执行权限：</p>
-<pre><code>1
-chmod +x hooks/post-receive
-</code></pre><p>这样在开发者提交代码的时候，就会自动部署。</p>
+        gzip on;
+        gzip_http_version 1.1;
+        gzip_vary on;
+        gzip_comp_level 6;
+        gzip_proxied any;
+        gzip_types application/atom+xml
+                   application/javascript
+                   application/json
+                   application/vnd.ms-fontobject
+                   application/x-font-ttf
+                   application/x-web-app-manifest+json
+                   application/xhtml+xml
+                   application/xml
+                   font/opentype
+                   image/svg+xml
+                   image/x-icon
+                   text/css
+                   text/plain
+                   text/xml;
+        gzip_buffers 16 8k;
+        gzip_disable &quot;MSIE [1-6]\.(?!.*SV1)&quot;;
+}
+</code></pre><p> sudo apache2ctl -k restart</p>
+<p>安装</p>
+<pre><code>sudo apt-get install apache2
+sudo apt-get install php5
+sudo apt-get install mysql-server
+sudo apt-get install php5-mysql
+</code></pre><p>创建flarum工程 </p>
+<pre><code>composer create-project flarum/flarum . --stability=beta
+</code></pre><p>安装过程中可能会出现错误：</p>
+<pre><code>Installing flarum/flarum (v0.1.0-beta.5)
+- Installing flarum/flarum (v0.1.0-beta.5)
+Downloading: 100%
+Created project in .
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Your requirements could not be resolved to an installable set of packages.
+Problem 1
+- flarum/flarum-ext-akismet v0.1.0-beta.3 requires tijsverkoyen/akismet ^1.1 -&gt; satisfiable by tijsverkoyen/akismet[1.1.0].
+- flarum/flarum-ext-akismet v0.1.0-beta.5 requires tijsverkoyen/akismet ^1.1 -&gt; satisfiable by tijsverkoyen/akismet[1.1.0].
+- tijsverkoyen/akismet 1.1.0 requires ext-curl * -&gt; the requested PHP extension curl is missing from your system.
+- Installation request for flarum/flarum-ext-akismet ^0.1.0 -&gt; satisfiable by flarum/flarum-ext-akismet[v0.1.0-beta.3, v0.1.0-beta.5].
+To enable extensions, verify that they are enabled in those .ini files:
+- /etc/php5/cli/php.ini
+- /etc/php5/cli/conf.d/05-opcache.ini
+- /etc/php5/cli/conf.d/10-pdo.ini
+- /etc/php5/cli/conf.d/20-json.ini
+- /etc/php5/cli/conf.d/20-mysql.ini
+- /etc/php5/cli/conf.d/20-mysqli.ini
+- /etc/php5/cli/conf.d/20-pdo_mysql.ini
+- /etc/php5/cli/conf.d/20-readline.ini
+You can also run `php --ini` inside terminal to see which files are used by PHP in CLI mode.
+</code></pre><p>这时需要安装php-curl后，删除目录中的所有文件(包括.开头的隐藏文件)再执行composer create-project flarum/flarum . –stability=beta.</p>
+<pre><code>1 sudo apt-get install php5-curl
+</code></pre><p>正常的安装日志很长。</p>
+<p>将工程目录全部文件和文件夹的权限修改为777.</p>
+<p>如我的是:</p>
+<pre><code>sudo chmod -R 777 /home/kiya/v2nb
+</code></pre><p>开启rewrite</p>
+<pre><code>cd /etc/apache2/mods-enabled
+sudo ln -s ../mods-available/rewrite.load
+</code></pre><p>##其他博客安装示例<br>修改/etc/apache2/sites-available/000-default.conf文件中的DocumentRoot项为你的项目文件夹路径. 如DocumentRoot /usr/flarum/flarum.</p>
+<p>并在该文件中的VirtualHost节点之间添加如下代码:</p>
+<pre><code>&lt;Directory /usr/flarum/flarum&gt;
+AllowOverride All
+&lt;/Directory&gt;
+</code></pre><p>在/etc/apache2/apache2.conf文件中找到：</p>
+<pre><code>&lt;Directory /&gt;
+Options FollowSymLinks
+AllowOverride None
+Require all denied
+&lt;/Directory&gt;
+</code></pre><p>将Require all denied改为Require all granted,将AllowOverride None改为AllowOverride All.</p>
+<p>修改host</p>
+<pre><code>sudo vim /etc/hosts
+</code></pre><p>打开hosts新增加一行192.168.1.2 usr.com. 这里的ip是vps的ip，域名随便写. 本机的话可以ip可以写成127.0.0.1.</p>
+<p>##apache和php7配置不同更新</p>
+<p>重定向</p>
+<p>将所有apache配置中的/var/www/html改为当前论坛的地址，地址将会重定向</p>
+<p>apache与php7绑定<br>进入/etc/apache目录<br>进入conf-enabled，运行ln -s ../conf-available/php7.conf<br>复制php链接。</p>
+<p>采用Apache的mod_proxy_fcgi配合php-fpm运行<br>进入mod-available将proxy.conf,proxy.load,proxy-fcgi.load链接到mod-enabled。</p>
+<p>重启Apache即可，sudo /etc/init.d/apache2 restart</p>
 
       
     </div>
@@ -155,19 +237,10 @@ chmod +x hooks/post-receive
     
 <nav id="article-nav">
   
-    <a href="/2017/01/13/Programmer_Java_web_spring上传文件/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          spring上传文件
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/11/06/Programmer_Java_Spring_web_jquery异步_datatable/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/05/27/Linux_commands/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">jquery异步-datatable前端</div>
+      <div class="article-nav-title">Linux常用</div>
     </a>
   
 </nav>
@@ -178,7 +251,7 @@ chmod +x hooks/post-receive
 
   <section id="comments">
     <!-- ��˵���ۿ� start -->
-    <div class="ds-thread" data-thread-key="post-Tools_Git_git hooks自动部署" data-title="利用git hooks进行自动部署" data-url="http://blog.fetdesign.com/2017/01/13/Tools_Git_git hooks自动部署/"></div>
+    <div class="ds-thread" data-thread-key="post-Tutorial-webapp-installFlarum" data-title="Tutorial_webapp_installFlarum" data-url="http://blog.fetdesign.com/2018/03/29/Tutorial-webapp-installFlarum/"></div>
     <!-- ��˵���ۿ� end -->
     <!-- ��˵����JS���� start (һ����ҳֻ�����һ��) -->
     <script type="text/javascript">
