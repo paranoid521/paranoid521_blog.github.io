@@ -5,17 +5,17 @@
   
   <title>利用git hooks进行自动部署 | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这时候当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：error: cannot open .git/FETCH_HEAD: Permission denied">
+  <meta name="description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。 git的hook机制，当git服务器接到各种事件时触发，这里使用的hook是 post-rec">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用git hooks进行自动部署">
 <meta property="og:url" content="http://blog.fetdesign.com/2017/01/13/Tools_Git_git hooks自动部署/index.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="这时候当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：error: cannot open .git/FETCH_HEAD: Permission denied">
+<meta property="og:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。 git的hook机制，当git服务器接到各种事件时触发，这里使用的hook是 post-rec">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-01-13T04:49:43.836Z">
+<meta property="og:updated_time" content="2018-04-02T09:41:07.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用git hooks进行自动部署">
-<meta name="twitter:description" content="这时候当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：error: cannot open .git/FETCH_HEAD: Permission denied">
+<meta name="twitter:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。 git的hook机制，当git服务器接到各种事件时触发，这里使用的hook是 post-rec">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -93,27 +93,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这时候当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：<br>error: cannot open .git/FETCH_HEAD: Permission denied<br><a id="more"></a><br>所以你需要先把ssh_user加到apache组中：</p>
-<pre><code>usermod -a -G apache ssh_user
-</code></pre><p>然后修改权限：</p>
-<pre><code>chmod -R g+w /var/www
-chown -R ssh_user:apache /var/www
-chmod -R g+s /var/www
-</code></pre><p>之所以放在这个目录，是因为apache这个用户的缺省目录就是/var/www，当然你可以把它改到另外一个目录下，可能会更安全一些。</p>
-<p>然后：</p>
-<pre><code>sudo -u apache git pull
-</code></pre><p>它会在apache的.ssh文件夹下产生一个known_hosts文件，然后如果你是用的ssh方式，你还需要把上面生成的deploy key里的两个文件id_rsa和id_rsa.pub拷到.ssh文件夹里去。然后反复多执行几遍以下命令，确保不再报任何错误。然后就可以尝试从客户端push一个新版本上去，看是否可以自动部署成功了。</p>
-<p>这里就得讲一下git的hook机制，当git服务器接到各种事件时触发，这里使用的hook是</p>
-<p>post-receive</p>
-<p>这个hook在git服务器受到push请求，并且接受完代码提交时触发。</p>
+        <a id="more"></a>
+<p>首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行</p>
+<pre><code>git clone /usr/gitRepo/web.git
+</code></pre><p>将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。</p>
+<p>git的hook机制，当git服务器接到各种事件时触发，这里使用的hook是</p>
+<pre><code>post-receive
+</code></pre><p>这个hook在git服务器受到push请求，并且接受完代码提交时触发。</p>
 <p>具体代码体现：</p>
 <p>在git远端仓库的hooks目录下新建post-receive文件：</p>
 <pre><code>#!/bin/sh
-
-#author: embbnux
-#Blog of Embbnux: http://www.embbnux.com
-
-#判断是不是远端仓库
 IS_BARE=$(git rev-parse --is-bare-repository)
 if [ -z &quot;$IS_BARE&quot; ]; then
 echo &gt;&amp;2 &quot;fatal: post-receive: IS_NOT_BARE&quot;
@@ -121,25 +110,33 @@ exit 1
 fi
 
 unset GIT_DIR
-DeployPath=&quot;/var/web&quot;
+DeployPath=&quot;/var/www/gitRepoHtml&quot;
 
 echo &quot;===============================================&quot;
 cd $DeployPath
-echo &quot;deploying the test web&quot;
+echo &quot;deploying the webapp&quot;
 
-＃git stash
-#git pull origin master
 git fetch --all
 git reset --hard origin/master
 
 time=`date`
 echo &quot;web server pull at webserver at time: $time.&quot;
 echo &quot;================================================&quot;
-</code></pre><p>保存后赋予可执行权限：</p>
-<pre><code>1
-chmod +x hooks/post-receive
+</code></pre><p>添加文件后，将权限改为755，用户改为git</p>
+<pre><code>chmod +755 post-receive
+chown git:git post-receive
 </code></pre><p>这样在开发者提交代码的时候，就会自动部署。</p>
-
+<p>可能出现的问题：<br>当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：</p>
+<pre><code>error: cannot open .git/FETCH_HEAD: Permission denied
+</code></pre><p>所以你需要先把ssh_user加到apache组中：</p>
+<pre><code>usermod -a -G apache ssh_user
+</code></pre><p>在Apache2中用户组为www-data,ssh_user设置为git</p>
+<pre><code>usermod -a -G www-data git    
+</code></pre><p>然后修改权限：</p>
+<pre><code>chmod -R g+w /var/www
+chown -R git:www-data /var/www
+chmod -R g+s /var/www
+</code></pre>
       
     </div>
     <footer class="article-footer">
