@@ -728,8 +728,8 @@ a.article-title:hover {
   padding-right: 8px;
 }
 .article-sharemodule {
-  float: left;
-  margin-left: 20px;
+  float: right;
+  margin-right: 20px;
 }
 #article-nav {
   position: relative;
