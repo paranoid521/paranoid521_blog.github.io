@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="基于JQuery的datatable更新示例：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery异步-datatable前端">
+<meta property="og:url" content="http://blog.fetdesign.com/2016/11/06/Programmer_Java_Spring_web_jquery异步_datatable/index.html">
+<meta property="og:site_name" content="Paranoid&#39;s cottage">
+<meta property="og:description" content="基于JQuery的datatable更新示例：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-01-13T04:41:55.940Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jquery异步-datatable前端">
+<meta name="twitter:description" content="基于JQuery的datatable更新示例：">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.fetdesign.com/2016/11/06/Programmer_Java_Spring_web_jquery异步_datatable/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>jquery异步-datatable前端 | Paranoid's cottage</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Paranoid's cottage</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">I would rather sit on a pumpkin and have it all to myself, than be crowded on a velvet cushion.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.fetdesign.com/2016/11/06/Programmer_Java_Spring_web_jquery异步_datatable/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paranoid">
+      <meta itemprop="description" content="walk step by step">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Paranoid's cottage">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jquery异步-datatable前端
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-06 12:38:01" itemprop="dateCreated datePublished" datetime="2016-11-06T12:38:01+08:00">2016-11-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-01-13 12:41:55" itemprop="dateModified" datetime="2017-01-13T12:41:55+08:00">2017-01-13</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Programmer/" itemprop="url" rel="index"><span itemprop="name">Programmer</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Programmer/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Programmer/Java/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>基于JQuery的datatable更新示例：<br><a id="more"></a><br>    var InitiateEditableDataTable = function () {<br>        return {<br>            init: function () {<br>            //Datatable Initiating<br>        var oTable = $(‘#editabledatatable’).dataTable({<br>            “aLengthMenu”: [<br>            [5, 15, 20, 100, -1],<br>            [5, 15, 20, 100, “All”]<br>            ],<br>            “iDisplayLength”: 5,<br>            “sPaginationType”: “bootstrap”,<br>            “sDom”: “Tflt&lt;’row DTTTFooter’&lt;’col-sm-6’i&gt;&lt;’col-sm-6’p&gt;&gt;”,<br>            “oTableTools”: {<br>            “aButtons”: [<br>                            “print”],<br>            “sSwfPath”: “assets/swf/copy_csv_xls_pdf.swf”<br>            },<br>            “language”: {<br>            “search”: “”,<br>            “sLengthMenu”: “<em>MENU</em>“,<br>            “oPaginate”: {<br>            “sPrevious”: “Prev”,<br>            “sNext”: “Next”<br>            }<br>            },<br>            “aoColumns”: [<br>              null,<br>              null,<br>              null,<br>              null,<br>              null,<br>              null,<br>              null,<br>              null,<br>              { “bSortable”: false }<br>            ]<br>            });<br>            var isEditing = null;</p>
+<pre><code>        //Add New Row
+        $(&apos;#editabledatatable_new&apos;).click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: &apos;POST&apos;,
+                url: &quot;car.action?action=getAllStaffNo&quot;,
+                dataType: &quot;json&quot;,
+                data: &quot;&quot;,
+                success: function (data, status) {
+                    fore = &apos;&lt;select name=&quot;staffno&quot; class=&quot;form-control&quot;&gt;&apos;;
+                    var inter = &apos;&apos;;
+                    var temp = &apos;&apos;;
+                    for(var i=0;i&lt;data.length;i++){
+                        temp = &apos;&lt;option value=&quot;&apos;+data[i]+&apos;&quot;&gt;&apos;+data[i]+&apos;&lt;/option&gt;&apos;;
+                        inter = inter + temp;
+                    }
+                    end = &apos;&lt;/select&gt;&apos;;
+                    var aiNew = oTable.fnAddData([&apos;&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,fore+inter+end,
+                                                  &apos;&lt;a href=&quot;#&quot; class=&quot;btn btn-success btn-xs save&quot;&gt;&lt;i class=&quot;fa fa-edit&quot;&gt;&lt;/i&gt; Save&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;btn btn-warning btn-xs cancel&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt; Cancel&lt;/a&gt;&apos;
+                                          ]);
+                    var nRow = oTable.fnGetNodes(aiNew[0]);
+                    editRow(oTable, nRow,data);
+                    isEditing = nRow;
+                }
+            })
+        });
+
+        //Delete an Existing Row
+        $(&apos;#editabledatatable&apos;).on(&quot;click&quot;, &apos;a.delete&apos;, function (e) {
+            e.preventDefault();
+            if (confirm(&quot;确认删除这行数据吗？&quot;) == false) {
+                return;
+            }
+            var nRow = $(this).parents(&apos;tr&apos;)[0];
+            var aData = oTable.fnGetData(nRow);
+
+            $.ajax({
+                type: &apos;POST&apos;,
+                url: &quot;car.action?action=deleteCar&quot;,
+                dataType: &quot;json&quot;,
+                data: {
+                     &quot;id&quot; : aData[0]
+                },
+                success: function (data,textStatus) {     
+                    if(textStatus==&quot;success&quot;){
+                        if(data.status==0){
+                            alert(data.mes);
+                            oTable.fnDeleteRow(nRow);
+                        }
+                    }else{
+                        alert(&quot;网络异常，请稍后再试！&quot;);
+                    }
+                },
+                error:function (XMLHttpRequest,textStatus,errorThrown){
+                    alert(&quot;error&quot;);     
+                }
+            })
+
+        });
+
+        //Cancel Editing or Adding a Row
+        $(&apos;#editabledatatable&apos;).on(&quot;click&quot;, &apos;a.cancel&apos;, function (e) {
+            e.preventDefault();
+            var input = $(&apos;input&apos;, isEditing);
+            if (input[0].value == &quot;&quot;) {
+                var nRow = $(this).parents(&apos;tr&apos;)[0];
+                oTable.fnDeleteRow(nRow);
+                isEditing = null;
+            } else {
+                restoreRow(oTable, isEditing);
+                isEditing = null;
+            }
+        });
+
+        //Edit A Row
+        $(&apos;#editabledatatable&apos;).on(&quot;click&quot;, &apos;a.edit&apos;, function (e) {
+            e.preventDefault();
+
+            var nRow = $(this).parents(&apos;tr&apos;)[0];
+
+            $.ajax({
+                type: &apos;POST&apos;,
+                url: &quot;car.action?action=getAllStaffNo&quot;,
+                dataType: &quot;json&quot;,
+                data: &quot;&quot;,
+                success: function (data, status) {
+
+                    if (isEditing !== null &amp;&amp; isEditing != nRow) {
+                        restoreRow(oTable, isEditing);
+                        editRow(oTable, nRow, data);
+                        isEditing = nRow;
+                    } else {
+                        editRow(oTable, nRow, data);
+                        isEditing = nRow;
+                    }
+                }
+            })
+        });
+
+        //Save an Editing Row
+        $(&apos;#editabledatatable&apos;).on(&quot;click&quot;, &apos;a.save&apos;, function (e) {
+            e.preventDefault();
+            if (this.innerHTML.indexOf(&quot;Save&quot;) &gt;= 0) {
+                var input = $(&apos;input&apos;, isEditing);
+                var select = $(&apos;select&apos;, isEditing);
+                var nRow = $(this).parents(&apos;tr&apos;)[0];
+
+                function CheckData() {
+                    var busNumberLe = input[2].value.length;
+                    var driverPhoneNoLe = input[4].value;
+                    var re = /^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$/;
+                    var driver = input[3].value.length;
+                    var carLine = input[5].value;
+                    var carNo = input[1].value.length;
+                    var carNoValue = input[1].value;
+                    var userNo = select[0].value.length;
+
+                    if(carNo&lt;3){
+                        alert(&quot;请填写正确的车辆号！&quot;);
+                        return false;
+                    }
+                    if(!(/^[a-z]{3}$/.test(carNoValue.substring(0,3)))){
+                        alert(&quot;车辆号格式不正确！&quot;)
+                        return false;
+                    }
+                    if (busNumberLe == 0) {
+                        alert(&quot;车牌号不能为空，请输入。&quot;)
+                        return false;
+                    }
+                    if (input[2].value.search(re) == -1) {
+                        alert(&quot;输入的车牌号格式不正确&quot;);
+                        return false;
+                    }
+                    if (driver == 0) {
+                        alert(&quot;请输入姓名！&quot;)
+                        return false;
+                    }
+                    if (!(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(driverPhoneNoLe))) {
+                        alert(&quot;不是完整的11位手机号或者正确的手机号前七位&quot;);
+                        return false;
+                    }if (userNo == 0) {
+                        alert(&quot;请输入职工号！&quot;)
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+
+                var jsonData = {  
+                         &quot;id&quot; : input[0].value, 
+                         &quot;carNo&quot; : input[1].value,
+                         &quot;carIdtiNumber&quot; : input[2].value,
+                         &quot;driver&quot; : input[3].value,
+                         &quot;driverPhoneNo&quot; : input[4].value, 
+                         &quot;carLineId&quot; : input[5].value,
+                         &quot;status&quot; : input[6].value,
+                         &quot;userNo&quot; : select[0].value
+
+                };
+                if(CheckData()){
+                    $.ajax({
+                        type: &apos;POST&apos;,
+                        url: &quot;car.action?action=saveByAJax&quot;,
+                        dataType: &quot;json&quot;,
+                        data: {
+                             &quot;ss&quot; : JSON.stringify(jsonData)
+                        },
+                        success: function (data, status) {
+                            if (data.status == 0) {
+                                alert(data.mes);
+                                saveRow(oTable, isEditing);
+                            }else{
+                                alert(data.mes);
+                                if(input[0].value==&quot;&quot;){
+                                    oTable.fnDeleteRow(nRow);
+                                }else{
+                                    saveRowError(oTable, isEditing);
+                                }
+                            }
+                            isEditing = null;
+                        },
+                        error:function (a,b,c){
+                            alert(&quot;error&quot;)
+                        }
+                    })
+                }
+            }
+        });
+
+
+        function restoreRow(oTable, nRow) {
+            var aData = oTable.fnGetData(nRow);
+            var jqTds = $(&apos;&gt;td&apos;, nRow);
+
+            for (var i = 0, iLen = jqTds.length; i &lt; iLen; i++) {
+                oTable.fnUpdate(aData[i], nRow, i, false);
+            }
+
+            oTable.fnDraw();
+        }
+
+        function editRow(oTable, nRow,data) {
+            var aData = oTable.fnGetData(nRow);
+            var jqTds = $(&apos;&gt;td&apos;, nRow);
+
+            fore = &apos;&lt;select name=&quot;staffno&quot; class=&quot;form-control&quot;&gt;&apos;;
+            var inter = &apos;&apos;;
+            var temp = &apos;&apos;;
+            for(var i=0;i&lt;data.length;i++){
+                temp = &apos;&lt;option value=&quot;&apos;+data[i]+&apos;&quot;&gt;&apos;+data[i]+&apos;&lt;/option&gt;&apos;;
+                inter = inter + temp;
+            }
+            end = &apos;&lt;/select&gt;&apos;;
+
+            jqTds[0].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:50px;&quot; class=&quot;form-control input-small&quot; disabled=&quot;true&quot; value=&quot;&apos; + aData[0] + &apos;&quot;&gt;&apos;;
+            jqTds[1].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:100px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[1] + &apos;&quot;&gt;&apos;;
+            jqTds[2].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:100px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[2] + &apos;&quot;&gt;&apos;;
+            jqTds[3].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:100px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[3] + &apos;&quot;&gt;&apos;;
+            jqTds[4].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:110px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[4] + &apos;&quot;&gt;&apos;;
+            jqTds[5].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:50px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[5] + &apos;&quot;&gt;&apos;;
+            jqTds[6].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:50px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[6] + &apos;&quot;&gt;&apos;;
+            jqTds[7].innerHTML = fore+inter+end;
+            jqTds[8].innerHTML = &apos;&lt;a href=&quot;#&quot; class=&quot;btn btn-success btn-xs save&quot;&gt;&lt;i class=&quot;fa fa-save&quot;&gt;&lt;/i&gt; Save&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;btn btn-warning btn-xs cancel&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt; Cancel&lt;/a&gt;&apos;;
+        }
+
+        function saveRow(oTable, nRow,data) {
+            var jqInputs = $(&apos;input&apos;, nRow);
+            var select = $(&apos;select&apos;, nRow);
+            oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
+            oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
+            oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
+            oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
+            oTable.fnUpdate(jqInputs[4].value, nRow, 4, false);
+            oTable.fnUpdate(jqInputs[5].value, nRow, 5, false);
+            oTable.fnUpdate(jqInputs[6].value, nRow, 6, false);
+            oTable.fnUpdate(select[0].value, nRow, 7, false);
+            oTable.fnUpdate(&apos;&lt;a href=&quot;#&quot; class=&quot;btn btn-info btn-xs edit&quot;&gt;&lt;i class=&quot;fa fa-edit&quot;&gt;&lt;/i&gt; Edit&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;btn btn-danger btn-xs delete&quot;&gt;&lt;i class=&quot;fa fa-trash-o&quot;&gt;&lt;/i&gt; Delete&lt;/a&gt;&apos;, nRow, 8, false);
+            oTable.fnDraw();
+        }
+        function saveRowError(oTable, nRow) {
+            var jqInputs = $(&apos;input&apos;, nRow);
+            oTable.fnUpdate(&apos;&lt;a href=&quot;#&quot; class=&quot;btn btn-info btn-xs edit&quot;&gt;&lt;i class=&quot;fa fa-edit&quot;&gt;&lt;/i&gt; Edit&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;btn btn-danger btn-xs delete&quot;&gt;&lt;i class=&quot;fa fa-trash-o&quot;&gt;&lt;/i&gt; Delete&lt;/a&gt;&apos;, nRow, 8, false);
+            oTable.fnDraw();
+        }
+
+        function cancelEditRow(oTable, nRow) {
+            var jqInputs = $(&apos;input&apos;, nRow);
+            var select = $(&apos;select&apos;, nRow);
+            oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
+            oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
+            oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
+            oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
+            oTable.fnUpdate(jqInputs[4].value, nRow, 4, false);
+            oTable.fnUpdate(jqInputs[5].value, nRow, 5, false);
+            oTable.fnUpdate(jqInputs[6].value, nRow, 6, false);
+            oTable.fnUpdate(select[0].value, nRow, 7, false);
+            oTable.fnUpdate(&apos;&lt;a href=&quot;#&quot; class=&quot;btn btn-info btn-xs edit&quot;&gt;&lt;i class=&quot;fa fa-edit&quot;&gt;&lt;/i&gt; Edit&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;btn btn-danger btn-xs delete&quot;&gt;&lt;i class=&quot;fa fa-trash-o&quot;&gt;&lt;/i&gt; Delete&lt;/a&gt;&apos;, nRow, 8, false);
+            oTable.fnDraw();
+        }
+    }
+};}();
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/06/Programmer_Java_Spring_web_spring获取action保存数据/" rel="next" title="普通类如何调用spring实例化好的action操作数据库">
+                <i class="fa fa-chevron-left"></i> 普通类如何调用spring实例化好的action操作数据库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/13/Tools_Git_git hooks自动部署/" rel="prev" title="利用git hooks进行自动部署">
+                利用git hooks进行自动部署 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Paranoid</p>
+              <p class="site-description motion-element" itemprop="description">walk step by step</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Paranoid</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.6.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

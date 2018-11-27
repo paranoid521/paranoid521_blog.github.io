@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Flat UI FreeFlat UI is a beautiful theme for Bootstrap. We have redesigned many of its components to look flat in every pixel.">
+<meta name="keywords" content="tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flat UI">
+<meta property="og:url" content="http://blog.fetdesign.com/2016/02/23/Tools_FlatUI_test1/index.html">
+<meta property="og:site_name" content="Paranoid&#39;s cottage">
+<meta property="og:description" content="Flat UI FreeFlat UI is a beautiful theme for Bootstrap. We have redesigned many of its components to look flat in every pixel.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-01-13T04:08:15.364Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flat UI">
+<meta name="twitter:description" content="Flat UI FreeFlat UI is a beautiful theme for Bootstrap. We have redesigned many of its components to look flat in every pixel.">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.fetdesign.com/2016/02/23/Tools_FlatUI_test1/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Flat UI | Paranoid's cottage</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Paranoid's cottage</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">I would rather sit on a pumpkin and have it all to myself, than be crowded on a velvet cushion.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.fetdesign.com/2016/02/23/Tools_FlatUI_test1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paranoid">
+      <meta itemprop="description" content="walk step by step">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Paranoid's cottage">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flat UI
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-02-23 21:01:02" itemprop="dateCreated datePublished" datetime="2016-02-23T21:01:02+08:00">2016-02-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-01-13 12:08:15" itemprop="dateModified" datetime="2017-01-13T12:08:15+08:00">2017-01-13</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tools/FlatUI/" itemprop="url" rel="index"><span itemprop="name">FlatUI</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Flat-UI-Free"><a href="#Flat-UI-Free" class="headerlink" title="Flat UI Free"></a><a href="http://designmodo.github.io/Flat-UI/" target="_blank" rel="noopener">Flat UI Free</a></h1><p>Flat UI is a beautiful theme for <a href="http://getbootstrap.com" target="_blank" rel="noopener">Bootstrap</a>. We have redesigned many of its components to look flat in every pixel.<br><a id="more"></a></p>
+<p>To get started, check out <a href="http://designmodo.github.io/Flat-UI/docs/getting-started.html" target="_blank" rel="noopener">getting started page</a> or follow instructions below.</p>
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links:"></a>Links:</h2><ul>
+<li><a href="http://designmodo.github.io/Flat-UI/" target="_blank" rel="noopener">Demo Page</a></li>
+<li><a href="http://designmodo.com/flat-free/" target="_blank" rel="noopener">Download PSD</a> (for designers)</li>
+<li><a href="http://designmodo.com/flat/" target="_blank" rel="noopener">Flat UI Pro 1.3.2</a> (from $39)</li>
+</ul>
+<h2 id="Quick-start"><a href="#Quick-start" class="headerlink" title="Quick start"></a>Quick start</h2><p>Three quick start options are available:</p>
+<ul>
+<li><a href="https://github.com/designmodo/Flat-UI/archive/2.2.2.zip" target="_blank" rel="noopener">Download the latest release</a>.</li>
+<li>Clone the repo: <code>git clone https://github.com/designmodo/Flat-UI.git</code>.</li>
+<li>Install with <a href="http://bower.io" target="_blank" rel="noopener">Bower</a>: <code>bower install flat-ui</code>.</li>
+</ul>
+<p>Run <code>npm install</code> and <code>bower install</code> to install dependencies.</p>
+<p>Read the <a href="http://designmodo.github.io/Flat-UI/docs/getting-started.html" target="_blank" rel="noopener">getting started page</a> for information on the framework contents.</p>
+<p>Examples: <a href="https://github.com/designmodo/Flat-UI/tree/master/docs/examples" target="_blank" rel="noopener">https://github.com/designmodo/Flat-UI/tree/master/docs/examples</a>.</p>
+<h3 id="What’s-included"><a href="#What’s-included" class="headerlink" title="What’s included"></a>What’s included</h3><p>Within the download you’ll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You’ll see something like this:</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">flat-ui/</span><br><span class="line">├── dist/</span><br><span class="line">|<span class="string">   ├── css/</span></span><br><span class="line">|<span class="string">   </span>|<span class="string">   ├── vendors/</span></span><br><span class="line"><span class="string">│   </span>|<span class="string">   ├── flat-ui.css</span></span><br><span class="line"><span class="string">│   </span>|<span class="string">   └── flat-ui.min.css</span></span><br><span class="line">|<span class="string">   ├── js/</span></span><br><span class="line">|<span class="string">   </span>|<span class="string">   ├── vendors/</span></span><br><span class="line"><span class="string">│   </span>|<span class="string">   ├── flat-ui.js</span></span><br><span class="line"><span class="string">│   </span>|<span class="string">   └── flat-ui.min.js</span></span><br><span class="line">|<span class="string">   ├── fonts/</span></span><br><span class="line">|<span class="string">   </span>|<span class="string">   ├── lato/</span></span><br><span class="line">|<span class="string">   </span>|<span class="string">   └── glyphicons/</span></span><br><span class="line">|<span class="string">   </span>|<span class="string">        ├── flat-ui-icons-regular.eot</span></span><br><span class="line">|<span class="string">   </span>|<span class="string">        ├── flat-ui-icons-regular.svg</span></span><br><span class="line">|<span class="string">   </span>|<span class="string">        ├── flat-ui-icons-regular.ttf</span></span><br><span class="line">|<span class="string">   </span>|<span class="string">        ├── flat-ui-icons-regular.woff</span></span><br><span class="line">|<span class="string">   </span>|<span class="string">        └── selection.json</span></span><br><span class="line">|<span class="string">   ├── img/</span></span><br><span class="line">|<span class="string">   └── index.html</span></span><br><span class="line"><span class="string">├── docs/</span></span><br><span class="line">|<span class="string">   ├── examples/</span></span><br><span class="line">|<span class="string">   ├── components.html</span></span><br><span class="line">|<span class="string">   ├── getting-started.html</span></span><br><span class="line">|<span class="string">   └── template.html</span></span><br><span class="line"><span class="string">├── fonts/</span></span><br><span class="line">|<span class="string">   ├── glyphicons/</span></span><br><span class="line">|<span class="string">   └── lato/</span></span><br><span class="line"><span class="string">├── img/</span></span><br><span class="line"><span class="string">├── js/</span></span><br><span class="line"><span class="string">└── less/</span></span><br><span class="line"><span class="string">    ├── mixins/</span></span><br><span class="line"><span class="string">    ├── modules/</span></span><br><span class="line"><span class="string">    ├── flat-ui.less</span></span><br><span class="line"><span class="string">    ├── mixins.less</span></span><br><span class="line"><span class="string">    └── variables.less</span></span><br></pre></td></tr></table></figure>
+<p>We provide compiled CSS and JS (<code>flat-ui.*</code>), as well as compiled and minified CSS and JS (<code>flat-ui.min.*</code>). Fonts with icons are included.</p>
+<h2 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h2><p>Flat UI’s documentation, included in this repo in the docs directory and publicly hosted on GitHub Pages at <a href="http://designmodo.github.io/Flat-UI/docs/components.html" target="_blank" rel="noopener">http://designmodo.github.io/Flat-UI/docs/components.html</a>.</p>
+<h2 id="SASS-support"><a href="#SASS-support" class="headerlink" title="SASS support"></a>SASS support</h2><p>If you are interested in SASS source files - you can visit this project made by @wingrunr21:<br><a href="https://github.com/wingrunr21/flat-ui-sass" target="_blank" rel="noopener">Designmodo’s Flat-UI ported to SASS with support for Flat-UI Pro</a></p>
+<h2 id="Authors"><a href="#Authors" class="headerlink" title="Authors"></a>Authors</h2><p><strong>Sergey Shmidt</strong></p>
+<ul>
+<li><a href="http://shmidt.in" target="_blank" rel="noopener">http://shmidt.in</a></li>
+<li><a href="http://twitter.com/monstercritic" target="_blank" rel="noopener">http://twitter.com/monstercritic</a></li>
+</ul>
+<p><strong>Sergii Iurevych</strong></p>
+<ul>
+<li><a href="http://twitter.com/iurevych" target="_blank" rel="noopener">http://twitter.com/iurevych</a></li>
+<li><a href="http://github.com/iurevych" target="_blank" rel="noopener">http://github.com/iurevych</a></li>
+</ul>
+<p><strong>Dmitry Pytkin</strong></p>
+<ul>
+<li><a href="http://twitter.com/pytkin" target="_blank" rel="noopener">http://twitter.com/pytkin</a></li>
+<li><a href="http://github.com/pytkin" target="_blank" rel="noopener">http://github.com/pytkin</a></li>
+</ul>
+<h2 id="Copyright-and-license"><a href="#Copyright-and-license" class="headerlink" title="Copyright and license"></a>Copyright and license</h2><p>Flat UI Free is licensed under a Creative Commons Attribution 3.0 Unported (CC BY 3.0)  (<a href="http://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">http://creativecommons.org/licenses/by/3.0/</a>) and MIT License - <a href="http://opensource.org/licenses/mit-license.html" target="_blank" rel="noopener">http://opensource.org/licenses/mit-license.html</a>.</p>
+<p>You are allowed to use these elements anywhere you want, however we’ll highly appreciate if you will link to our <a href="http://designmodo.com" target="_blank" rel="noopener">website</a>.</p>
+<h2 id="Typeface"><a href="#Typeface" class="headerlink" title="Typeface"></a>Typeface</h2><p>Flat UI Free is made using the Lato typeface, which can be downloaded for free here: <a href="http://www.google.com/webfonts/specimen/Lato" target="_blank" rel="noopener">http://www.google.com/webfonts/specimen/Lato</a></p>
+<h2 id="Useful-Links-How-To"><a href="#Useful-Links-How-To" class="headerlink" title="Useful Links (How To)"></a>Useful Links (How To)</h2><p>More products from Designmodo: <a href="http://designmodo.com/shop/" target="_blank" rel="noopener">http://designmodo.com/shop/</a></p>
+<p>Tutorials: <a href="http://designmodo.com/tutorials/" target="_blank" rel="noopener">http://designmodo.com/tutorials/</a></p>
+<p>Freebies: <a href="http://designmodo.com/freebies/" target="_blank" rel="noopener">http://designmodo.com/freebies/</a></p>
+<p>Affiliate Program (earn money): <a href="http://designmodo.com/affiliates/" target="_blank" rel="noopener">http://designmodo.com/affiliates/</a></p>
+<p>Social Media:</p>
+<p>Twitter: <a href="http://www.twitter.com/designmodo" target="_blank" rel="noopener">http://www.twitter.com/designmodo</a></p>
+<p>Facebook: <a href="http://www.facebook.com/designmodo" target="_blank" rel="noopener">http://www.facebook.com/designmodo</a></p>
+<p>RSS: <a href="http://feeds.feedburner.com/designmodo" target="_blank" rel="noopener">http://feeds.feedburner.com/designmodo</a></p>
+<p>Google+: <a href="https://www.google.com/+DesignModo" target="_blank" rel="noopener">https://www.google.com/+DesignModo</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tools/" rel="tag"># tools</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/15/Linux_kali install vm/" rel="next" title="Kali安装vmtools提示缺少内核头文件的解决办法">
+                <i class="fa fa-chevron-left"></i> Kali安装vmtools提示缺少内核头文件的解决办法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/24/Programmer_Python_Django_django/" rel="prev" title="Django开始">
+                Django开始 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Paranoid</p>
+              <p class="site-description motion-element" itemprop="description">walk step by step</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Flat-UI-Free"><span class="nav-number">1.</span> <span class="nav-text">Flat UI Free</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Links"><span class="nav-number">1.1.</span> <span class="nav-text">Links:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-start"><span class="nav-number">1.2.</span> <span class="nav-text">Quick start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What’s-included"><span class="nav-number">1.2.1.</span> <span class="nav-text">What’s included</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Documentation"><span class="nav-number">1.3.</span> <span class="nav-text">Documentation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SASS-support"><span class="nav-number">1.4.</span> <span class="nav-text">SASS support</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Authors"><span class="nav-number">1.5.</span> <span class="nav-text">Authors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Copyright-and-license"><span class="nav-number">1.6.</span> <span class="nav-text">Copyright and license</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Typeface"><span class="nav-number">1.7.</span> <span class="nav-text">Typeface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Useful-Links-How-To"><span class="nav-number">1.8.</span> <span class="nav-text">Useful Links (How To)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Paranoid</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.6.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
