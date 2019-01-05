@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016/10 | Paranoid&#39;s cottage</title>
+  <title>error:restriction on required library rt.jar test | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="walk step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Paranoid&#39;s cottage">
-<meta property="og:url" content="http://blog.fetdesign.com/archives/2016/10/index.html">
+  <meta name="description" content="java eclipse Access restriction: The type ‘Application’ is not API (restriction on required library rt.jar) eclipse says this:">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="error:restriction on required library rt.jar test">
+<meta property="og:url" content="http://blog.fetdesign.com/archives/f8f4ee05.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="walk step by step">
+<meta property="og:description" content="java eclipse Access restriction: The type ‘Application’ is not API (restriction on required library rt.jar) eclipse says this:">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-04T04:02:24.953Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Paranoid&#39;s cottage">
-<meta name="twitter:description" content="walk step by step">
+<meta name="twitter:title" content="error:restriction on required library rt.jar test">
+<meta name="twitter:description" content="java eclipse Access restriction: The type ‘Application’ is not API (restriction on required library rt.jar) eclipse says this:">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -99,60 +101,84 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/archives/760d761f.html" class="archive-article-date">
-  <time datetime="2016-10-22T08:38:01.000Z" itemprop="datePublished">10月 22</time>
+        <section id="main"><article id="post-Programmer_Java_eclipse_no_api" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/archives/f8f4ee05.html" class="article-date">
+  <time datetime="2016-03-20T13:25:20.000Z" itemprop="datePublished">2016-03-20</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/archives/760d761f.html">使用js异步post body</a>
+    <h1 class="article-title" itemprop="name">
+      error:restriction on required library rt.jar test
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/archives/70247203.html" class="archive-article-date">
-  <time datetime="2016-10-15T09:07:00.000Z" itemprop="datePublished">10月 15</time>
-</a>
+		
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/archives/70247203.html">linux下生成图标</a>
-    </h1>
-  
+        <p>java eclipse</p>
+<p>Access restriction: The type ‘Application’ is not API (restriction on required library rt.jar)</p>
+<p>eclipse says this:<a id="more"></a></p>
+<p>Access restriction: The type ‘Application’ is not API (restriction on required library<br>‘/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home/jre/lib/ rt.jar’)</p>
+<p>Background: Eclipse access restrictions<br>Eclipse has a mechanism called access restrictions to prevent you from accidentally using classes which Eclipse thinks are not part of the public API. Usually, Eclipse is right about that, in both senses: We usually do not want to use something which is not part of the public API. And Eclipse is usually right about what is and what isn’t part of the public API.</p>
+<p>Problem<br>Now, there can be situations, where you want to use non-public API. And there can be situations, where Eclipse is not really right (that’s what happened to me, I just wanted to use javax.smartcardio). In that case, we get this error in Eclipse.</p>
+<p>Solution<br>The solution is to change the access restrictions. Go to the properties of your Java project, i.e. by selecting “Properties” from the context menu of the project in the “Package Explorer”. There, go to “Java Build Path”, tab “Libraries”. There, expand the library entry, select “Access rules”, “Edit…” and “Add…” a “Resolution: Accessible” with a corresponding rule pattern. For me that was “javax/smartcardio/<strong>“, for you it might instead be “com/apple/eawt/</strong>“.</p>
 
-    </header>
+      
+
+    <footer class="article-footer">
+    
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+		<div class="article-sharemodule">
+		</div>
+		
+	  </div>
+
+    </footer>
+	
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/archives/46259795.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          javaFx1
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/archives/bd7d9f58.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Django开始</div>
+    </a>
   
+</nav>
 
-</section>
+  
+</article>
+
+
+  
+  </section>
         
           <aside id="sidebar">
   

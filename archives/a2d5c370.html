@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016/10 | Paranoid&#39;s cottage</title>
+  <title>利用git hooks进行自动部署 | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="walk step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Paranoid&#39;s cottage">
-<meta property="og:url" content="http://blog.fetdesign.com/archives/2016/10/index.html">
+  <meta name="description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用git hooks进行自动部署">
+<meta property="og:url" content="http://blog.fetdesign.com/archives/a2d5c370.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="walk step by step">
+<meta property="og:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-04T04:05:57.378Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Paranoid&#39;s cottage">
-<meta name="twitter:description" content="walk step by step">
+<meta name="twitter:title" content="利用git hooks进行自动部署">
+<meta name="twitter:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -99,60 +101,119 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/archives/760d761f.html" class="archive-article-date">
-  <time datetime="2016-10-22T08:38:01.000Z" itemprop="datePublished">10月 22</time>
+        <section id="main"><article id="post-Tools_Git_git hooks自动部署" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/archives/a2d5c370.html" class="article-date">
+  <time datetime="2017-01-13T04:30:01.000Z" itemprop="datePublished">2017-01-13</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/archives/760d761f.html">使用js异步post body</a>
+    <h1 class="article-title" itemprop="name">
+      利用git hooks进行自动部署
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/archives/70247203.html" class="archive-article-date">
-  <time datetime="2016-10-15T09:07:00.000Z" itemprop="datePublished">10月 15</time>
-</a>
+		
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/archives/70247203.html">linux下生成图标</a>
-    </h1>
-  
+        <p>首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行</p>
+<pre><code>git clone /usr/gitRepo/web.git
+</code></pre><p>将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。<br><a id="more"></a></p>
+<p>git的hook机制，当git服务器接到各种事件时触发，这里使用的hook是</p>
+<pre><code>post-receive
+</code></pre><p>这个hook在git服务器受到push请求，并且接受完代码提交时触发。</p>
+<p>具体代码体现：</p>
+<p>在git远端仓库的hooks目录下新建post-receive文件：</p>
+<pre><code>#!/bin/sh
+IS_BARE=$(git rev-parse --is-bare-repository)
+if [ -z &quot;$IS_BARE&quot; ]; then
+echo &gt;&amp;2 &quot;fatal: post-receive: IS_NOT_BARE&quot;
+exit 1
+fi
 
-    </header>
+unset GIT_DIR
+DeployPath=&quot;/var/www/gitRepoHtml&quot;
+
+echo &quot;===============================================&quot;
+cd $DeployPath
+echo &quot;deploying the webapp&quot;
+
+git fetch --all
+git reset --hard origin/master
+
+time=`date`
+echo &quot;web server pull at webserver at time: $time.&quot;
+echo &quot;================================================&quot;
+</code></pre><p>添加文件后，将权限改为755，用户改为git</p>
+<pre><code>chmod +755 post-receive
+chown git:git post-receive
+</code></pre><p>这样在开发者提交代码的时候，就会自动部署。</p>
+<p>可能出现的问题：<br>当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：</p>
+<pre><code>error: cannot open .git/FETCH_HEAD: Permission denied
+</code></pre><p>所以你需要先把ssh_user加到apache组中：</p>
+<pre><code>usermod -a -G apache ssh_user
+</code></pre><p>在Apache2中用户组为www-data,ssh_user设置为git</p>
+<pre><code>usermod -a -G www-data git    
+</code></pre><p>然后修改权限：</p>
+<pre><code>chmod -R g+w /var/www
+chown -R git:www-data /var/www
+chmod -R g+s /var/www
+</code></pre>
+      
+
+    <footer class="article-footer">
+    
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+
+		<div class="article-sharemodule">
+		</div>
+		
+	  </div>
+
+    </footer>
+	
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/archives/e3d4c9ae.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          spring上传文件
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/archives/4317f2cd.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">jquery异步-datatable前端</div>
+    </a>
   
+</nav>
 
-</section>
+  
+</article>
+
+
+  
+  </section>
         
           <aside id="sidebar">
   

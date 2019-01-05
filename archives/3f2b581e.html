@@ -3,18 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016/10 | Paranoid&#39;s cottage</title>
+  <title>在eclipse上使用git | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="walk step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Paranoid&#39;s cottage">
-<meta property="og:url" content="http://blog.fetdesign.com/archives/2016/10/index.html">
+  <meta name="description" content="Eclipse里集成了git，所以使用比较方便。不需要再在git bash里输入命令。从代码库clone项目后，将其导入eclipse。在项目上点右键—&amp;gt;Team">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在eclipse上使用git">
+<meta property="og:url" content="http://blog.fetdesign.com/archives/3f2b581e.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="walk step by step">
+<meta property="og:description" content="Eclipse里集成了git，所以使用比较方便。不需要再在git bash里输入命令。从代码库clone项目后，将其导入eclipse。在项目上点右键—&amp;gt;Team">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git001.PNG">
+<meta property="og:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_002_pull.PNG">
+<meta property="og:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_003_branch1.PNG">
+<meta property="og:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_004_merge.PNG">
+<meta property="og:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_005_merge2.PNG">
+<meta property="og:updated_time" content="2019-01-04T04:05:45.982Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Paranoid&#39;s cottage">
-<meta name="twitter:description" content="walk step by step">
+<meta name="twitter:title" content="在eclipse上使用git">
+<meta name="twitter:description" content="Eclipse里集成了git，所以使用比较方便。不需要再在git bash里输入命令。从代码库clone项目后，将其导入eclipse。在项目上点右键—&amp;gt;Team">
+<meta name="twitter:image" content="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git001.PNG">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -99,60 +107,85 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/archives/760d761f.html" class="archive-article-date">
-  <time datetime="2016-10-22T08:38:01.000Z" itemprop="datePublished">10月 22</time>
+        <section id="main"><article id="post-Tools_Git_eclipse_use_git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/archives/3f2b581e.html" class="article-date">
+  <time datetime="2016-05-06T16:15:01.000Z" itemprop="datePublished">2016-05-07</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/archives/760d761f.html">使用js异步post body</a>
+    <h1 class="article-title" itemprop="name">
+      在eclipse上使用git
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/archives/70247203.html" class="archive-article-date">
-  <time datetime="2016-10-15T09:07:00.000Z" itemprop="datePublished">10月 15</time>
-</a>
+		
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/archives/70247203.html">linux下生成图标</a>
-    </h1>
-  
+        <p>Eclipse里集成了git，所以使用比较方便。不需要再在git bash里输入命令。<br>从代码库clone项目后，将其导入eclipse。<br>在项目上点右键—&gt;Team<a id="more"></a><br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git001.PNG" alt="git001"></p>
+<p>写代码之前，先pull（从远端更新并合并），防止发生冲突，处理冲突会比较麻烦。<br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_002_pull.PNG" alt="git002"></p>
+<p>Switch To选择分支，New Branch新建一个自己的本地分支，此分支不需要push到远端，仅用于合并到dev分区。每个分支相当于不同版本的代码库。<br>写代码时，切换到自己的分支，如下图MXJ分支，目前在dev分支上。</p>
+<p><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_003_branch1.PNG" alt="git003"></p>
+<p>代码写完后，执行Commit，commit时需要填写提交信息，提交代码到本地分支自己的分支。<br>此时的提交只需要Commit，不用Commit and Push，因为此时还不需要发布到远端。</p>
+<p>接着再pull一遍，防止有人push过代码，此时有冲突，则需处理冲突。</p>
+<p>没有冲突后，再合并分支，Merge，把当前自己的分支合并到dev分支。<br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_004_merge.PNG" alt="git004"><br>有对勾的MXJ分支为现在所处的分支，选中dev分支表示把MXJ分支合并到dev分支，点击merge合并。合并后的dev分支的内容和MXJ分支的相同。<br> <img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_005_merge2.PNG" alt="git005"><br>此时切换到dev分支，Switch To—&gt;dev，点击Push Branch ‘dev’。<br>dev分支会被推送到远端。</p>
+<p>不要把代码push到master分支。</p>
 
-    </header>
+      
+
+    <footer class="article-footer">
+    
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+
+		<div class="article-sharemodule">
+		</div>
+		
+	  </div>
+
+    </footer>
+	
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/archives/c1eb58d0.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          git的冲突解决
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/archives/8d3dd6b3.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">git使用简介</div>
+    </a>
   
+</nav>
 
-</section>
+  
+</article>
+
+
+  
+  </section>
         
           <aside id="sidebar">
   

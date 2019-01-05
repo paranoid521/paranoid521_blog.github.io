@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016/10 | Paranoid&#39;s cottage</title>
+  <title>普通类如何调用spring实例化好的action操作数据库 | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="walk step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Paranoid&#39;s cottage">
-<meta property="og:url" content="http://blog.fetdesign.com/archives/2016/10/index.html">
+  <meta name="description" content="普通的类如何使用service中配置的seesionFctory操作数据库，通过WebApplicationContext获取容器，即可得到spring中实例化好的action bean，这样就可以调用action中配置好的service。 public List&amp;lt;BusLine&amp;gt; saveBusLine(int busLineId,String RouteInfo,String lo">
+<meta name="keywords" content="Java,Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="普通类如何调用spring实例化好的action操作数据库">
+<meta property="og:url" content="http://blog.fetdesign.com/archives/ba5542b4.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="walk step by step">
+<meta property="og:description" content="普通的类如何使用service中配置的seesionFctory操作数据库，通过WebApplicationContext获取容器，即可得到spring中实例化好的action bean，这样就可以调用action中配置好的service。 public List&amp;lt;BusLine&amp;gt; saveBusLine(int busLineId,String RouteInfo,String lo">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-04T04:04:01.895Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Paranoid&#39;s cottage">
-<meta name="twitter:description" content="walk step by step">
+<meta name="twitter:title" content="普通类如何调用spring实例化好的action操作数据库">
+<meta name="twitter:description" content="普通的类如何使用service中配置的seesionFctory操作数据库，通过WebApplicationContext获取容器，即可得到spring中实例化好的action bean，这样就可以调用action中配置好的service。 public List&amp;lt;BusLine&amp;gt; saveBusLine(int busLineId,String RouteInfo,String lo">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -99,60 +101,90 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/archives/760d761f.html" class="archive-article-date">
-  <time datetime="2016-10-22T08:38:01.000Z" itemprop="datePublished">10月 22</time>
+        <section id="main"><article id="post-Programmer_Java_Spring_web_spring获取action保存数据" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/archives/ba5542b4.html" class="article-date">
+  <time datetime="2016-11-06T04:14:01.000Z" itemprop="datePublished">2016-11-06</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/archives/760d761f.html">使用js异步post body</a>
+    <h1 class="article-title" itemprop="name">
+      普通类如何调用spring实例化好的action操作数据库
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/archives/70247203.html" class="archive-article-date">
-  <time datetime="2016-10-15T09:07:00.000Z" itemprop="datePublished">10月 15</time>
-</a>
+		
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/archives/70247203.html">linux下生成图标</a>
-    </h1>
-  
+        <p>普通的类如何使用service中配置的seesionFctory操作数据库，通过WebApplicationContext获取容器，即可得到spring中实例化好的action bean，这样就可以调用action中配置好的service。</p>
+<pre><code>public List&lt;BusLine&gt; saveBusLine(int busLineId,String RouteInfo,String loc) {
+    WebApplicationContext context = ContextLoader.getCurrentWebApplicationContext();
+    LineAction lineAction = (LineAction) context.getBean(&quot;LineAction&quot;);
 
-    </header>
+    BusLine busLine = new BusLine();
+    busLine.setBusLineId(busLineId);
+    busLine.setLoc(loc);
+    busLine.setRouteInfo(RouteInfo);
+
+    lineAction.getBusLineService().saveOrUpdate(busLine);
+    return null;
+}
+</code></pre>
+      
+
+    <footer class="article-footer">
+    
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+
+
+		<div class="article-sharemodule">
+		</div>
+		
+	  </div>
+
+    </footer>
+	
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/archives/4317f2cd.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          jquery异步-datatable前端
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/archives/760d761f.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用js异步post body</div>
+    </a>
   
+</nav>
 
-</section>
+  
+</article>
+
+
+  
+  </section>
         
           <aside id="sidebar">
   

@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016/10 | Paranoid&#39;s cottage</title>
+  <title>PAT1001总结 | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="walk step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Paranoid&#39;s cottage">
-<meta property="og:url" content="http://blog.fetdesign.com/archives/2016/10/index.html">
+  <meta name="description" content="#####思路总结1.完全没必要将其转换成字符串，字符串处理相对复杂。2.要先对结果进行分析，尤其当结果的情况有限时。根本没必要使用按位输出。3.先在草稿纸上对问题进行分析，对结果进行分析，然后再考虑代码实现，不应该在代码实现上浪费太多时间。4.代码越简洁越好，调试清晰方便。">
+<meta name="keywords" content="A_level">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PAT1001总结">
+<meta property="og:url" content="http://blog.fetdesign.com/archives/3e9402bb.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="walk step by step">
+<meta property="og:description" content="#####思路总结1.完全没必要将其转换成字符串，字符串处理相对复杂。2.要先对结果进行分析，尤其当结果的情况有限时。根本没必要使用按位输出。3.先在草稿纸上对问题进行分析，对结果进行分析，然后再考虑代码实现，不应该在代码实现上浪费太多时间。4.代码越简洁越好，调试清晰方便。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-04T04:11:36.117Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Paranoid&#39;s cottage">
-<meta name="twitter:description" content="walk step by step">
+<meta name="twitter:title" content="PAT1001总结">
+<meta name="twitter:description" content="#####思路总结1.完全没必要将其转换成字符串，字符串处理相对复杂。2.要先对结果进行分析，尤其当结果的情况有限时。根本没必要使用按位输出。3.先在草稿纸上对问题进行分析，对结果进行分析，然后再考虑代码实现，不应该在代码实现上浪费太多时间。4.代码越简洁越好，调试清晰方便。">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -99,60 +101,160 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/archives/760d761f.html" class="archive-article-date">
-  <time datetime="2016-10-22T08:38:01.000Z" itemprop="datePublished">10月 22</time>
+        <section id="main"><article id="post-PAT_A_level_pat1001" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/archives/3e9402bb.html" class="article-date">
+  <time datetime="2017-04-16T03:54:01.000Z" itemprop="datePublished">2017-04-16</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PAT/">PAT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/archives/760d761f.html">使用js异步post body</a>
+    <h1 class="article-title" itemprop="name">
+      PAT1001总结
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/archives/70247203.html" class="archive-article-date">
-  <time datetime="2016-10-15T09:07:00.000Z" itemprop="datePublished">10月 15</time>
-</a>
+		
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/archives/70247203.html">linux下生成图标</a>
-    </h1>
-  
+        <p>#####思路总结<br>1.完全没必要将其转换成字符串，字符串处理相对复杂。<br>2.要先对结果进行分析，尤其当结果的情况有限时。根本没必要使用按位输出。<br>3.先在草稿纸上对问题进行分析，对结果进行分析，然后再考虑代码实现，不应该在代码实现上浪费太多时间。<br>4.代码越简洁越好，调试清晰方便。<br><a id="more"></a><br>使用字符串处理，还只是部分正确</p>
+<pre><code>#include &lt;iostream&gt;
+#include &quot;string.h&quot; 
+#include &quot;math.h&quot;
 
-    </header>
+using namespace std; 
+/* run this program using the console pauser or add your own getch, system(&quot;pause&quot;) or input loop */
+void intToChar(int sum);
+
+int main(int argc, char** argv) {
+    int a,b,sum;
+    cin&gt;&gt;a&gt;&gt;b;
+    if(a&gt;=-1000000&amp;&amp;a&lt;=1000000&amp;&amp;b&gt;=-1000000&amp;&amp;b&lt;=1000000)
+    {
+        sum = a + b;
+//        cout&lt;&lt;intToChar(sum)&lt;&lt;endl;    
+        intToChar(sum);
+    } 
+
+    return 0;
+}
+
+void intToChar(int sum)
+{
+    int i;
+    int numBit = 1;
+    char flag = 0;
+    if(sum&lt;0)
+    {
+        sum = -sum;
+        numBit = 2;
+        flag = 1;            
+    }
+    int sum_clone = sum;
+    for(i=0;sum_clone&gt;=10;i++)
+    {
+        numBit++;
+        sum_clone = sum_clone/10;    
+    }
+
+    int n;
+    double BitTemp =(double) numBit;
+    char *intChar = new char[numBit];
+
+    for(n=0;n&lt;numBit;n++)
+    {
+        if(flag == 1) 
+        {
+            intChar[0] = &apos;-&apos;;
+            flag = 0;
+            BitTemp--; 
+        }else{
+//            int test = sum/((int)pow(10.0,BitTemp-1));
+            intChar[n] = sum/((int)pow(10.0,BitTemp-1))+48;
+            sum = sum%((int)pow(10.0,BitTemp-1));
+            BitTemp--;
+        }
+    } 
+
+    int m;
+    for(m=0;m&lt;numBit;m++)
+    {
+        cout&lt;&lt;intChar[m];
+        if(intChar[0] == &apos;-&apos;&amp;&amp;m!=0&amp;&amp;m%3==0&amp;&amp;(m+1)&lt;numBit) cout&lt;&lt;&quot;,&quot;;
+        else if(intChar[0] != &apos;-&apos;&amp;&amp;(m+1)%3==0&amp;&amp;(m+1)&lt;numBit) cout&lt;&lt;&quot;,&quot;;
+        cout&lt;&lt;&quot;=end&quot;&lt;&lt;endl;
+    }
+}
+</code></pre><p>使用c，简洁实现，并全部正确（copy from net）</p>
+<pre><code>#include&lt;stdio.h&gt;
+
+int main()
+{
+    int a,b,sum;
+    scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+    int i;
+    sum=a+b;
+    if (sum&lt;0){printf(&quot;-&quot;);sum=-sum;}
+    if (sum&gt;=1000000)printf(&quot;%d,%03d,%03d&quot;,sum/1000000,(sum/1000)%1000,(sum%1000));
+    else if (sum&gt;=1000)printf(&quot;%d,%03d&quot;,sum/1000,sum%1000);
+    else printf(&quot;%d&quot;,sum);
+    return 0;
+}
+</code></pre>
+      
+
+    <footer class="article-footer">
+    
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/A-level/">A_level</a></li></ul>
+
+
+		<div class="article-sharemodule">
+		</div>
+		
+	  </div>
+
+    </footer>
+	
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/archives/eac44380.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linux常用
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/archives/e3d4c9ae.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">spring上传文件</div>
+    </a>
   
+</nav>
 
-</section>
+  
+</article>
+
+
+  
+  </section>
         
           <aside id="sidebar">
   
