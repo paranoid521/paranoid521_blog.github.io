@@ -23,6 +23,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
 
 
 
@@ -210,7 +214,7 @@
     </div>
     
       
-        <p class="site-subtitle">I would rather sit on a pumpkin and have it all to myself, than be crowded on a velvet cushion.</p>
+        <h1 class="site-subtitle" itemprop="description">I would rather sit on a pumpkin and have it all to myself, than be crowded on a velvet cushion.</h1>
       
     
   </div>
@@ -377,7 +381,7 @@
     <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline"></h1>
+<h2 class="post-title" itemprop="name headline"></h2>
 
 <div class="post-meta">
   
@@ -415,6 +419,13 @@
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
 
   
 
@@ -536,7 +547,7 @@
                   
                     
                   
-                  <a href="mailto:yourname@gmail.com" title="E-Mail &rarr; mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:paranoid@fetdesign.com" title="E-Mail &rarr; mailto:paranoid@fetdesign.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -605,6 +616,21 @@
 
 
 
+
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBCIgntbkDZiJvUOu-n3Yxw7X6Vxk-9Zhc",
+    authDomain: "blog-89396.firebaseapp.com",
+    databaseURL: "https://blog-89396.firebaseio.com",
+    projectId: "blog-89396",
+    storageBucket: "",
+    messagingSenderId: "888884615189"
+  };
+  firebase.initializeApp(config);
+</script>
+
         
 
 
@@ -625,6 +651,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 	
     
@@ -717,6 +749,43 @@
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'paranoid521',
+            repo: 'paranoid521.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '5469d37870a3ec1e92b57883607fb5875f3c0312',
+            
+                client_id: '40d5bc69ed9f4b50a57c'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
 
 
 
@@ -738,6 +807,27 @@
   
 
   
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
   
 
   
