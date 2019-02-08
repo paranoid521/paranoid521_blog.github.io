@@ -100,6 +100,62 @@ var _hmt = _hmt || [];
       <div class="outer">
         <section id="main">
   
+    <article id="post-PAT_A_level_pat1001" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/archives/3e9402bb.html" class="article-date">
+  <time datetime="2017-04-16T03:54:01.000Z" itemprop="datePublished">2017-04-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PAT/">PAT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/3e9402bb.html">PAT1001总结</a>
+    </h1>
+  
+
+      </header>
+    
+		
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#####思路总结<br>1.完全没必要将其转换成字符串，字符串处理相对复杂。<br>2.要先对结果进行分析，尤其当结果的情况有限时。根本没必要使用按位输出。<br>3.先在草稿纸上对问题进行分析，对结果进行分析，然后再考虑代码实现，不应该在代码实现上浪费太多时间。<br>4.代码越简洁越好，调试清晰方便。<br>
+        
+          <p class="article-more-link">
+            <a href="/archives/3e9402bb.html#more">Read More</a>
+          </p>
+        
+      
+
+    <footer class="article-footer">
+    
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/A-level/">A_level</a></li></ul>
+
+
+		<div class="article-sharemodule">
+		</div>
+		
+	  </div>
+
+    </footer>
+	
+  </div>
+  
+</article>
+
+
+  
+  
+  
     <article id="post-Programmer_Java_web_spring上传文件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/archives/e3d4c9ae.html" class="article-date">
@@ -334,100 +390,10 @@ var _hmt = _hmt || [];
   
   
   
-    <article id="post-Programmer_JS^AJax_web_js异步postbody" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/760d761f.html" class="article-date">
-  <time datetime="2016-10-22T08:38:01.000Z" itemprop="datePublished">2016-10-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/760d761f.html">使用js异步post body</a>
-    </h1>
-  
-
-      </header>
-    
-		
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>//AJAX异步请求
-var xmlHttp;
-//该函数用于创建一个XMLHttpRequest对象
-function createXMLHttpRequest() {
-    if (window.ActiveXObject) {
-        xmlHttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
-    } else if (window.XMLHttpRequest) {
-        xmlHttp = new XMLHttpRequest();
-    }
-}
-
-function saveRoute(a,b) {
-    //创建一个XMLHttpRequest对象
-    createXMLHttpRequest();
-    //将状态触发器绑定到一个函数
-    xmlHttp.onreadystatechange = showStaus;
-    //通过GET方法向指定的URL建立服务器的调用
-
-    var parm = &quot;route=&quot;+a+&quot;&amp;points=&quot;+b;            //构造URL参数
-    xmlHttp.open(&quot;POST&quot;, &quot;phone!saveCplInfo.action?&quot;,true);
-
-    xmlHttp.setRequestHeader(&quot;cache-control&quot;,&quot;no-cache&quot;);
-    xmlHttp.setRequestHeader(&quot;contentType&quot;,&quot;text/html;charset=uft-8&quot;) //指定发送的编码
-    xmlHttp.setRequestHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded;&quot;);  //设置请求头信息
-    xmlHttp.send(parm); //设置为发送给服务器数据
-    //发送请求
-    //xmlHttp.send();
-}
-var flag = 0;
-function showStaus() {
-    //定义一个变量用于存放从服务器返回的响应结果
-    var result;
-
-    result = eval(&quot;(&quot;+xmlHttp.responseText+&quot;)&quot;);
-    if(flag != b){
-        alert(result.mes);
-        flag = b;
-    }
-
-}
-</code></pre><p>数据过长时不能使用get方式，使用post方式，将数据放到body中请求。</p>
-
-      
-
-    <footer class="article-footer">
-    
-      
-
-		<div class="article-sharemodule">
-		</div>
-		
-	  </div>
-
-    </footer>
-	
-  </div>
-  
-</article>
-
-
-  
-  
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">NEXT &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">NEXT &raquo;</a>
   </nav>
 </section>
         
@@ -437,7 +403,7 @@ function showStaus() {
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/教程/">教程</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">11</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/教程/">教程</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -447,7 +413,7 @@ function showStaus() {
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/A-level/" style="font-size: 10px;">A_level</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PAT/" style="font-size: 10px;">PAT</a> <a href="/tags/RHC/" style="font-size: 10px;">RHC</a> <a href="/tags/Spring/" style="font-size: 16.67px;">Spring</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a>
+      <a href="/tags/A-level/" style="font-size: 10px;">A_level</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PAT/" style="font-size: 13.33px;">PAT</a> <a href="/tags/RHC/" style="font-size: 10px;">RHC</a> <a href="/tags/Spring/" style="font-size: 16.67px;">Spring</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/数据结构/" style="font-size: 13.33px;">数据结构</a>
     </div>
   </div>
 
@@ -467,7 +433,6 @@ function showStaus() {
     <div class="widget">
      <ul class="entry">
 <li><a href="http://www.fetdesign.com/" title="Fetdesign">Fetdesign.com</a></li>
-<li><a href="http://bbs.fetdesign.com/" title="Fetdesign">Fetdesign-bbs</a></li>
 </ul>
 
     </div>

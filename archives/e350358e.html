@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Paranoid&#39;s cottage</title>
+  <title>PAT 乙级 1002 写出这个数 | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="walk step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Paranoid&#39;s cottage">
-<meta property="og:url" content="http://blog.fetdesign.com/index.html">
+  <meta name="description" content="1002 写出这个数 （20 分） 读入一个正整数 n，计算其各位数字之和，用汉语拼音写出和的每一位数字。 输入格式：每个测试输入包含 1 个测试用例，即给出自然数 n 的值。这里保证 n 小于 10​100​​。 输出格式：在一行内输出 n 的各位数字之和的每一位，拼音数字间有 1 空格，但一行中最后一个拼音数字后没有空格。 输入样例：11234567890987654321123456789">
+<meta name="keywords" content="PAT,数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PAT 乙级 1002 写出这个数">
+<meta property="og:url" content="http://blog.fetdesign.com/archives/e350358e.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="walk step by step">
+<meta property="og:description" content="1002 写出这个数 （20 分） 读入一个正整数 n，计算其各位数字之和，用汉语拼音写出和的每一位数字。 输入格式：每个测试输入包含 1 个测试用例，即给出自然数 n 的值。这里保证 n 小于 10​100​​。 输出格式：在一行内输出 n 的各位数字之和的每一位，拼音数字间有 1 空格，但一行中最后一个拼音数字后没有空格。 输入样例：11234567890987654321123456789">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-08T13:21:45.287Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Paranoid&#39;s cottage">
-<meta name="twitter:description" content="walk step by step">
+<meta name="twitter:title" content="PAT 乙级 1002 写出这个数">
+<meta name="twitter:description" content="1002 写出这个数 （20 分） 读入一个正整数 n，计算其各位数字之和，用汉语拼音写出和的每一位数字。 输入格式：每个测试输入包含 1 个测试用例，即给出自然数 n 的值。这里保证 n 小于 10​100​​。 输出格式：在一行内输出 n 的各位数字之和的每一位，拼音数字间有 1 空格，但一行中最后一个拼音数字后没有空格。 输入样例：11234567890987654321123456789">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -98,9 +100,7 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-PAT_B_level_1002" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-PAT_B_level_1002" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/archives/e350358e.html" class="article-date">
   <time datetime="2019-02-08T13:21:43.914Z" itemprop="datePublished">2019-02-08</time>
@@ -117,8 +117,8 @@ var _hmt = _hmt || [];
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/e350358e.html">PAT 乙级 1002 写出这个数</a>
+    <h1 class="article-title" itemprop="name">
+      PAT 乙级 1002 写出这个数
     </h1>
   
 
@@ -159,243 +159,23 @@ var _hmt = _hmt || [];
 	
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
   
+    <a href="/archives/27a359ad.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">pat 乙级 1001害死人不偿命的(3n+1)猜想</div>
+    </a>
   
-    <article id="post-PAT_B_level_1001" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/27a359ad.html" class="article-date">
-  <time datetime="2019-02-08T03:49:17.124Z" itemprop="datePublished">2019-02-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PAT/">PAT</a>
-  </div>
+</nav>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/27a359ad.html">pat 乙级 1001害死人不偿命的(3n+1)猜想</a>
-    </h1>
-  
-
-      </header>
-    
-		
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://i.loli.net/2019/02/08/5c5cffaa3f1f7.png" alt="如何才能PAT甲级过八九十分"></p>
-<p>1001 害死人不偿命的(3n+1)猜想 （15 分）</p>
-<p>卡拉兹(Callatz)猜想：</p>
-<p>对任何一个正整数 n，如果它是偶数，那么把它砍掉一半；如果它是奇数，那么把 (3n+1) 砍掉一半。这样一直反复砍下去，最后一定在某一步得到 n=1。卡拉兹在 1950 年的世界数学家大会上公布了这个猜想，传说当时耶鲁大学师生齐动员，拼命想证明这个貌似很傻很天真的命题，结果闹得学生们无心学业，一心只证 (3n+1)，以至于有人说这是一个阴谋，卡拉兹是在蓄意延缓美国数学界教学与科研的进展……<br>
-        
-          <p class="article-more-link">
-            <a href="/archives/27a359ad.html#more">Read More</a>
-          </p>
-        
-      
-
-    <footer class="article-footer">
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PAT/">PAT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
-
-
-		<div class="article-sharemodule">
-		</div>
-		
-	  </div>
-
-    </footer>
-	
-  </div>
   
 </article>
 
 
   
-  
-  
-    <article id="post-C语言基础1_循环控制" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/66c9e6d7.html" class="article-date">
-  <time datetime="2019-01-05T01:08:37.446Z" itemprop="datePublished">2019-01-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/教程/">教程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/66c9e6d7.html">C语言基础 - 循环控制</a>
-    </h1>
-  
-
-      </header>
-    
-		
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>break：退出整个循环<br>continue：退出本轮循环<br>在多层嵌套循环中，只能对它所在的那套循环做。<br>
-        
-          <p class="article-more-link">
-            <a href="/archives/66c9e6d7.html#more">Read More</a>
-          </p>
-        
-      
-
-    <footer class="article-footer">
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C语言/">C语言</a></li></ul>
-
-
-		<div class="article-sharemodule">
-		</div>
-		
-	  </div>
-
-    </footer>
-	
-  </div>
-  
-</article>
-
-
-  
-  
-  
-    <article id="post-Tutorial-webapp-installFlarum" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/9e1567d2.html" class="article-date">
-  <time datetime="2018-03-29T09:58:36.000Z" itemprop="datePublished">2018-03-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/教程/">教程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/9e1567d2.html">Flarum安装教程-PHP7、Apache和MySQL5.7</a>
-    </h1>
-  
-
-      </header>
-    
-		
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>安装Flarum论坛软件</p>
-<p>##系统需求<br>服务器： Apache (需要支持 mod_rewrite)、Nginx、Lighttpd<br>PHP 5.5+，需要开启的扩展：mbstring, pdo_mysql, openssl, json, gd, dom, fileinfo<br>MySQL 5.5+</p>
-<p>开启Apache的mod_rewrite：<br>
-        
-          <p class="article-more-link">
-            <a href="/archives/9e1567d2.html#more">Read More</a>
-          </p>
-        
-      
-
-    <footer class="article-footer">
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webapp/">webapp</a></li></ul>
-
-
-		<div class="article-sharemodule">
-		</div>
-		
-	  </div>
-
-    </footer>
-	
-  </div>
-  
-</article>
-
-
-  
-  
-  
-    <article id="post-Linux_commands" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/eac44380.html" class="article-date">
-  <time datetime="2017-05-27T11:04:01.000Z" itemprop="datePublished">2017-05-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/eac44380.html">Linux常用</a>
-    </h1>
-  
-
-      </header>
-    
-		
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>修改/etc/profile后，不要忘记输入source /etc/profile使配置文件生效</p>
-
-      
-
-    <footer class="article-footer">
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
-
-		<div class="article-sharemodule">
-		</div>
-		
-	  </div>
-
-    </footer>
-	
-  </div>
-  
-</article>
-
-
-  
-  
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">NEXT &raquo;</a>
-  </nav>
-</section>
+  </section>
         
           <aside id="sidebar">
   

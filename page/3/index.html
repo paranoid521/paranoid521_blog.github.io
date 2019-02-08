@@ -100,6 +100,96 @@ var _hmt = _hmt || [];
       <div class="outer">
         <section id="main">
   
+    <article id="post-Programmer_JS^AJax_web_js异步postbody" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/archives/760d761f.html" class="article-date">
+  <time datetime="2016-10-22T08:38:01.000Z" itemprop="datePublished">2016-10-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/760d761f.html">使用js异步post body</a>
+    </h1>
+  
+
+      </header>
+    
+		
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>//AJAX异步请求
+var xmlHttp;
+//该函数用于创建一个XMLHttpRequest对象
+function createXMLHttpRequest() {
+    if (window.ActiveXObject) {
+        xmlHttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+    } else if (window.XMLHttpRequest) {
+        xmlHttp = new XMLHttpRequest();
+    }
+}
+
+function saveRoute(a,b) {
+    //创建一个XMLHttpRequest对象
+    createXMLHttpRequest();
+    //将状态触发器绑定到一个函数
+    xmlHttp.onreadystatechange = showStaus;
+    //通过GET方法向指定的URL建立服务器的调用
+
+    var parm = &quot;route=&quot;+a+&quot;&amp;points=&quot;+b;            //构造URL参数
+    xmlHttp.open(&quot;POST&quot;, &quot;phone!saveCplInfo.action?&quot;,true);
+
+    xmlHttp.setRequestHeader(&quot;cache-control&quot;,&quot;no-cache&quot;);
+    xmlHttp.setRequestHeader(&quot;contentType&quot;,&quot;text/html;charset=uft-8&quot;) //指定发送的编码
+    xmlHttp.setRequestHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded;&quot;);  //设置请求头信息
+    xmlHttp.send(parm); //设置为发送给服务器数据
+    //发送请求
+    //xmlHttp.send();
+}
+var flag = 0;
+function showStaus() {
+    //定义一个变量用于存放从服务器返回的响应结果
+    var result;
+
+    result = eval(&quot;(&quot;+xmlHttp.responseText+&quot;)&quot;);
+    if(flag != b){
+        alert(result.mes);
+        flag = b;
+    }
+
+}
+</code></pre><p>数据过长时不能使用get方式，使用post方式，将数据放到body中请求。</p>
+
+      
+
+    <footer class="article-footer">
+    
+      
+
+		<div class="article-sharemodule">
+		</div>
+		
+	  </div>
+
+    </footer>
+	
+  </div>
+  
+</article>
+
+
+  
+  
+  
     <article id="post-Linux_linux_addicon" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/archives/70247203.html" class="article-date">
@@ -382,67 +472,10 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
   
   
   
-    <article id="post-Tools_Git_git_sample" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/8d3dd6b3.html" class="article-date">
-  <time datetime="2016-05-02T15:32:01.000Z" itemprop="datePublished">2016-05-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/工具/">工具</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/8d3dd6b3.html">git使用简介</a>
-    </h1>
-  
-
-      </header>
-    
-		
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>工作区–&gt;暂存区–&gt;本地库—–》远程库</p>
-<p>当修改了某个文件，给文件的修改是在工作区，<br>git add . 则是把工作区的修改放到暂存区，每当有修改，运行git add .都会把修改放到到暂存区<br>git commit -m “内容” git commit则是把暂存区所有git add的修改都提交到本地代码库。双引号里的内容为说明修改了哪些内容<br>git push origin master 把本地代码库推送到远程代码库，远程库的默认名是origin
-        
-          <p class="article-more-link">
-            <a href="/archives/8d3dd6b3.html#more">Read More</a>
-          </p>
-        
-      
-
-    <footer class="article-footer">
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-
-		<div class="article-sharemodule">
-		</div>
-		
-	  </div>
-
-    </footer>
-	
-  </div>
-  
-</article>
-
-
-  
-  
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">NEXT &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">NEXT &raquo;</a>
   </nav>
 </section>
         
@@ -452,7 +485,7 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/教程/">教程</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">11</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/教程/">教程</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -462,7 +495,7 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/A-level/" style="font-size: 10px;">A_level</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PAT/" style="font-size: 10px;">PAT</a> <a href="/tags/RHC/" style="font-size: 10px;">RHC</a> <a href="/tags/Spring/" style="font-size: 16.67px;">Spring</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a>
+      <a href="/tags/A-level/" style="font-size: 10px;">A_level</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PAT/" style="font-size: 13.33px;">PAT</a> <a href="/tags/RHC/" style="font-size: 10px;">RHC</a> <a href="/tags/Spring/" style="font-size: 16.67px;">Spring</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/数据结构/" style="font-size: 13.33px;">数据结构</a>
     </div>
   </div>
 
@@ -482,7 +515,6 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
     <div class="widget">
      <ul class="entry">
 <li><a href="http://www.fetdesign.com/" title="Fetdesign">Fetdesign.com</a></li>
-<li><a href="http://bbs.fetdesign.com/" title="Fetdesign">Fetdesign-bbs</a></li>
 </ul>
 
     </div>

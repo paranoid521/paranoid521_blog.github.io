@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>javaFx1 | Paranoid&#39;s cottage</title>
+  <title>Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="javaFx中文文档http://www.javafxchina.net/blog/docs/tutorial1/ml3947的博客http://blog.csdn.net/ml3947 javaFX架构的顶层部分JavaFX场景图，是一个层级结构的节点树，表示所有用户界面的视觉元素。在场景图中的一个元素被称为一个节点(Node)。">
-<meta name="keywords" content="java">
-<meta property="og:type" content="article">
-<meta property="og:title" content="javaFx1">
-<meta property="og:url" content="http://blog.fetdesign.com/archives/46259795.html">
+  <meta name="description" content="walk step by step">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Paranoid&#39;s cottage">
+<meta property="og:url" content="http://blog.fetdesign.com/page/5/index.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="javaFx中文文档http://www.javafxchina.net/blog/docs/tutorial1/ml3947的博客http://blog.csdn.net/ml3947 javaFX架构的顶层部分JavaFX场景图，是一个层级结构的节点树，表示所有用户界面的视觉元素。在场景图中的一个元素被称为一个节点(Node)。">
+<meta property="og:description" content="walk step by step">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-06T09:02:44.303Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javaFx1">
-<meta name="twitter:description" content="javaFx中文文档http://www.javafxchina.net/blog/docs/tutorial1/ml3947的博客http://blog.csdn.net/ml3947 javaFX架构的顶层部分JavaFX场景图，是一个层级结构的节点树，表示所有用户界面的视觉元素。在场景图中的一个元素被称为一个节点(Node)。">
+<meta name="twitter:title" content="Paranoid&#39;s cottage">
+<meta name="twitter:description" content="walk step by step">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -100,14 +98,16 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Programmer_Java_javafx学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-Tools_RHC_rhc提示-Error" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/archives/46259795.html" class="article-date">
-  <time datetime="2016-04-13T15:12:12.000Z" itemprop="datePublished">2016-04-13</time>
+    <a href="/archives/1e794fa4.html" class="article-date">
+  <time datetime="2016-02-14T15:21:33.000Z" itemprop="datePublished">2016-02-14</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/编程/">编程</a>
+    <a class="article-category-link" href="/categories/工具/">工具</a>
   </div>
 
   </div>
@@ -117,8 +117,8 @@ var _hmt = _hmt || [];
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      javaFx1
+    <h1 itemprop="name">
+      <a class="article-title" href="/archives/1e794fa4.html">rhc提示错误</a>
     </h1>
   
 
@@ -127,36 +127,19 @@ var _hmt = _hmt || [];
 		
     <div class="article-entry" itemprop="articleBody">
       
-        <p>javaFx中文文档<br><a href="http://www.javafxchina.net/blog/docs/tutorial1/" target="_blank" rel="noopener">http://www.javafxchina.net/blog/docs/tutorial1/</a><br>ml3947的博客<br><a href="http://blog.csdn.net/ml3947" target="_blank" rel="noopener">http://blog.csdn.net/ml3947</a></p>
-<p>javaFX架构的顶层部分JavaFX场景图，是一个层级结构的节点树，表示所有用户界面的视觉元素。在场景图中的一个元素被称为一个节点(Node)。<a id="more"></a>每个节点都有一个ID、样式类和包围盒(bounding volume)。除了根节点之外，在场景图中的所有节点都有一个父节点、0个或多个子节点。</p>
-<p>允许使用Java的强大特性，例如泛型、注解、多线程、Lamda表达式(从Java8开始引入)</p>
-<p>##GLASS窗体工具包</p>
-<p>Glass窗体工具包(Glass Windowing Toolkit)在图2-1中处于整体架构的中间位置，它处于JavaFX图形技术栈的最底层。其主要职责是提供本地操作服务，例如窗体、计时器、皮肤。它是连接JavaFX层与本地操作系统的平台无关层。</p>
-<p>JavaFX应用程序线程：这是JavaFX应用开发者使用的主要线程。任何“活动”的场景都是窗体的一部分，它们都必需通过此线程来访问。场景图可以通过一个后台线程来创建和控制，但是如果其根节点与任何活动对象相关，则该场景图必需通过JavaFX应用程序线程来访问。这允许开发者在背景线程上创建复杂的场景图，而与此同时在“活动”场景中保持动画的流畅。由于JavaFX应用程序线程与Swing和AWT事件调度线程(EDT)不同，所以在将JavaFX代码嵌入到Swing应用程序中时必需小心。</p>
-<p>##布局</p>
-<p>布局容器(Layoutcontainer)或面板(Pane)允许对JavaFX应用程序场景图中的UI控件进行灵活、动态的排布。JavaFX Layout API包括下列容器类：</p>
-<p>● BorderPane类将其内容节点放到上、下、左、右、中各个区域中。</p>
-<p>● HBox类将其内容节点横向排成一行。</p>
-<p>● VBox类将其内容节点纵向排成一列。</p>
-<p>● StackPane类将其内容节点摞在一起。</p>
-<p>● GridPane类允许开发者创建一个灵活的网格，按行列来布局其内容节点。</p>
-<p>● FlowPane类将其内容按行或列进行”流式“布局，当遇到横向或纵向的边界时自动进行换行或换列。</p>
-<p>● TilePane类将其内容放到统一大小的单元格中。</p>
-<p>● AnchorPane类允许开发者创建锚节点，将控件停靠于布局的上下左右各边，也可以居中停靠。</p>
-<p>为了获得理想的布局结构，可以在JavaFX应用中嵌套使用各类布局。</p>
-<p>##视觉效果</p>
-<p>在JavaFX场景图中开发富客户端界面包括使用视觉效果来实时地美化JavaFX应用程序的外观。JavaFX的视觉效果主要是基于像素的图像，因此它们需要先获取场景图中节点渲染成图像，再将视觉效果添加上去。</p>
-<p>JavaFX中通过下面的类来提供一些常用的视觉效果：</p>
-<p>● Drop Shadow——应用视觉效果后将为给定的内容渲染一个在它的后面的阴影。</p>
-<p>● Reflection——在真实的内容后面渲染一个反射倒影。</p>
-<p>● Lighting——模仿一个光源的照射效果，使一个平面的对象看起来更真实、具有三维效果。</p>
-
+        <p>openshift rhc成功安装Ruby和git以后，运行rhc setup时提示如下错误：</p>
+<p>C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in require’:<br> cannot load such file – dl/import (LoadError) from C:/<br>Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/
+        
+          <p class="article-more-link">
+            <a href="/archives/1e794fa4.html#more">Read More</a>
+          </p>
+        
       
 
     <footer class="article-footer">
     
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RHC/">RHC</a></li></ul>
 
 
 		<div class="article-sharemodule">
@@ -168,32 +151,18 @@ var _hmt = _hmt || [];
 	
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/archives/8d3dd6b3.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          git使用简介
-        
-      </div>
-    </a>
-  
-  
-    <a href="/archives/f8f4ee05.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">error:restriction on required library rt.jar test</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
 
   
-  </section>
+  
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; PREV</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
+</section>
         
           <aside id="sidebar">
   
