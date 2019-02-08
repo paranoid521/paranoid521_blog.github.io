@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>git使用简介 | Paranoid&#39;s cottage</title>
+  <title>Tag: PAT | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="工作区–&amp;gt;暂存区–&amp;gt;本地库—–》远程库 当修改了某个文件，给文件的修改是在工作区，git add . 则是把工作区的修改放到暂存区，每当有修改，运行git add .都会把修改放到到暂存区git commit -m “内容” git commit则是把暂存区所有git add的修改都提交到本地代码库。双引号里的内容为说明修改了哪些内容git push origin master 把本地">
-<meta name="keywords" content="Git">
-<meta property="og:type" content="article">
-<meta property="og:title" content="git使用简介">
-<meta property="og:url" content="http://blog.fetdesign.com/archives/8d3dd6b3.html">
+  <meta name="description" content="walk step by step">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Paranoid&#39;s cottage">
+<meta property="og:url" content="http://blog.fetdesign.com/tags/PAT/index.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="工作区–&amp;gt;暂存区–&amp;gt;本地库—–》远程库 当修改了某个文件，给文件的修改是在工作区，git add . 则是把工作区的修改放到暂存区，每当有修改，运行git add .都会把修改放到到暂存区git commit -m “内容” git commit则是把暂存区所有git add的修改都提交到本地代码库。双引号里的内容为说明修改了哪些内容git push origin master 把本地">
+<meta property="og:description" content="walk step by step">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-06T09:05:28.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git使用简介">
-<meta name="twitter:description" content="工作区–&amp;gt;暂存区–&amp;gt;本地库—–》远程库 当修改了某个文件，给文件的修改是在工作区，git add . 则是把工作区的修改放到暂存区，每当有修改，运行git add .都会把修改放到到暂存区git commit -m “内容” git commit则是把暂存区所有git add的修改都提交到本地代码库。双引号里的内容为说明修改了哪些内容git push origin master 把本地">
+<meta name="twitter:title" content="Paranoid&#39;s cottage">
+<meta name="twitter:description" content="walk step by step">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -101,93 +99,41 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Tools_Git_git_sample" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/8d3dd6b3.html" class="article-date">
-  <time datetime="2016-05-02T15:32:01.000Z" itemprop="datePublished">2016-05-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/工具/">工具</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      git使用简介
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/archives/27a359ad.html" class="archive-article-date">
+  <time datetime="2019-02-08T03:49:17.124Z" itemprop="datePublished">2月 8</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/archives/27a359ad.html">pat 乙级 1001害死人不偿命的(3n+1)猜想</a>
     </h1>
   
 
-      </header>
-    
-		
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>工作区–&gt;暂存区–&gt;本地库—–》远程库</p>
-<p>当修改了某个文件，给文件的修改是在工作区，<br>git add . 则是把工作区的修改放到暂存区，每当有修改，运行git add .都会把修改放到到暂存区<br>git commit -m “内容” git commit则是把暂存区所有git add的修改都提交到本地代码库。双引号里的内容为说明修改了哪些内容<br>git push origin master 把本地代码库推送到远程代码库，远程库的默认名是origin<a id="more"></a></p>
-<p>git add file1.txt<br>git add file2.txt<br>git commit -m “修改的内容”</p>
-<p>git status    要随时掌握工作区的状态，使用git status命令<br>git diff    如果git status告诉你有文件被修改过，用git diff可以查看修改内容</p>
-<p>git log 查看最近commit的内容</p>
-<p>git reset –hard HEAD^       会退到上一个版本 HEAD^^表示上上个版本<br>git reset –hard 376829   后悔了想回到刚才的最新版本,版本号没必要写全，前几位就可以了，Git会自动去找</p>
-<p>git reflog    如果后悔了，又找不到版本号了，使用它找回</p>
-<p>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。<br>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
-<p>git checkout – practice_git.c    撤销工作区的修改，不能删除添加的文件</p>
-<p>git reset HEAD practice_git.c     git add后，工作区的文件添加到暂存区，git reset后回退<br>，，回退到git add之前，只有工作区有修改的文件</p>
-<p>创建分支</p>
-<p>git branch dev   创建分支dev<br>git checkout dev 切换分支到dev</p>
-<p>git checkout -b dev 创建分支dev并切换到dev分支</p>
-<p>git checkout master 切换到master分支<br>git merge dev   合并dev分支到master分支</p>
-<p>git branch -d dev 删除dev分支</p>
-<p>git push origin master 把本地所有master分支的提交推送到远程库的master分支上<br>git push origin dev 把dev分支的提交推送到远程库dev分支上</p>
-
-      
-
-    <footer class="article-footer">
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-
-		<div class="article-sharemodule">
-		</div>
-		
-	  </div>
-
-    </footer>
-	
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/archives/3f2b581e.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          在eclipse上使用git
-        
-      </div>
-    </a>
-  
-  
-    <a href="/archives/46259795.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">javaFx1</div>
-    </a>
-  
-</nav>
-
-  
 </article>
-
-
   
-  </section>
+  
+    </div></section>
+  
+
+</section>
         
           <aside id="sidebar">
   
