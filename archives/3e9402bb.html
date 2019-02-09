@@ -219,8 +219,22 @@ int main()
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/A-level/">A_level</a></li></ul>
 
 
-		<div class="article-sharemodule">hello
-		</div>
+		<div class="article-sharemodule">hello</div>
+		<div id="container">world</div>
+			<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+			<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+			<script>
+			var gitment = new Gitment({
+			  owner: 'paranoid521',
+			  repo: 'paranoid521.github.io',
+			  oauth: {
+				client_id: '5e204b5e999bf55c41c7',
+				client_secret: 'c52ac5d3cf3d6a2fcf6d97324c9be87a2024a51e',
+			  },
+			})
+			gitment.render('container')
+			</script>
+		
 		
 	  </div>
 
