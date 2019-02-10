@@ -9,7 +9,7 @@
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用git hooks进行自动部署">
-<meta property="og:url" content="http://blog.fetdesign.com/archives/a2d5c370.html">
+<meta property="og:url" content="https://blog.fetdesign.com/archives/a2d5c370.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
 <meta property="og:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
 <meta property="og:locale" content="zh-CN">
@@ -94,7 +94,7 @@ var _hmt = _hmt || [];
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.fetdesign.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.fetdesign.com"></form>
       </div>
     </div>
   </div>
@@ -288,6 +288,22 @@ chmod -R g+s /var/www
   
 </nav>
     
+			<div id="container-suggest"></div>
+			<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+			<script src="https://jjeejj.github.io/js/gitment.js"></script>
+			<script>
+			var gitment = new Gitment({
+			  owner: 'paranoid521',
+			  repo: 'paranoid521.github.io',
+			  oauth: {
+				client_id: '5e204b5e999bf55c41c7',
+				client_secret: 'c52ac5d3cf3d6a2fcf6d97324c9be87a2024a51e',
+			  },
+			})
+			gitment.render('container-suggest')
+			</script>
+
+
 
 <script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 
