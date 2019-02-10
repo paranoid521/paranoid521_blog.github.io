@@ -144,8 +144,20 @@ var _hmt = _hmt || [];
 </code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">char</span> pinyin[][<span class="number">5</span>] = &#123;<span class="string">"ling"</span>, <span class="string">"yi"</span>, <span class="string">"er"</span>, <span class="string">"san"</span>, <span class="string">"si"</span>, <span class="string">"wu"</span>, <span class="string">"liu"</span>, <span class="string">"qi"</span>, <span class="string">"ba"</span>, <span class="string">"jiu"</span> &#125;;</span><br><span class="line">	<span class="keyword">char</span> n[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">char</span> ms[<span class="number">5</span>] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">int</span> i,j, m = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> temp;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, &amp;n);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i&lt; <span class="built_in">strlen</span>(n); i++) &#123;</span><br><span class="line">		m = m + (n[i] - <span class="number">48</span>);</span><br><span class="line">	&#125; </span><br><span class="line">								<span class="comment">//printf("m=%d\n", m);</span></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; m &gt; <span class="number">0</span>; i++)&#123;</span><br><span class="line">		temp = m % <span class="number">10</span>;   		<span class="comment">//printf("temp=%d\n", temp);</span></span><br><span class="line">		m = m / <span class="number">10</span>;				<span class="comment">//printf("m=%d\n", m);</span></span><br><span class="line">		ms[i] = temp + <span class="number">48</span>; 			<span class="comment">//printf("ms=%s\n\n", ms);</span></span><br><span class="line">	&#125;</span><br><span class="line">									<span class="comment">//printf("ms=%s\n\n", ms);</span></span><br><span class="line">	<span class="keyword">for</span>( j = <span class="built_in">strlen</span>(ms); j &gt; <span class="number">0</span>; j--)&#123; </span><br><span class="line">		<span class="keyword">if</span>(j &gt; <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%s "</span>, pinyin[ms[j<span class="number">-1</span>]<span class="number">-48</span>]);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%s"</span>, pinyin[ms[j<span class="number">-1</span>]<span class="number">-48</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
-	  
-	  		<div id="container-suggest"></div>
+
+
+    <footer class="article-footer">
+    
+
+		<div class="article-sharemodule"></div>
+		
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PAT/">PAT</a><span class="article-tag-list-count">3</span></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a><span class="article-tag-list-count">3</span></li></ul>
+
+	  </div>
+
+    </footer>
+	
+		  	<div id="container-suggest"></div>
 			<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
 			<script src="https://jjeejj.github.io/js/gitment.js"></script>
 			<script>
@@ -159,17 +171,6 @@ var _hmt = _hmt || [];
 			})
 			gitment.render('container-suggest')
 			</script>
-
-    <footer class="article-footer">
-    
-
-		<div class="article-sharemodule"></div>
-		
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PAT/">PAT</a><span class="article-tag-list-count">3</span></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a><span class="article-tag-list-count">3</span></li></ul>
-
-	  </div>
-
-    </footer>
 	
   </div>
   
