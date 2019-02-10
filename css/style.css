@@ -714,7 +714,7 @@ a.article-title:hover {
 }
 .article-tag-list-item {
   float: left;
-  margin-right: 5px;
+  margin-right: 20px;
 }
 .article-tag-list-link:before {
   content: "";
