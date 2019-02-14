@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>利用git hooks进行自动部署 | Paranoid&#39;s cottage</title>
+  <title>git hooks实现项目自动部署 | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
-<meta name="keywords" content="Git">
+  <meta name="description" content="创建git用户 adduser git 创建裸仓库： git init --bare GitBook.git 更改仓库所属用户和组： chown -R git:git GitBook.git/ 将本地PC秘钥添加到/home/git/.ssh/authorized_keys中，没有则创建 修改GItBook.git中的hook的post-receive文件123456789101112131415">
+<meta name="keywords" content="Git,git hooks">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用git hooks进行自动部署">
-<meta property="og:url" content="https://blog.fetdesign.com/archives/a2d5c370.html">
+<meta property="og:title" content="git hooks实现项目自动部署">
+<meta property="og:url" content="https://blog.fetdesign.com/archives/5280bf10.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
+<meta property="og:description" content="创建git用户 adduser git 创建裸仓库： git init --bare GitBook.git 更改仓库所属用户和组： chown -R git:git GitBook.git/ 将本地PC秘钥添加到/home/git/.ssh/authorized_keys中，没有则创建 修改GItBook.git中的hook的post-receive文件123456789101112131415">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-06T09:05:06.182Z">
+<meta property="og:updated_time" content="2019-02-14T02:52:43.163Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用git hooks进行自动部署">
-<meta name="twitter:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
+<meta name="twitter:title" content="git hooks实现项目自动部署">
+<meta name="twitter:description" content="创建git用户 adduser git 创建裸仓库： git init --bare GitBook.git 更改仓库所属用户和组： chown -R git:git GitBook.git/ 将本地PC秘钥添加到/home/git/.ssh/authorized_keys中，没有则创建 修改GItBook.git中的hook的post-receive文件123456789101112131415">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -100,10 +100,10 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Tools_Git_git hooks自动部署" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-编程_Nginx设置https连接" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/archives/a2d5c370.html" class="article-date">
-  <time datetime="2017-01-13T04:30:01.000Z" itemprop="datePublished">2017-01-13</time>
+    <a href="/archives/5280bf10.html" class="article-date">
+  <time datetime="2019-02-14T02:45:00.521Z" itemprop="datePublished">2019-02-14</time>
 </a>
     
   <div class="article-category">
@@ -118,7 +118,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      利用git hooks进行自动部署
+      git hooks实现项目自动部署
     </h1>
   
 
@@ -127,55 +127,37 @@ var _hmt = _hmt || [];
 		
     <div class="article-entry" itemprop="articleBody">
       
-        <p>首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行</p>
-<pre><code>git clone /usr/gitRepo/web.git
-</code></pre><p>将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。<br><a id="more"></a></p>
-<p>git的hook机制，当git服务器接到各种事件时触发，这里使用的hook是</p>
-<pre><code>post-receive
-</code></pre><p>这个hook在git服务器受到push请求，并且接受完代码提交时触发。</p>
-<p>具体代码体现：</p>
-<p>在git远端仓库的hooks目录下新建post-receive文件：</p>
-<pre><code>#!/bin/sh
-IS_BARE=$(git rev-parse --is-bare-repository)
-if [ -z &quot;$IS_BARE&quot; ]; then
-echo &gt;&amp;2 &quot;fatal: post-receive: IS_NOT_BARE&quot;
-exit 1
-fi
+        <p>创建git用户</p>
+<pre><code>adduser git
+</code></pre><p>创建裸仓库：</p>
+<pre><code>git init --bare GitBook.git
+</code></pre><p>更改仓库所属用户和组：</p>
+<pre><code>chown -R git:git GitBook.git/
+</code></pre><p>将本地PC秘钥添加到/home/git/.ssh/authorized_keys中，没有则创建</p>
+<p>修改GItBook.git中的hook的post-receive文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">IS_BARE=$(git rev-parse --is-bare-repository)</span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$IS_BARE</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> &gt;&amp;2 <span class="string">"fatal: post-receive: IS_NOT_BARE"</span></span><br><span class="line"><span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">unset</span> GIT_DIR</span><br><span class="line">DeployPath=<span class="string">"/var/www/GitBook"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"==============================================="</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$DeployPath</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deploying the webapp"</span></span><br><span class="line"></span><br><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/master</span><br><span class="line"></span><br><span class="line">time=`date`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"web server pull at webserver at time: <span class="variable">$time</span>."</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"================================================"</span></span><br></pre></td></tr></table></figure></p>
+<p>更改文件用户：</p>
+<pre><code>chown -R git:git post-receive
+</code></pre><p>更改文件权限：</p>
+<pre><code>chmod -R +755 post-receive
+</code></pre><p>创建www文件：</p>
+<pre><code>git clone ../GitBook.git
+</code></pre><p>更改权限和用户：</p>
+<pre><code>chown -R www-data:www-data gitBookRepo/
 
-unset GIT_DIR
-DeployPath=&quot;/var/www/gitRepoHtml&quot;
+chmod -R 775 gitBookRepo/
+</code></pre><p>在本地git clone：</p>
+<pre><code>git clone git@*.com:/var/GitBook.git
+</code></pre><p>将隐藏文件.git复制到要commit的文件夹中，使用git即可将本地文件在远端发布</p>
+<p>可能出现的问题：</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">error: </span>cannot open .git/FETCH_HEAD: Permission denied</span><br></pre></td></tr></table></figure>
+<p>解决方法：<a href="https://blog.fetdesign.com/archives/a2d5c370.html">https://blog.fetdesign.com/archives/a2d5c370.html</a></p>
 
-echo &quot;===============================================&quot;
-cd $DeployPath
-echo &quot;deploying the webapp&quot;
-
-git fetch --all
-git reset --hard origin/master
-
-time=`date`
-echo &quot;web server pull at webserver at time: $time.&quot;
-echo &quot;================================================&quot;
-</code></pre><p>添加文件后，将权限改为755，用户改为git</p>
-<pre><code>chmod +755 post-receive
-chown git:git post-receive
-</code></pre><p>这样在开发者提交代码的时候，就会自动部署。</p>
-<p>可能出现的问题：<br>当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：</p>
-<pre><code>error: cannot open .git/FETCH_HEAD: Permission denied
-</code></pre><p>所以你需要先把ssh_user加到apache组中：</p>
-<pre><code>usermod -a -G apache ssh_user
-</code></pre><p>在Apache2中用户组为www-data,ssh_user设置为git</p>
-<pre><code>usermod -a -G www-data git    
-</code></pre><p>然后修改权限：</p>
-<pre><code>chmod -R g+w /var/www
-chown -R git:www-data /var/www
-chmod -R g+s /var/www
-</code></pre>
 	
       
 
 	  	<footer class="article-footer">
     
-        <a href="https://blog.fetdesign.com/archives/a2d5c370.html#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://blog.fetdesign.com/archives/5280bf10.html#disqus_thread" class="article-comment-link">Comments</a>
 		
 					<div id="container-suggest"></div>
 						<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
@@ -195,7 +177,7 @@ chmod -R g+s /var/www
 
 		<div class="article-sharemodule"></div>
 		
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-hooks/">git hooks</a></li></ul>
 
 	  </div>
 
@@ -207,19 +189,19 @@ chmod -R g+s /var/www
     
 <nav id="article-nav">
   
-    <a href="/archives/e3d4c9ae.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/archives/5280bf10.html" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          spring上传文件
+          git hooks实现项目自动部署
         
       </div>
     </a>
   
   
-    <a href="/archives/4317f2cd.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/archives/69654bcd.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">jquery异步-datatable前端</div>
+      <div class="article-nav-title">PAT 乙级 1003 我要通过！ （20 分）</div>
     </a>
   
 </nav>
