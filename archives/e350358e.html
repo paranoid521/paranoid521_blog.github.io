@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>PAT 乙级 1002 写出这个数 | Paranoid&#39;s cottage</title>
@@ -100,7 +100,7 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-PAT_B_level_1002" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-PAT_B_level_1002" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/archives/e350358e.html" class="article-date">
   <time datetime="2019-02-08T13:21:43.914Z" itemprop="datePublished">2019-02-08</time>
@@ -132,16 +132,19 @@ var _hmt = _hmt || [];
 <h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>每个测试输入包含 1 个测试用例，即给出自然数 n 的值。这里保证 n 小于 10​100​​。</p>
 <h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>在一行内输出 n 的各位数字之和的每一位，拼音数字间有 1 空格，但一行中最后一个拼音数字后没有空格。</p>
 <h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1234567890987654321123456789</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yi <span class="keyword">san</span> <span class="keyword">wu</span></span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
+
 <h4 id="c语言"><a href="#c语言" class="headerlink" title="c语言"></a>c语言</h4><pre><code>输入：正整数 1-10^100
 输出：输入每个数字之和的汉语拼音，拼音之间有空格，但最后一个无空格 
 
 计算：
     循环判断 i ，循环条件: i&lt;字符串长度 
          n 对 10 取余，用 m 统计
-         n 除 10 ，向高位移一位 
-</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">char</span> pinyin[][<span class="number">5</span>] = &#123;<span class="string">"ling"</span>, <span class="string">"yi"</span>, <span class="string">"er"</span>, <span class="string">"san"</span>, <span class="string">"si"</span>, <span class="string">"wu"</span>, <span class="string">"liu"</span>, <span class="string">"qi"</span>, <span class="string">"ba"</span>, <span class="string">"jiu"</span> &#125;;</span><br><span class="line">	<span class="keyword">char</span> n[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">char</span> ms[<span class="number">5</span>] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">int</span> i,j, m = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> temp;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, &amp;n);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i&lt; <span class="built_in">strlen</span>(n); i++) &#123;</span><br><span class="line">		m = m + (n[i] - <span class="number">48</span>);</span><br><span class="line">	&#125; </span><br><span class="line">								<span class="comment">//printf("m=%d\n", m);</span></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; m &gt; <span class="number">0</span>; i++)&#123;</span><br><span class="line">		temp = m % <span class="number">10</span>;   		<span class="comment">//printf("temp=%d\n", temp);</span></span><br><span class="line">		m = m / <span class="number">10</span>;				<span class="comment">//printf("m=%d\n", m);</span></span><br><span class="line">		ms[i] = temp + <span class="number">48</span>; 			<span class="comment">//printf("ms=%s\n\n", ms);</span></span><br><span class="line">	&#125;</span><br><span class="line">									<span class="comment">//printf("ms=%s\n\n", ms);</span></span><br><span class="line">	<span class="keyword">for</span>( j = <span class="built_in">strlen</span>(ms); j &gt; <span class="number">0</span>; j--)&#123; </span><br><span class="line">		<span class="keyword">if</span>(j &gt; <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%s "</span>, pinyin[ms[j<span class="number">-1</span>]<span class="number">-48</span>]);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%s"</span>, pinyin[ms[j<span class="number">-1</span>]<span class="number">-48</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+         n 除 10 ，向高位移一位 </code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">char</span> pinyin[][<span class="number">5</span>] = &#123;<span class="string">"ling"</span>, <span class="string">"yi"</span>, <span class="string">"er"</span>, <span class="string">"san"</span>, <span class="string">"si"</span>, <span class="string">"wu"</span>, <span class="string">"liu"</span>, <span class="string">"qi"</span>, <span class="string">"ba"</span>, <span class="string">"jiu"</span> &#125;;</span><br><span class="line">	<span class="keyword">char</span> n[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">char</span> ms[<span class="number">5</span>] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">int</span> i,j, m = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> temp;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, &amp;n);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i&lt; <span class="built_in">strlen</span>(n); i++) &#123;</span><br><span class="line">		m = m + (n[i] - <span class="number">48</span>);</span><br><span class="line">	&#125; </span><br><span class="line">								<span class="comment">//printf("m=%d\n", m);</span></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; m &gt; <span class="number">0</span>; i++)&#123;</span><br><span class="line">		temp = m % <span class="number">10</span>;   		<span class="comment">//printf("temp=%d\n", temp);</span></span><br><span class="line">		m = m / <span class="number">10</span>;				<span class="comment">//printf("m=%d\n", m);</span></span><br><span class="line">		ms[i] = temp + <span class="number">48</span>; 			<span class="comment">//printf("ms=%s\n\n", ms);</span></span><br><span class="line">	&#125;</span><br><span class="line">									<span class="comment">//printf("ms=%s\n\n", ms);</span></span><br><span class="line">	<span class="keyword">for</span>( j = <span class="built_in">strlen</span>(ms); j &gt; <span class="number">0</span>; j--)&#123; </span><br><span class="line">		<span class="keyword">if</span>(j &gt; <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%s "</span>, pinyin[ms[j<span class="number">-1</span>]<span class="number">-48</span>]);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%s"</span>, pinyin[ms[j<span class="number">-1</span>]<span class="number">-48</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
 	
       
@@ -170,9 +173,9 @@ var _hmt = _hmt || [];
 		
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PAT/">PAT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
 
-	  </footer></div>
+	  </div>
 
-    
+    </footer>
 	  
 	
   </div>
@@ -229,7 +232,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">music</h3>
     <div class="widget-music">
     
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="110" src="//music.163.com/outchain/player?type=0&id=2085281746&auto=1&height=90"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=2085281746&auto=1&height=90"></iframe>
 	
 	</div>
   </div>
@@ -250,7 +253,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-title"></h3>
 	
     <div class="widget-music">
-		<a href="https://www.upyun.com" title="由又拍云加速"><img src="upyun_logo21.png" width="250" height="120"></a>
+		<a href="https://www.upyun.com" title="由又拍云加速"><img src="upyun_logo21.png" width="250" height="120"/></a>
 
     </div>
   </div>
