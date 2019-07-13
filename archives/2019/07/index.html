@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Kali安装vmtools提示缺少内核头文件的解决办法 | Paranoid&#39;s cottage</title>
+  <title>Archives: 2019/7 | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Kali 1.06  安装Vmware tools 提示 Searching for a valid kernel header path…The path “” is not a valid path to the 3.7-trunk-686-pae kernel headers.">
-<meta name="keywords" content="linux">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Kali安装vmtools提示缺少内核头文件的解决办法">
-<meta property="og:url" content="https://blog.fetdesign.com/archives/caa9943c.html">
+  <meta name="description" content="walk step by step">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Paranoid&#39;s cottage">
+<meta property="og:url" content="https://blog.fetdesign.com/archives/2019/07/index.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="Kali 1.06  安装Vmware tools 提示 Searching for a valid kernel header path…The path “” is not a valid path to the 3.7-trunk-686-pae kernel headers.">
+<meta property="og:description" content="walk step by step">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-06T09:02:04.174Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kali安装vmtools提示缺少内核头文件的解决办法">
-<meta name="twitter:description" content="Kali 1.06  安装Vmware tools 提示 Searching for a valid kernel header path…The path “” is not a valid path to the 3.7-trunk-686-pae kernel headers.">
+<meta name="twitter:title" content="Paranoid&#39;s cottage">
+<meta name="twitter:description" content="walk step by step">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -100,106 +98,41 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Linux_kali install vm" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/archives/caa9943c.html" class="article-date">
-  <time datetime="2016-02-15T12:56:00.000Z" itemprop="datePublished">2016-02-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Kali安装vmtools提示缺少内核头文件的解决办法
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/archives/eac44380.html" class="archive-article-date">
+  <time datetime="2019-07-13T14:01:33.001Z" itemprop="datePublished">7月 13</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/archives/eac44380.html">Linux常用</a>
     </h1>
   
 
-      </header>
-    
-		
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Kali 1.06  安装Vmware tools 提示</p>
-<p>Searching for a valid kernel header path…<br>The path “” is not a valid path to the 3.7-trunk-686-pae kernel headers.<a id="more"></a><br>Would you like to change it? [yes]</p>
-<p>原因是缺少内核头文件。</p>
-<p>1.<code>apt-get install linux-headers-$( uname -r )</code></p>
-<p>提示未发现软件包,需要在软件源中添加内核头文件的源,<br>编辑 /etc/apt/source.list,添加</p>
-<p><code>deb http://http.kali.org/kali kali main non-free contrib
-deb-src http://http.kali.org/kali kali main non-free contrib</code></p>
-<p>2.<code>apt-get update</code>
-　　</p>
-<p>接着安装linux headers</p>
-<p><code>apt-get install linux-headers-$(uname -r)</code><br><code>ln -s /usr/src/linux-headers-$(uname -r)/include/generated/uapi/linux/version.h</code><br><code>/usr/src/linux-headers-$(uname -r)/include/linux/</code></p>
-<p><a href="http://http.kali.org/kali/pool/main/l/linux/" title="http://http.kali.org/kali/pool/main/l/linux/" target="_blank" rel="noopener">http://http.kali.org/kali/pool/main/l/linux/</a></p>
-
-	
-      
-
-	  	<footer class="article-footer">
-    
-        <a href="https://blog.fetdesign.com/archives/caa9943c.html#disqus_thread" class="article-comment-link">Comments</a>
-		
-					<div id="container-suggest"></div>
-						<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-			<script src="https://jjeejj.github.io/js/gitment.js"></script>
-			<script>
-			var gitment = new Gitment({
-			  owner: 'paranoid521',
-			  repo: 'paranoid521.github.io',
-			  oauth: {
-				client_id: '5e204b5e999bf55c41c7',
-				client_secret: 'c52ac5d3cf3d6a2fcf6d97324c9be87a2024a51e',
-			  },
-			})
-			gitment.render('container-suggest')
-			</script>
-      
-
-		<div class="article-sharemodule"></div>
-		
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-	  </div>
-
-    </footer>
-	  
-	
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/archives/bd7d9f58.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Django开始
-        
-      </div>
-    </a>
-  
-  
-    <a href="/archives/1e794fa4.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">rhc提示错误</div>
-    </a>
-  
-</nav>
-
-  
 </article>
-
-
   
-  </section>
+  
+    </div></section>
+  
+
+</section>
         
           <aside id="sidebar">
   
