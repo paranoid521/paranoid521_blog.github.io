@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>Paranoid&#39;s cottage</title>
@@ -57,7 +57,7 @@ var _hmt = _hmt || [];
   <!-- Google AdSense 代码 -->
   <!-- ad start - partial('google_adsense')  ad end -->
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -139,8 +139,7 @@ var _hmt = _hmt || [];
 
     lineAction.getBusLineService().saveOrUpdate(busLine);
     return null;
-}
-</code></pre>
+}</code></pre>
 	
       
 
@@ -230,8 +229,7 @@ function showStaus() {
         flag = b;
     }
 
-}
-</code></pre><p>数据过长时不能使用get方式，使用post方式，将数据放到body中请求。</p>
+}</code></pre><p>数据过长时不能使用get方式，使用post方式，将数据放到body中请求。</p>
 
 	
       
@@ -346,8 +344,7 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
 &lt;param-value&gt;WEB-INF/proxool.xml&lt;/param-value&gt;
 &lt;/init-param&gt;
 &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-&lt;/servlet&gt;
-</code></pre><p>在applicationContext.xml中配置proxool。</p>
+&lt;/servlet&gt;</code></pre><p>在applicationContext.xml中配置proxool。</p>
 <pre><code>&lt;!-- 配置数据源 --&gt;
 &lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
     &lt;property name=&quot;driverClassName&quot;&gt;
@@ -356,8 +353,7 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
     &lt;property name=&quot;url&quot;&gt;
         &lt;value&gt;proxool.Pool_dbname&lt;/value&gt;
     &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre><p>以下是proxool.xml的配置信息，放到web-inf目录下。</p>
+&lt;/bean&gt;</code></pre><p>以下是proxool.xml的配置信息，放到web-inf目录下。</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;proxool-config&gt;
 &lt;proxool&gt;
@@ -391,15 +387,13 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
     &lt;house-keeping-test-sql&gt;SELECT CURRENT_USER&lt;/house-keeping-test-sql&gt;
 
 &lt;/proxool&gt;
-&lt;/proxool-config&gt;
-</code></pre><p>此时spring的hibernate的连接池配置完毕。</p>
+&lt;/proxool-config&gt;</code></pre><p>此时spring的hibernate的连接池配置完毕。</p>
 <p>单独hibernate的proxool配置如下：</p>
 <p>在hibernate.cfg.xml中只需要修改以下内容：</p>
 <pre><code>&lt;!-- Database connection settings --&gt;    
 &lt;property name=&quot;hibernate.connection.provider_class&quot;&gt;org.hibernate.connection.ProxoolConnectionProvider&lt;/property&gt;
 &lt;property name=&quot;hibernate.proxool.pool_alias&quot;&gt;Pool_dbname2&lt;/property&gt;
-&lt;property name=&quot;hibernate.proxool.xml&quot;&gt;proxool.xml&lt;/property&gt;
-</code></pre><p>proxool.xml内容同上，pool_alias改为Pool_dbname2为两个连接池。</p>
+&lt;property name=&quot;hibernate.proxool.xml&quot;&gt;proxool.xml&lt;/property&gt;</code></pre><p>proxool.xml内容同上，pool_alias改为Pool_dbname2为两个连接池。</p>
 
 	
       

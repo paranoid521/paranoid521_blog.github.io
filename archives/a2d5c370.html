@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>利用git hooks进行自动部署 | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
+  <meta name="description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用git hooks进行自动部署">
 <meta property="og:url" content="https://blog.fetdesign.com/archives/a2d5c370.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
+<meta property="og:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-01-06T09:05:06.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用git hooks进行自动部署">
-<meta name="twitter:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git 将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
+<meta name="twitter:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -59,7 +59,7 @@ var _hmt = _hmt || [];
   <!-- Google AdSense 代码 -->
   <!-- ad start - partial('google_adsense')  ad end -->
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -128,11 +128,11 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行</p>
-<pre><code>git clone /usr/gitRepo/web.git
-</code></pre><p>将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。<br><a id="more"></a></p>
+<pre><code>git clone /usr/gitRepo/web.git</code></pre><p>将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。</p>
+<a id="more"></a>
+
 <p>git的hook机制，当git服务器接到各种事件时触发，这里使用的hook是</p>
-<pre><code>post-receive
-</code></pre><p>这个hook在git服务器受到push请求，并且接受完代码提交时触发。</p>
+<pre><code>post-receive</code></pre><p>这个hook在git服务器受到push请求，并且接受完代码提交时触发。</p>
 <p>具体代码体现：</p>
 <p>在git远端仓库的hooks目录下新建post-receive文件：</p>
 <pre><code>#!/bin/sh
@@ -154,22 +154,16 @@ git reset --hard origin/master
 
 time=`date`
 echo &quot;web server pull at webserver at time: $time.&quot;
-echo &quot;================================================&quot;
-</code></pre><p>添加文件后，将权限改为755，用户改为git</p>
+echo &quot;================================================&quot;</code></pre><p>添加文件后，将权限改为755，用户改为git</p>
 <pre><code>chmod +755 post-receive
-chown git:git post-receive
-</code></pre><p>这样在开发者提交代码的时候，就会自动部署。</p>
+chown git:git post-receive</code></pre><p>这样在开发者提交代码的时候，就会自动部署。</p>
 <p>可能出现的问题：<br>当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：</p>
-<pre><code>error: cannot open .git/FETCH_HEAD: Permission denied
-</code></pre><p>所以你需要先把ssh_user加到apache组中：</p>
-<pre><code>usermod -a -G apache ssh_user
-</code></pre><p>在Apache2中用户组为www-data,ssh_user设置为git</p>
-<pre><code>usermod -a -G www-data git    
-</code></pre><p>然后修改权限：</p>
+<pre><code>error: cannot open .git/FETCH_HEAD: Permission denied</code></pre><p>所以你需要先把ssh_user加到apache组中：</p>
+<pre><code>usermod -a -G apache ssh_user</code></pre><p>在Apache2中用户组为www-data,ssh_user设置为git</p>
+<pre><code>usermod -a -G www-data git    </code></pre><p>然后修改权限：</p>
 <pre><code>chmod -R g+w /var/www
 chown -R git:www-data /var/www
-chmod -R g+s /var/www
-</code></pre>
+chmod -R g+s /var/www</code></pre>
 	
       
 

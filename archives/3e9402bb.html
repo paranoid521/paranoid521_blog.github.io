@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>PAT1001总结 | Paranoid&#39;s cottage</title>
@@ -59,7 +59,7 @@ var _hmt = _hmt || [];
   <!-- Google AdSense 代码 -->
   <!-- ad start - partial('google_adsense')  ad end -->
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -127,7 +127,9 @@ var _hmt = _hmt || [];
 		
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#####思路总结<br>1.完全没必要将其转换成字符串，字符串处理相对复杂。<br>2.要先对结果进行分析，尤其当结果的情况有限时。根本没必要使用按位输出。<br>3.先在草稿纸上对问题进行分析，对结果进行分析，然后再考虑代码实现，不应该在代码实现上浪费太多时间。<br>4.代码越简洁越好，调试清晰方便。<br><a id="more"></a><br>使用字符串处理，还只是部分正确</p>
+        <p>#####思路总结<br>1.完全没必要将其转换成字符串，字符串处理相对复杂。<br>2.要先对结果进行分析，尤其当结果的情况有限时。根本没必要使用按位输出。<br>3.先在草稿纸上对问题进行分析，对结果进行分析，然后再考虑代码实现，不应该在代码实现上浪费太多时间。<br>4.代码越简洁越好，调试清晰方便。  </p>
+<a id="more"></a>
+<p>使用字符串处理，还只是部分正确</p>
 <pre><code>#include &lt;iostream&gt;
 #include &quot;string.h&quot; 
 #include &quot;math.h&quot;
@@ -194,8 +196,7 @@ void intToChar(int sum)
         else if(intChar[0] != &apos;-&apos;&amp;&amp;(m+1)%3==0&amp;&amp;(m+1)&lt;numBit) cout&lt;&lt;&quot;,&quot;;
         cout&lt;&lt;&quot;=end&quot;&lt;&lt;endl;
     }
-}
-</code></pre><p>使用c，简洁实现，并全部正确（copy from net）</p>
+}</code></pre><p>使用c，简洁实现，并全部正确（copy from net）</p>
 <pre><code>#include&lt;stdio.h&gt;
 
 int main()
@@ -209,8 +210,7 @@ int main()
     else if (sum&gt;=1000)printf(&quot;%d,%03d&quot;,sum/1000,sum%1000);
     else printf(&quot;%d&quot;,sum);
     return 0;
-}
-</code></pre>
+}</code></pre>
 	
       
 

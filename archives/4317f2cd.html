@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>jquery异步-datatable前端 | Paranoid&#39;s cottage</title>
@@ -59,7 +59,7 @@ var _hmt = _hmt || [];
   <!-- Google AdSense 代码 -->
   <!-- ad start - partial('google_adsense')  ad end -->
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -127,8 +127,48 @@ var _hmt = _hmt || [];
 		
     <div class="article-entry" itemprop="articleBody">
       
-        <p>基于JQuery的datatable更新示例：<br><a id="more"></a><br>    var InitiateEditableDataTable = function () {<br>        return {<br>            init: function () {<br>            //Datatable Initiating<br>        var oTable = $(‘#editabledatatable’).dataTable({<br>            “aLengthMenu”: [<br>            [5, 15, 20, 100, -1],<br>            [5, 15, 20, 100, “All”]<br>            ],<br>            “iDisplayLength”: 5,<br>            “sPaginationType”: “bootstrap”,<br>            “sDom”: “Tflt&lt;’row DTTTFooter’&lt;’col-sm-6’i&gt;&lt;’col-sm-6’p&gt;&gt;”,<br>            “oTableTools”: {<br>            “aButtons”: [<br>                            “print”],<br>            “sSwfPath”: “assets/swf/copy_csv_xls_pdf.swf”<br>            },<br>            “language”: {<br>            “search”: “”,<br>            “sLengthMenu”: “<em>MENU</em>“,<br>            “oPaginate”: {<br>            “sPrevious”: “Prev”,<br>            “sNext”: “Next”<br>            }<br>            },<br>            “aoColumns”: [<br>              null,<br>              null,<br>              null,<br>              null,<br>              null,<br>              null,<br>              null,<br>              null,<br>              { “bSortable”: false }<br>            ]<br>            });<br>            var isEditing = null;</p>
-<pre><code>        //Add New Row
+        <p>基于JQuery的datatable更新示例：</p>
+<a id="more"></a>
+<pre><code>var InitiateEditableDataTable = function () {
+    return {
+        init: function () {
+        //Datatable Initiating
+    var oTable = $(&apos;#editabledatatable&apos;).dataTable({
+        &quot;aLengthMenu&quot;: [
+        [5, 15, 20, 100, -1],
+        [5, 15, 20, 100, &quot;All&quot;]
+        ],
+        &quot;iDisplayLength&quot;: 5,
+        &quot;sPaginationType&quot;: &quot;bootstrap&quot;,
+        &quot;sDom&quot;: &quot;Tflt&lt;&apos;row DTTTFooter&apos;&lt;&apos;col-sm-6&apos;i&gt;&lt;&apos;col-sm-6&apos;p&gt;&gt;&quot;,
+        &quot;oTableTools&quot;: {
+        &quot;aButtons&quot;: [
+                        &quot;print&quot;],
+        &quot;sSwfPath&quot;: &quot;assets/swf/copy_csv_xls_pdf.swf&quot;
+        },
+        &quot;language&quot;: {
+        &quot;search&quot;: &quot;&quot;,
+        &quot;sLengthMenu&quot;: &quot;_MENU_&quot;,
+        &quot;oPaginate&quot;: {
+        &quot;sPrevious&quot;: &quot;Prev&quot;,
+        &quot;sNext&quot;: &quot;Next&quot;
+        }
+        },
+        &quot;aoColumns&quot;: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          { &quot;bSortable&quot;: false }
+        ]
+        });
+        var isEditing = null;
+
+        //Add New Row
         $(&apos;#editabledatatable_new&apos;).click(function (e) {
             e.preventDefault();
             $.ajax({
@@ -388,8 +428,7 @@ var _hmt = _hmt || [];
             oTable.fnDraw();
         }
     }
-};}();
-</code></pre>
+};}();</code></pre>
 	
       
 

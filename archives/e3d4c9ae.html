@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>spring上传文件 | Paranoid&#39;s cottage</title>
@@ -59,7 +59,7 @@ var _hmt = _hmt || [];
   <!-- Google AdSense 代码 -->
   <!-- ad start - partial('google_adsense')  ad end -->
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -127,8 +127,31 @@ var _hmt = _hmt || [];
 		
     <div class="article-entry" itemprop="articleBody">
       
-        <p>通过spring上传文件示例：<br><a id="more"></a><br>    package edu.qlnu.mxj.action;<br>    import java.io.File;<br>    import java.io.FileOutputStream;<br>    import java.io.IOException;<br>    import java.io.InputStream;<br>    import java.text.SimpleDateFormat;<br>    import java.util.Date;<br>    import java.util.Iterator;<br>    import java.util.List;<br>    import javax.servlet.http.HttpServletRequest;<br>    import org.apache.commons.fileupload.FileItem;<br>    import org.apache.commons.fileupload.disk.DiskFileItemFactory;<br>    import org.apache.commons.fileupload.servlet.ServletFileUpload;<br>    import org.apache.struts2.ServletActionContext;<br>    import org.springframework.web.multipart.MultipartFile;<br>    import org.springframework.web.multipart.MultipartHttpServletRequest;<br>    import org.springframework.web.multipart.MultipartResolver;<br>    import org.springframework.web.multipart.commons.CommonsMultipartResolver;<br>    import com.opensymphony.xwork2.ActionContext;<br>    import edu.qlnu.mxj.service.HomeworkService;<br>    import edu.qlnu.mxj.service.StaffService;</p>
-<pre><code>@SuppressWarnings(&quot;serial&quot;)
+        <p>通过spring上传文件示例：</p>
+<a id="more"></a>
+<pre><code>package edu.qlnu.mxj.action;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import com.opensymphony.xwork2.ActionContext;
+import edu.qlnu.mxj.service.HomeworkService;
+import edu.qlnu.mxj.service.StaffService;
+
+@SuppressWarnings(&quot;serial&quot;)
 public class UploadAction extends BaseAction {
     private String hwNo;
     private String hwName;
@@ -268,8 +291,7 @@ public class UploadAction extends BaseAction {
         String date = df.format(new Date());
         return date;
     }
-}
-</code></pre>
+}</code></pre>
 	
       
 
