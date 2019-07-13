@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>rhc提示错误 | Paranoid&#39;s cottage</title>
@@ -100,7 +100,7 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Tools_RHC_rhc提示-Error" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Tools_RHC_rhc提示-Error" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/archives/1e794fa4.html" class="article-date">
   <time datetime="2016-02-14T15:21:33.000Z" itemprop="datePublished">2016-02-14</time>
@@ -128,7 +128,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>openshift rhc成功安装Ruby和git以后，运行rhc setup时提示如下错误：</p>
-<p>C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in require’:<br> cannot load such file – dl/import (LoadError) from C:/<br>Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/<a id="more"></a>kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/au thentication/pageant.rb:1:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/authentication/agent/socket.rb:5:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/au thentication/agent.rb:22:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/authentication/key_manager.rb:4:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/au thentication/session.rb:4:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh.rb:11:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/ssh_helpe rs.rb:18:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/wizard.rb:77:in’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/wizard.rb :7:in <a href="module:RHC" target="_blank" rel="noopener">module:RHC</a>‘<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/wizard.rb:6:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands/ base.rb:4:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands/account.rb:2:in’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands/ account.rb:1:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands.rb:189:inblock in load’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands. rb:188:in each’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands.rb:188:inload’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/cli.rb:36 :in start’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/bin/rhc:20:in’ from C:/Ruby22-x64/bin/rhc:23:in load’<br> from C:/Ruby22-x64/bin/rhc:23:in’</p>
+<p>C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in require’:<br> cannot load such file – dl/import (LoadError) from C:/<br>Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/<a id="more"></a>kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/au thentication/pageant.rb:1:in <top (required)="">‘ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/authentication/agent/socket.rb:5:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/au thentication/agent.rb:22:in <top (required)="">‘ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/authentication/key_manager.rb:4:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/au thentication/session.rb:4:in <top (required)="">‘ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh.rb:11:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/ssh_helpe rs.rb:18:in <top (required)="">‘ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/wizard.rb:77:in’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/wizard.rb :7:in <a href="module:RHC" target="_blank" rel="noopener">module:RHC</a>‘<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/wizard.rb:6:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands/ base.rb:4:in <top (required)="">‘ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands/account.rb:2:in’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands/ account.rb:1:in <top (required)="">‘ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands.rb:189:inblock in load’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands. rb:188:in each’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands.rb:188:inload’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/cli.rb:36 :in start’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/bin/rhc:20:in’ from C:/Ruby22-x64/bin/rhc:23:in load’<br> from C:/Ruby22-x64/bin/rhc:23:in’</top></top></top></top></top></top></p>
 <p>解决方法如下：</p>
 <p>Updating net-ssh to 2.9.3.beta1 (as cremno suggested in a comment above) resolved my problem:</p>
 <p>For unix:</p>
@@ -163,9 +163,9 @@ var _hmt = _hmt || [];
 		
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RHC/">RHC</a></li></ul>
 
-	  </div>
+	  </footer></div>
 
-    </footer>
+    
 	  
 	
   </div>
@@ -198,7 +198,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/教程/">教程</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">11</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/教程/">教程</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -208,7 +208,7 @@ var _hmt = _hmt || [];
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/A-level/" style="font-size: 10px;">A_level</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PAT/" style="font-size: 12.5px;">PAT</a> <a href="/tags/RHC/" style="font-size: 10px;">RHC</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/git-hooks/" style="font-size: 10px;">git hooks</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 12.5px;">linux</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/数据结构/" style="font-size: 12.5px;">数据结构</a>
+      <a href="/tags/A-level/" style="font-size: 10px;">A_level</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PAT/" style="font-size: 12.5px;">PAT</a> <a href="/tags/RHC/" style="font-size: 10px;">RHC</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/git-hooks/" style="font-size: 10px;">git hooks</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 12.5px;">linux</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/数据结构/" style="font-size: 12.5px;">数据结构</a>
     </div>
   </div>
 
@@ -217,7 +217,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">music</h3>
     <div class="widget-music">
     
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=2085281746&auto=1&height=90"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="110" src="//music.163.com/outchain/player?type=0&id=2085281746&auto=1&height=90"></iframe>
 	
 	</div>
   </div>
@@ -238,7 +238,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-title"></h3>
 	
     <div class="widget-music">
-		<a href="https://www.upyun.com" title="由又拍云加速"><img src="upyun_logo21.png" width="250" height="120"/></a>
+		<a href="https://www.upyun.com" title="由又拍云加速"><img src="upyun_logo21.png" width="250" height="120"></a>
 
     </div>
   </div>

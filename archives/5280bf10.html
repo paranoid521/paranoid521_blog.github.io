@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>git hooks实现项目自动部署 | Paranoid&#39;s cottage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="创建git用户 adduser git创建裸仓库： git init --bare GitBook.git更改仓库所属用户和组：">
+  <meta name="description" content="创建git用户 adduser git 创建裸仓库： git init --bare GitBook.git 更改仓库所属用户和组：">
 <meta name="keywords" content="Git,git hooks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git hooks实现项目自动部署">
 <meta property="og:url" content="https://blog.fetdesign.com/archives/5280bf10.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="创建git用户 adduser git创建裸仓库： git init --bare GitBook.git更改仓库所属用户和组：">
+<meta property="og:description" content="创建git用户 adduser git 创建裸仓库： git init --bare GitBook.git 更改仓库所属用户和组：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-02-14T03:17:02.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git hooks实现项目自动部署">
-<meta name="twitter:description" content="创建git用户 adduser git创建裸仓库： git init --bare GitBook.git更改仓库所属用户和组：">
+<meta name="twitter:description" content="创建git用户 adduser git 创建裸仓库： git init --bare GitBook.git 更改仓库所属用户和组：">
   
     <link rel="alternative" href="/atom.xml" title="Paranoid&#39;s cottage" type="application/atom+xml">
   
@@ -100,7 +100,7 @@ var _hmt = _hmt || [];
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-工具_Githooks实现自动部署_new" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-工具_Githooks实现自动部署_new" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/archives/5280bf10.html" class="article-date">
   <time datetime="2019-02-14T03:16:39.875Z" itemprop="datePublished">2019-02-14</time>
@@ -128,23 +128,28 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>创建git用户</p>
-<pre><code>adduser git</code></pre><p>创建裸仓库：</p>
-<pre><code>git init --bare GitBook.git</code></pre><p>更改仓库所属用户和组：<a id="more"></a></p>
-<pre><code>chown -R git:git GitBook.git/</code></pre><p>将本地PC秘钥添加到/home/git/.ssh/authorized_keys中，没有则创建</p>
-<p>修改GItBook.git中的hook的post-receive文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">IS_BARE=$(git rev-parse --is-bare-repository)</span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$IS_BARE</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> &gt;&amp;2 <span class="string">"fatal: post-receive: IS_NOT_BARE"</span></span><br><span class="line"><span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">unset</span> GIT_DIR</span><br><span class="line">DeployPath=<span class="string">"/var/www/GitBook"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"==============================================="</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$DeployPath</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deploying the webapp"</span></span><br><span class="line"></span><br><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/master</span><br><span class="line"></span><br><span class="line">time=`date`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"web server pull at webserver at time: <span class="variable">$time</span>."</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"================================================"</span></span><br></pre></td></tr></table></figure>
-
+<pre><code>adduser git
+</code></pre><p>创建裸仓库：</p>
+<pre><code>git init --bare GitBook.git
+</code></pre><p>更改仓库所属用户和组：<a id="more"></a></p>
+<pre><code>chown -R git:git GitBook.git/
+</code></pre><p>将本地PC秘钥添加到/home/git/.ssh/authorized_keys中，没有则创建</p>
+<p>修改GItBook.git中的hook的post-receive文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">IS_BARE=$(git rev-parse --is-bare-repository)</span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$IS_BARE</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> &gt;&amp;2 <span class="string">"fatal: post-receive: IS_NOT_BARE"</span></span><br><span class="line"><span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">unset</span> GIT_DIR</span><br><span class="line">DeployPath=<span class="string">"/var/www/GitBook"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"==============================================="</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$DeployPath</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deploying the webapp"</span></span><br><span class="line"></span><br><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/master</span><br><span class="line"></span><br><span class="line">time=`date`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"web server pull at webserver at time: <span class="variable">$time</span>."</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"================================================"</span></span><br></pre></td></tr></table></figure></p>
 <p>更改文件用户：</p>
-<pre><code>chown -R git:git post-receive</code></pre><p>更改文件权限：</p>
-<pre><code>chmod -R +755 post-receive</code></pre><p>创建www文件：</p>
-<pre><code>git clone ../GitBook.git</code></pre><p>更改权限和用户：</p>
+<pre><code>chown -R git:git post-receive
+</code></pre><p>更改文件权限：</p>
+<pre><code>chmod -R +755 post-receive
+</code></pre><p>创建www文件：</p>
+<pre><code>git clone ../GitBook.git
+</code></pre><p>更改权限和用户：</p>
 <pre><code>chown -R www-data:www-data gitBookRepo/
 
-chmod -R 775 gitBookRepo/</code></pre><p>在本地git clone：</p>
-<pre><code>git clone git@*.com:/var/GitBook.git</code></pre><p>将隐藏文件.git复制到要commit的文件夹中，使用git即可将本地文件在远端发布</p>
+chmod -R 775 gitBookRepo/
+</code></pre><p>在本地git clone：</p>
+<pre><code>git clone git@*.com:/var/GitBook.git
+</code></pre><p>将隐藏文件.git复制到要commit的文件夹中，使用git即可将本地文件在远端发布</p>
 <p>可能出现的问题：</p>
 <figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">error: </span>cannot open .git/FETCH_HEAD: Permission denied</span><br></pre></td></tr></table></figure>
-
 <p>解决方法：<a href="https://blog.fetdesign.com/archives/a2d5c370.html">https://blog.fetdesign.com/archives/a2d5c370.html</a></p>
 
 	
@@ -174,15 +179,24 @@ chmod -R 775 gitBookRepo/</code></pre><p>在本地git clone：</p>
 		
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-hooks/">git hooks</a></li></ul>
 
-	  </div>
+	  </footer></div>
 
-    </footer>
+    
 	  
 	
   </div>
   
     
 <nav id="article-nav">
+  
+    <a href="/archives/undefined.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          springboot异常：java.lang.NoClassDefFoundError antlr RecognitionException解决
+        
+      </div>
+    </a>
   
   
     <a href="/archives/c4e6a0ba.html" id="article-nav-older" class="article-nav-link-wrap">
@@ -205,7 +219,7 @@ chmod -R 775 gitBookRepo/</code></pre><p>在本地git clone：</p>
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/教程/">教程</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">11</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/教程/">教程</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -215,7 +229,7 @@ chmod -R 775 gitBookRepo/</code></pre><p>在本地git clone：</p>
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/A-level/" style="font-size: 10px;">A_level</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PAT/" style="font-size: 12.5px;">PAT</a> <a href="/tags/RHC/" style="font-size: 10px;">RHC</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/git-hooks/" style="font-size: 10px;">git hooks</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 12.5px;">linux</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/数据结构/" style="font-size: 12.5px;">数据结构</a>
+      <a href="/tags/A-level/" style="font-size: 10px;">A_level</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PAT/" style="font-size: 12.5px;">PAT</a> <a href="/tags/RHC/" style="font-size: 10px;">RHC</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/git-hooks/" style="font-size: 10px;">git hooks</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/linux/" style="font-size: 12.5px;">linux</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/webapp/" style="font-size: 10px;">webapp</a> <a href="/tags/数据结构/" style="font-size: 12.5px;">数据结构</a>
     </div>
   </div>
 
@@ -224,7 +238,7 @@ chmod -R 775 gitBookRepo/</code></pre><p>在本地git clone：</p>
     <h3 class="widget-title">music</h3>
     <div class="widget-music">
     
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=2085281746&auto=1&height=90"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="110" src="//music.163.com/outchain/player?type=0&id=2085281746&auto=1&height=90"></iframe>
 	
 	</div>
   </div>
@@ -245,7 +259,7 @@ chmod -R 775 gitBookRepo/</code></pre><p>在本地git clone：</p>
     <h3 class="widget-title"></h3>
 	
     <div class="widget-music">
-		<a href="https://www.upyun.com" title="由又拍云加速"><img src="upyun_logo21.png" width="250" height="120"/></a>
+		<a href="https://www.upyun.com" title="由又拍云加速"><img src="upyun_logo21.png" width="250" height="120"></a>
 
     </div>
   </div>
