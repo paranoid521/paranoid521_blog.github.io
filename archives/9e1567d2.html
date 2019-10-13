@@ -56,6 +56,16 @@
   };
 </script>
 
+  <!-- Google AdSense 代码 -->
+  <!-- ad start - partial('google_adsense') <%- partial('google-adsense') %>  ad end -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-4772849818672786",
+          enable_page_level_ads: true
+     });
+</script>
+
   <meta name="description" content="安装Flarum论坛软件 ##系统需求服务器： Apache (需要支持 mod_rewrite)、Nginx、LighttpdPHP 5.5+，需要开启的扩展：mbstring, pdo_mysql, openssl, json, gd, dom, fileinfoMySQL 5.5+ 开启Apache的mod_rewrite：">
 <meta name="keywords" content="webapp">
 <meta property="og:type" content="article">
@@ -599,18 +609,26 @@ Require all denied
       
       <div class="site-state-item site-state-categories">
         
+          
+            <a href="/categories/">
+          
+        
         <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
-        
+        </a>
       </div>
     
       
       
       <div class="site-state-item site-state-tags">
         
+          
+            <a href="/tags/">
+          
+        
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span>
-        
+        </a>
       </div>
     
   </nav>

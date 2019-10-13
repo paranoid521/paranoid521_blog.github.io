@@ -56,6 +56,16 @@
   };
 </script>
 
+  <!-- Google AdSense 代码 -->
+  <!-- ad start - partial('google_adsense') <%- partial('google-adsense') %>  ad end -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-4772849818672786",
+          enable_page_level_ads: true
+     });
+</script>
+
   <meta name="description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
@@ -518,18 +528,26 @@ chmod -R g+s /var/www</code></pre>
       
       <div class="site-state-item site-state-categories">
         
+          
+            <a href="/categories/">
+          
+        
         <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
-        
+        </a>
       </div>
     
       
       
       <div class="site-state-item site-state-tags">
         
+          
+            <a href="/tags/">
+          
+        
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span>
-        
+        </a>
       </div>
     
   </nav>
