@@ -1,0 +1,1266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>springboot异常：java.lang.NoClassDefFoundError antlr RecognitionException解决</title>
+    <url>/archives/543ed636.html</url>
+    <content><![CDATA[<p>springboot异常：java.lang.NoClassDefFoundError: antlr/RecognitionException解决</p><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">java<span class="selector-class">.lang</span><span class="selector-class">.NoClassDefFoundError</span>: antlr/ANTLRException    at org<span class="selector-class">.hibernate</span><span class="selector-class">.hql</span><span class="selector-class">.ast</span><span class="selector-class">.ASTQueryTranslatorFactory</span><span class="selector-class">.createQueryTranslator</span>(ASTQueryTranslatorFactory<span class="selector-class">.java</span>:<span class="number">58</span>)    at org<span class="selector-class">.hibernate</span><span class="selector-class">.engine</span><span class="selector-class">.query</span><span class="selector-class">.HQLQueryPlan</span>.(HQLQueryPlan<span class="selector-class">.java</span>:<span class="number">98</span>)    at org<span class="selector-class">.hibernate</span><span class="selector-class">.engine</span><span class="selector-class">.query</span><span class="selector-class">.HQLQueryPlan</span>.(HQLQueryPlan<span class="selector-class">.java</span>:<span class="number">80</span>)    at org<span class="selector-class">.hibernate</span><span class="selector-class">.engine</span><span class="selector-class">.query</span><span class="selector-class">.QueryPlanCache</span><span class="selector-class">.getHQLQueryPlan</span>(QueryPlanCache<span class="selector-class">.java</span>:<span class="number">98</span>)    at org<span class="selector-class">.hibernate</span><span class="selector-class">.impl</span><span class="selector-class">.AbstractSessionImpl</span><span class="selector-class">.getHQLQueryPlan</span>(AbstractSessionImpl<span class="selector-class">.java</span>:<span class="number">156</span>)    at org<span class="selector-class">.hibernate</span><span class="selector-class">.impl</span><span class="selector-class">.AbstractSessionImpl</span><span class="selector-class">.createQuery</span>(AbstractSessionImpl<span class="selector-class">.java</span>:<span class="number">135</span>)    at org<span class="selector-class">.hibernate</span><span class="selector-class">.impl</span><span class="selector-class">.SessionImpl</span><span class="selector-class">.createQuery</span>(SessionImpl<span class="selector-class">.java</span>:<span class="number">1760</span>)    at DataAccess<span class="selector-class">.WKS</span><span class="selector-class">.Repositories</span><span class="selector-class">.WksRepositoryBase</span><span class="selector-class">.LoadAllData</span>(WksRepositoryBase<span class="selector-class">.java</span>:<span class="number">193</span>)    at Run.main(Run<span class="selector-class">.java</span>:<span class="number">13</span>)Caused by: java<span class="selector-class">.lang</span><span class="selector-class">.ClassNotFoundException</span>: antlr<span class="selector-class">.ANTLRException</span>    at java<span class="selector-class">.net</span><span class="selector-class">.URLClassLoader</span>$<span class="number">1</span>.run(Unknown Source)    at java<span class="selector-class">.net</span><span class="selector-class">.URLClassLoader</span>$<span class="number">1</span>.run(Unknown Source)    at java<span class="selector-class">.security</span><span class="selector-class">.AccessController</span><span class="selector-class">.doPrivileged</span>(Native Method)    at java<span class="selector-class">.net</span><span class="selector-class">.URLClassLoader</span><span class="selector-class">.findClass</span>(Unknown Source)    at java<span class="selector-class">.lang</span><span class="selector-class">.ClassLoader</span><span class="selector-class">.loadClass</span>(Unknown Source)    at sun<span class="selector-class">.misc</span><span class="selector-class">.Launcher</span><span class="variable">$AppClassLoader</span>.loadClass(Unknown Source)    at java<span class="selector-class">.lang</span><span class="selector-class">.ClassLoader</span><span class="selector-class">.loadClass</span>(Unknown Source)    ... <span class="number">9</span> more</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+<p>项目编译时，由于网络原因下载jar包antlr可能下载不完成或文件损坏造成的，根源还是找不到antlr的jar包，此时可以删掉.m2/repository/antlr下的所有文件，然后重新maven update下载后就OK了！</p>
+<p>转自：<a href="https://blog.csdn.net/lc5204118/article/details/78298267" target="_blank" rel="noopener">https://blog.csdn.net/lc5204118/article/details/78298267</a></p>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>springBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git hooks实现项目自动部署</title>
+    <url>/archives/5280bf10.html</url>
+    <content><![CDATA[<p>创建git用户</p>
+<pre><code>adduser git</code></pre><p>创建裸仓库：</p>
+<pre><code>git init --bare GitBook.git</code></pre><p>更改仓库所属用户和组：<a id="more"></a></p>
+<pre><code>chown -R git:git GitBook.git/</code></pre><p>将本地PC秘钥添加到/home/git/.ssh/authorized_keys中，没有则创建</p>
+<p>修改GItBook.git中的hook的post-receive文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">IS_BARE=$(git rev-parse --is-bare-repository)</span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$IS_BARE</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> &gt;&amp;2 <span class="string">"fatal: post-receive: IS_NOT_BARE"</span></span><br><span class="line"><span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">unset</span> GIT_DIR</span><br><span class="line">DeployPath=<span class="string">"/var/www/GitBook"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"==============================================="</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$DeployPath</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deploying the webapp"</span></span><br><span class="line"></span><br><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/master</span><br><span class="line"></span><br><span class="line">time=`date`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"web server pull at webserver at time: <span class="variable">$time</span>."</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"================================================"</span></span><br></pre></td></tr></table></figure>
+
+<p>更改文件用户：</p>
+<pre><code>chown -R git:git post-receive</code></pre><p>更改文件权限：</p>
+<pre><code>chmod -R +755 post-receive</code></pre><p>创建www文件：</p>
+<pre><code>git clone ../GitBook.git</code></pre><p>更改权限和用户：</p>
+<pre><code>chown -R www-data:www-data gitBookRepo/
+
+chmod -R 775 gitBookRepo/</code></pre><p>在本地git clone：</p>
+<pre><code>git clone git@*.com:/var/GitBook.git</code></pre><p>将隐藏文件.git复制到要commit的文件夹中，使用git即可将本地文件在远端发布</p>
+<p>可能出现的问题：</p>
+<figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line"><span class="keyword">error: </span>cannot open .git/FETCH_HEAD: Permission denied</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：<a href="https://blog.fetdesign.com/archives/a2d5c370.html">https://blog.fetdesign.com/archives/a2d5c370.html</a></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>git hooks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx实现强制https连接</title>
+    <url>/archives/c4e6a0ba.html</url>
+    <content><![CDATA[<p>修改Nginx配置文件</p>
+<p>../nginx/sites-available/default</p>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen <span class="number">443</span>;</span><br><span class="line">    server_name *.com;</span><br><span class="line">    ssl on;</span><br><span class="line">    root /<span class="keyword">var</span>/www/GitBook;</span><br><span class="line"></span><br><span class="line">    index index.html index.php index.htm;<span class="xml"><span class="comment">&lt;!--more--&gt;</span></span></span><br><span class="line"><span class="xml">    ssl_certificate  cert/*.com.pem;</span></span><br><span class="line"><span class="xml">    ssl_certificate_key cert/*.com.key;</span></span><br><span class="line"><span class="xml">    ssl_session_timeout 5m;</span></span><br><span class="line"><span class="xml">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span></span><br><span class="line"><span class="xml">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span></span><br><span class="line"><span class="xml">    ssl_prefer_server_ciphers on;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">        location / &#123;</span></span><br><span class="line"><span class="xml">                try_files $uri $uri/ =404;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">        location ~ /\.ht &#123;</span></span><br><span class="line"><span class="xml">            deny all;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">server &#123;</span></span><br><span class="line"><span class="xml">        listen 80;</span></span><br><span class="line"><span class="xml">        listen [::]:80;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">        server_name *.com;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">        rewrite ^(.*)$ https://$host$1 permanent;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>在sites-enabled建立软连接：</p>
+<pre><code>ln -s ../sites-available/fetdesign_tcm</code></pre>]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>https</tag>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PAT 乙级 1002 写出这个数</title>
+    <url>/archives/e350358e.html</url>
+    <content><![CDATA[<p>1002 写出这个数 （20 分）</p>
+<p>读入一个正整数 n，计算其各位数字之和，用汉语拼音写出和的每一位数字。</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>每个测试输入包含 1 个测试用例，即给出自然数 n 的值。这里保证 n 小于 10​100​​。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>在一行内输出 n 的各位数字之和的每一位，拼音数字间有 1 空格，但一行中最后一个拼音数字后没有空格。</p>
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line"><span class="number">1234567890987654321123456789</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">yi <span class="keyword">san</span> <span class="keyword">wu</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="c语言"><a href="#c语言" class="headerlink" title="c语言"></a>c语言</h4><pre><code>输入：正整数 1-10^100
+输出：输入每个数字之和的汉语拼音，拼音之间有空格，但最后一个无空格 
+
+计算：
+    循环判断 i ，循环条件: i&lt;字符串长度 
+         n 对 10 取余，用 m 统计
+         n 除 10 ，向高位移一位 </code></pre><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">char</span> pinyin[][<span class="number">5</span>] = &#123;<span class="string">"ling"</span>, <span class="string">"yi"</span>, <span class="string">"er"</span>, <span class="string">"san"</span>, <span class="string">"si"</span>, <span class="string">"wu"</span>, <span class="string">"liu"</span>, <span class="string">"qi"</span>, <span class="string">"ba"</span>, <span class="string">"jiu"</span> &#125;;</span><br><span class="line">	<span class="keyword">char</span> n[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">char</span> ms[<span class="number">5</span>] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">int</span> i,j, m = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> temp;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, &amp;n);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i&lt; <span class="built_in">strlen</span>(n); i++) &#123;</span><br><span class="line">		m = m + (n[i] - <span class="number">48</span>);</span><br><span class="line">	&#125; </span><br><span class="line">								<span class="comment">//printf("m=%d\n", m);</span></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; m &gt; <span class="number">0</span>; i++)&#123;</span><br><span class="line">		temp = m % <span class="number">10</span>;   		<span class="comment">//printf("temp=%d\n", temp);</span></span><br><span class="line">		m = m / <span class="number">10</span>;				<span class="comment">//printf("m=%d\n", m);</span></span><br><span class="line">		ms[i] = temp + <span class="number">48</span>; 			<span class="comment">//printf("ms=%s\n\n", ms);</span></span><br><span class="line">	&#125;</span><br><span class="line">									<span class="comment">//printf("ms=%s\n\n", ms);</span></span><br><span class="line">	<span class="keyword">for</span>( j = <span class="built_in">strlen</span>(ms); j &gt; <span class="number">0</span>; j--)&#123; </span><br><span class="line">		<span class="keyword">if</span>(j &gt; <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%s "</span>, pinyin[ms[j<span class="number">-1</span>]<span class="number">-48</span>]);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%s"</span>, pinyin[ms[j<span class="number">-1</span>]<span class="number">-48</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>PAT</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pat 乙级 1001害死人不偿命的(3n+1)猜想</title>
+    <url>/archives/27a359ad.html</url>
+    <content><![CDATA[<p><img src="https://i.loli.net/2019/02/08/5c5cffaa3f1f7.png" alt="如何才能PAT甲级过八九十分"></p>
+<p>1001 害死人不偿命的(3n+1)猜想 （15 分）</p>
+<p>卡拉兹(Callatz)猜想：</p>
+<p>对任何一个正整数 n，如果它是偶数，那么把它砍掉一半；如果它是奇数，那么把 (3n+1) 砍掉一半。这样一直反复砍下去，最后一定在某一步得到 n=1。卡拉兹在 1950 年的世界数学家大会上公布了这个猜想，传说当时耶鲁大学师生齐动员，拼命想证明这个貌似很傻很天真的命题，结果闹得学生们无心学业，一心只证 (3n+1)，以至于有人说这是一个阴谋，卡拉兹是在蓄意延缓美国数学界教学与科研的进展……</p>
+<a id="more"></a>
+<p>我们今天的题目不是证明卡拉兹猜想，而是对给定的任一不超过 1000 的正整数 n，简单地数一下，需要多少步（砍几下）才能得到 n=1？</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>每个测试输入包含 1 个测试用例，即给出正整数 n 的值。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>输出从 n 计算到 1 需要的步数。</p>
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="c语言"><a href="#c语言" class="headerlink" title="c语言"></a>c语言</h4><p>问题：<br>1.不需要限定范围1-1000<br>2.不需要考虑1是奇数，1不需要继续参与运算</p>
+<pre><code>输入：每次输入一个测试用例
+输入范围：不超过1000的正整数
+ 输出：计算步数 
+
+计算过程：
+1. 循环判断给定数字 n 的奇偶性，(循环结束条件：n为1)  
+          如奇，则 (3n+1)/2
+        如偶，则 n/2
+        统计步数m</code></pre><p>部分通过</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> main() &#123;</span><br><span class="line">	<span class="built_in">int</span> <span class="built_in">n</span>,m = <span class="number">0</span>;</span><br><span class="line">	scanf(<span class="string">"%d"</span>, &amp;<span class="built_in">n</span>); </span><br><span class="line">	</span><br><span class="line">	while((<span class="built_in">n</span> != <span class="number">1</span> || m == <span class="number">0</span>) &amp;&amp; <span class="built_in">n</span>&gt; <span class="number">0</span> &amp;&amp; <span class="built_in">n</span>&lt; <span class="number">1001</span>)&#123;</span><br><span class="line">		<span class="built_in">if</span>(<span class="built_in">n</span>%<span class="number">2</span>)&#123;					//printf(<span class="string">"n是奇数n=%d \n"</span>, <span class="built_in">n</span>);</span><br><span class="line">			<span class="built_in">n</span> = (<span class="number">3</span>*<span class="built_in">n</span>+<span class="number">1</span>) / <span class="number">2</span>;		//printf(<span class="string">"3n+1 除以2后%d \n\n"</span>,<span class="built_in">n</span>);</span><br><span class="line">		&#125; else &#123;					//printf(<span class="string">"n是偶数n=%d \n"</span>, <span class="built_in">n</span>);</span><br><span class="line">			<span class="built_in">n</span> = <span class="built_in">n</span> / <span class="number">2</span>;				//printf(<span class="string">"除以2后%d \n\n"</span>,<span class="built_in">n</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		m = m + <span class="number">1</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	printf(<span class="string">"%d"</span>, m);</span><br><span class="line">	return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>全部通过：</p>
+<figure class="highlight perl"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="keyword">int</span> main() &#123;</span><br><span class="line">	<span class="keyword">int</span> n,<span class="keyword">m</span> = <span class="number">0</span>;</span><br><span class="line">	scanf(<span class="string">"%d"</span>, &amp;n); </span><br><span class="line">	<span class="keyword">while</span>(n != <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(n%2)&#123;					<span class="regexp">//printf</span>(<span class="string">"n是奇数n=%d \n"</span>, n);</span><br><span class="line">			n = (<span class="number">3</span>*n+<span class="number">1</span>) / <span class="number">2</span>;		<span class="regexp">//printf</span>(<span class="string">"3n+1 除以2后%d \n\n"</span>,n);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;					<span class="regexp">//printf</span>(<span class="string">"n是偶数n=%d \n"</span>, n);</span><br><span class="line">			n = n / <span class="number">2</span>;				<span class="regexp">//printf</span>(<span class="string">"除以2后%d \n\n"</span>,n);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">m</span> = <span class="keyword">m</span> + <span class="number">1</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">printf</span>(<span class="string">"%d"</span>, <span class="keyword">m</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>c++：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">while</span>(n != <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(n % <span class="number">2</span>) </span><br><span class="line">            n = (<span class="number">3</span> * n + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            n = n / <span class="number">2</span>;</span><br><span class="line">        m++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; m;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>PAT</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语言基础 - 循环控制</title>
+    <url>/archives/66c9e6d7.html</url>
+    <content><![CDATA[<p>break：退出整个循环<br>continue：退出本轮循环<br>在多层嵌套循环中，只能对它所在的那套循环做。</p>
+<a id="more"></a>
+<p>应用1<br><img src="https://i.loli.net/2019/01/05/5c302f3509840.png" alt="20190105092911498.png"></p>
+<pre><code>int n,i;
+double sum 0.0;
+double sign 1.0;
+
+scanf(&quot;%d&quot;,&amp;n);
+for ( i = 1; i&lt;=n; i++ ）{
+    sum += sign/i;
+    sign = -sign;
+}</code></pre><p>应用2<br>正序分解整数<br>输入一个非负整数，正序输出它的每一个数字<br>输入：13425<br>输出：1 3 4 2 5<br><img src="https://i.loli.net/2019/01/05/5c302fababb20.png" alt="20190105095819638.png"></p>
+<p>应用3<br>求最大公约数<br>输入两个数a和b，输出他们的最大公约数<br>输入： 12 18<br>输出： 6<br>法一 枚举法<br><img src="https://i.loli.net/2019/01/05/5c302fac3e1d9.png" alt="20190105112414223.png"><br>法二 辗转相除法</p>
+<ol>
+<li>如果b等于0，计算结束，a就是最大公约数；</li>
+<li>否则，如果a除以b的余数，让a等于b，而b等于那个余数；</li>
+<li>回到第一步。</li>
+</ol>
+<p><img src="https://i.loli.net/2019/01/05/5c302fac3acc8.png" alt="20190105113431948.png"></p>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flarum安装教程-PHP7、Apache和MySQL5.7</title>
+    <url>/archives/9e1567d2.html</url>
+    <content><![CDATA[<p>安装Flarum论坛软件</p>
+<p>##系统需求<br>服务器： Apache (需要支持 mod_rewrite)、Nginx、Lighttpd<br>PHP 5.5+，需要开启的扩展：mbstring, pdo_mysql, openssl, json, gd, dom, fileinfo<br>MySQL 5.5+</p>
+<p>开启Apache的mod_rewrite：</p>
+<a id="more"></a>
+<p>命令开启   </p>
+<pre><code>sudo a2enmod rewrite
+sudo /etc/init.d/apache2 restart</code></pre><p>设置php扩展：</p>
+<pre><code>mbstring.language = Chinese
+mbstring.internal_encoding = UTF-8
+mbstring.encoding_translation = On
+mbstring.http_input = UTF-8
+mbstring.http_output = UTF-8
+mbstring.detect_order = UTF-8
+mbstring.substitute_character = none</code></pre><p>/etc/init.d/php-fpm7.0 restart</p>
+<p>Nginx<br>添加下述配置到你的服务器配置块：<br>http{}中</p>
+<pre><code>server{
+        location / { try_files $uri $uri/ /index.php?$query_string; }
+        location /api { try_files $uri $uri/ /api.php?$query_string; }
+        location /admin { try_files $uri $uri/ /admin.php?$query_string; }
+
+        location /flarum {
+            deny all;
+            return 404;
+        }
+
+        location ~* \.php$ {
+            fastcgi_split_path_info ^(.+.php)(/.+)$;
+            fastcgi_pass unix:/var/run/php5-fpm.sock;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_param HTTP_PROXY &quot;&quot;; # Fix for https://httpoxy.org/ vulnerability
+            fastcgi_index index.php;
+        }
+
+        location ~* \.html$ {
+            expires -1;
+        }
+
+        location ~* \.(css|js|gif|jpe?g|png)$ {
+            expires 1M;
+            add_header Pragma public;
+            add_header Cache-Control &quot;public, must-revalidate, proxy-revalidate&quot;;
+        }
+
+        gzip on;
+        gzip_http_version 1.1;
+        gzip_vary on;
+        gzip_comp_level 6;
+        gzip_proxied any;
+        gzip_types application/atom+xml
+                   application/javascript
+                   application/json
+                   application/vnd.ms-fontobject
+                   application/x-font-ttf
+                   application/x-web-app-manifest+json
+                   application/xhtml+xml
+                   application/xml
+                   font/opentype
+                   image/svg+xml
+                   image/x-icon
+                   text/css
+                   text/plain
+                   text/xml;
+        gzip_buffers 16 8k;
+        gzip_disable &quot;MSIE [1-6]\.(?!.*SV1)&quot;;
+}</code></pre><p> sudo apache2ctl -k restart</p>
+<p>安装</p>
+<pre><code>sudo apt-get install apache2
+sudo apt-get install php5
+sudo apt-get install mysql-server
+sudo apt-get install php5-mysql</code></pre><p>创建flarum工程 </p>
+<pre><code>composer create-project flarum/flarum . --stability=beta</code></pre><p>安装过程中可能会出现错误：</p>
+<pre><code>Installing flarum/flarum (v0.1.0-beta.5)
+- Installing flarum/flarum (v0.1.0-beta.5)
+Downloading: 100%
+Created project in .
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Your requirements could not be resolved to an installable set of packages.
+Problem 1
+- flarum/flarum-ext-akismet v0.1.0-beta.3 requires tijsverkoyen/akismet ^1.1 -&gt; satisfiable by tijsverkoyen/akismet[1.1.0].
+- flarum/flarum-ext-akismet v0.1.0-beta.5 requires tijsverkoyen/akismet ^1.1 -&gt; satisfiable by tijsverkoyen/akismet[1.1.0].
+- tijsverkoyen/akismet 1.1.0 requires ext-curl * -&gt; the requested PHP extension curl is missing from your system.
+- Installation request for flarum/flarum-ext-akismet ^0.1.0 -&gt; satisfiable by flarum/flarum-ext-akismet[v0.1.0-beta.3, v0.1.0-beta.5].
+To enable extensions, verify that they are enabled in those .ini files:
+- /etc/php5/cli/php.ini
+- /etc/php5/cli/conf.d/05-opcache.ini
+- /etc/php5/cli/conf.d/10-pdo.ini
+- /etc/php5/cli/conf.d/20-json.ini
+- /etc/php5/cli/conf.d/20-mysql.ini
+- /etc/php5/cli/conf.d/20-mysqli.ini
+- /etc/php5/cli/conf.d/20-pdo_mysql.ini
+- /etc/php5/cli/conf.d/20-readline.ini
+You can also run `php --ini` inside terminal to see which files are used by PHP in CLI mode.</code></pre><p>这时需要安装php-curl后，删除目录中的所有文件(包括.开头的隐藏文件)再执行composer create-project flarum/flarum . –stability=beta.</p>
+<pre><code>1 sudo apt-get install php5-curl</code></pre><p>正常的安装日志很长。</p>
+<p>将工程目录全部文件和文件夹的权限修改为777.</p>
+<p>如我的是:</p>
+<pre><code>sudo chmod -R 777 /home/kiya/v2nb</code></pre><p>开启rewrite</p>
+<pre><code>cd /etc/apache2/mods-enabled
+sudo ln -s ../mods-available/rewrite.load</code></pre><p>##其他博客安装示例<br>修改/etc/apache2/sites-available/000-default.conf文件中的DocumentRoot项为你的项目文件夹路径. 如DocumentRoot /usr/flarum/flarum.</p>
+<p>并在该文件中的VirtualHost节点之间添加如下代码:</p>
+<pre><code>&lt;Directory /usr/flarum/flarum&gt;
+AllowOverride All
+&lt;/Directory&gt;</code></pre><p>在/etc/apache2/apache2.conf文件中找到：</p>
+<pre><code>&lt;Directory /&gt;
+Options FollowSymLinks
+AllowOverride None
+Require all denied
+&lt;/Directory&gt;</code></pre><p>将Require all denied改为Require all granted,将AllowOverride None改为AllowOverride All.</p>
+<p>修改host</p>
+<pre><code>sudo vim /etc/hosts</code></pre><p>打开hosts新增加一行192.168.1.2 usr.com. 这里的ip是vps的ip，域名随便写. 本机的话可以ip可以写成127.0.0.1.</p>
+<p>##apache和php7配置不同更新</p>
+<p>重定向</p>
+<p>将所有apache配置中的/var/www/html改为当前论坛的地址，地址将会重定向</p>
+<p>apache与php7绑定<br>进入/etc/apache目录<br>进入conf-enabled，运行ln -s ../conf-available/php7.conf<br>复制php链接。</p>
+<p>采用Apache的mod_proxy_fcgi配合php-fpm运行<br>进入mod-available将proxy.conf,proxy.load,proxy-fcgi.load链接到mod-enabled。</p>
+<p>重启Apache即可，sudo /etc/init.d/apache2 restart</p>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>webapp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PAT1001总结</title>
+    <url>/archives/3e9402bb.html</url>
+    <content><![CDATA[<p>#####思路总结<br>1.完全没必要将其转换成字符串，字符串处理相对复杂。<br>2.要先对结果进行分析，尤其当结果的情况有限时。根本没必要使用按位输出。<br>3.先在草稿纸上对问题进行分析，对结果进行分析，然后再考虑代码实现，不应该在代码实现上浪费太多时间。<br>4.代码越简洁越好，调试清晰方便。  </p>
+<a id="more"></a>
+<p>使用字符串处理，还只是部分正确</p>
+<pre><code>#include &lt;iostream&gt;
+#include &quot;string.h&quot; 
+#include &quot;math.h&quot;
+
+using namespace std; 
+/* run this program using the console pauser or add your own getch, system(&quot;pause&quot;) or input loop */
+void intToChar(int sum);
+
+int main(int argc, char** argv) {
+    int a,b,sum;
+    cin&gt;&gt;a&gt;&gt;b;
+    if(a&gt;=-1000000&amp;&amp;a&lt;=1000000&amp;&amp;b&gt;=-1000000&amp;&amp;b&lt;=1000000)
+    {
+        sum = a + b;
+//        cout&lt;&lt;intToChar(sum)&lt;&lt;endl;    
+        intToChar(sum);
+    } 
+
+    return 0;
+}
+
+void intToChar(int sum)
+{
+    int i;
+    int numBit = 1;
+    char flag = 0;
+    if(sum&lt;0)
+    {
+        sum = -sum;
+        numBit = 2;
+        flag = 1;            
+    }
+    int sum_clone = sum;
+    for(i=0;sum_clone&gt;=10;i++)
+    {
+        numBit++;
+        sum_clone = sum_clone/10;    
+    }
+
+    int n;
+    double BitTemp =(double) numBit;
+    char *intChar = new char[numBit];
+
+    for(n=0;n&lt;numBit;n++)
+    {
+        if(flag == 1) 
+        {
+            intChar[0] = &apos;-&apos;;
+            flag = 0;
+            BitTemp--; 
+        }else{
+//            int test = sum/((int)pow(10.0,BitTemp-1));
+            intChar[n] = sum/((int)pow(10.0,BitTemp-1))+48;
+            sum = sum%((int)pow(10.0,BitTemp-1));
+            BitTemp--;
+        }
+    } 
+
+    int m;
+    for(m=0;m&lt;numBit;m++)
+    {
+        cout&lt;&lt;intChar[m];
+        if(intChar[0] == &apos;-&apos;&amp;&amp;m!=0&amp;&amp;m%3==0&amp;&amp;(m+1)&lt;numBit) cout&lt;&lt;&quot;,&quot;;
+        else if(intChar[0] != &apos;-&apos;&amp;&amp;(m+1)%3==0&amp;&amp;(m+1)&lt;numBit) cout&lt;&lt;&quot;,&quot;;
+        cout&lt;&lt;&quot;=end&quot;&lt;&lt;endl;
+    }
+}</code></pre><p>使用c，简洁实现，并全部正确（copy from net）</p>
+<pre><code>#include&lt;stdio.h&gt;
+
+int main()
+{
+    int a,b,sum;
+    scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+    int i;
+    sum=a+b;
+    if (sum&lt;0){printf(&quot;-&quot;);sum=-sum;}
+    if (sum&gt;=1000000)printf(&quot;%d,%03d,%03d&quot;,sum/1000000,(sum/1000)%1000,(sum%1000));
+    else if (sum&gt;=1000)printf(&quot;%d,%03d&quot;,sum/1000,sum%1000);
+    else printf(&quot;%d&quot;,sum);
+    return 0;
+}</code></pre>]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>A_level</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring上传文件</title>
+    <url>/archives/e3d4c9ae.html</url>
+    <content><![CDATA[<p>通过spring上传文件示例：</p>
+<a id="more"></a>
+<pre><code>package edu.qlnu.mxj.action;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import com.opensymphony.xwork2.ActionContext;
+import edu.qlnu.mxj.service.HomeworkService;
+import edu.qlnu.mxj.service.StaffService;
+
+@SuppressWarnings(&quot;serial&quot;)
+public class UploadAction extends BaseAction {
+    private String hwNo;
+    private String hwName;
+    private String mes;
+    private String author;
+    private HomeworkService homeworkService;
+    private StaffService staffService;
+
+    public StaffService getStaffService() {
+        return staffService;
+    }
+
+    public void setStaffService(StaffService staffService) {
+        this.staffService = staffService;
+    }
+
+    public String getHwNo() {
+        return hwNo;
+    }
+
+    public void setHwNo(String hwNo) {
+        this.hwNo = hwNo;
+    }
+
+    public String getHwName() {
+        return hwName;
+    }
+
+    public void setHwName(String hwName) {
+        this.hwName = hwName;
+    }
+
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public HomeworkService getHomeworkService() {
+        return homeworkService;
+    }
+
+    public void setHomeworkService(HomeworkService homeworkService) {
+        this.homeworkService = homeworkService;
+    }
+
+    public String uploadFile() {                                        System.out.println(&quot;1&quot;);
+        HttpServletRequest request = ServletActionContext.getRequest();
+//        HttpServletResponse response = ServletActionContext.getResponse();
+        DiskFileItemFactory factory = new DiskFileItemFactory();        System.out.println(&quot;1&quot;);
+        @SuppressWarnings(&quot;deprecation&quot;)
+        String path = request.getRealPath(&quot;/upload&quot;);// 设置磁盘缓冲路径
+
+        factory.setRepository(new File(path));                    System.out.println(&quot;1&quot;);
+        factory.setSizeThreshold(1024 * 1024);// 设置创建缓冲大小
+
+        ServletFileUpload upload = new ServletFileUpload(factory);System.out.println(&quot;1&quot;);
+        upload.setSizeMax(-1);// 设置上传文件限制大小,-1无上限
+        try {                                                        System.out.println(&quot;1&quot;);
+            List&lt;FileItem&gt; list = upload.parseRequest(request);System.out.println(&quot;1&quot;);
+            for (FileItem item : list) {
+                // String name = item.getFieldName();
+                if (item.isFormField()) {// 判断是否是文件流
+
+                    item.getString(&quot;UTF-8&quot;);                        System.out.println(&quot;1&quot;);
+                } else {
+                    String value = item.getName();// 会将完整路径名传过来
+                    int start = value.lastIndexOf(&quot;\\&quot;);                        System.out.println(&quot;1&quot;);
+                    value.substring(start + 1);
+                    InputStream in = item.getInputStream();                        System.out.println(&quot;1&quot;);
+
+                    FileOutputStream fos = new FileOutputStream(displayTime() + &quot;.zip&quot;);System.out.println(&quot;1&quot;);
+                    byte[] b = new byte[1024];
+                    while ((in.read(b)) != -1) {
+                        fos.write(b);
+                    }
+                    in.close();
+                    fos.close();
+                    System.out.println(&quot;upload success!&quot;);
+                }
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+        return &quot;upload&quot;;
+    }
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public String upload2() throws IllegalStateException, IOException{   
+        HttpServletRequest request = ServletActionContext.getRequest();
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver(request.getSession().getServletContext()); 
+
+
+//        MultipartResolver resolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+        MultipartHttpServletRequest multiRequest = resolver.resolveMultipart(request);
+
+        String hwName = multiRequest.getParameter(&quot;hwName&quot;);
+        String hwNo = multiRequest.getParameter(&quot;hwNo&quot;);
+        String mes = multiRequest.getParameter(&quot;mes&quot;);
+        String author = multiRequest.getParameter(&quot;author&quot;);
+        System.out.println(hwName+hwNo+mes+author);
+        //判断是否是文件  
+        if(resolver.isMultipart(request)){                                  
+            //进行转换  
+//            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)(request); 
+            //获取所有文件名称  
+            Iterator&lt;String&gt; it = multiRequest.getFileNames();   System.out.println(&quot;222&quot;+multiRequest.getFileNames().hasNext());
+            while(it.hasNext()){  System.out.println(&quot;666&quot;);
+                //根据文件名称取文件  
+                MultipartFile file = multiRequest.getFile(it.next());  
+                String fileName = file.getOriginalFilename(); System.out.println(fileName);
+                String localPath = &quot;/upload/&quot; + fileName;  System.out.println(localPath);
+                File newFile = new File(localPath);  
+                //上传的文件写入到指定的文件中  
+                file.transferTo(newFile);  
+            }
+            ActionContext.getContext().getSession().put(&quot;mes&quot;, &quot;上传成功！&quot;);
+        }else {
+            ActionContext.getContext().getSession().remove(&quot;mes&quot;);
+        } 
+        return &quot;upload&quot;;
+    }  
+
+    public String displayTime() {
+        SimpleDateFormat df = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+        String date = df.format(new Date());
+        return date;
+    }
+}</code></pre>]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用git hooks进行自动部署</title>
+    <url>/archives/a2d5c370.html</url>
+    <content><![CDATA[<p>首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行</p>
+<pre><code>git clone /usr/gitRepo/web.git</code></pre><p>将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。</p>
+<a id="more"></a>
+
+<p>git的hook机制，当git服务器接到各种事件时触发，这里使用的hook是</p>
+<pre><code>post-receive</code></pre><p>这个hook在git服务器受到push请求，并且接受完代码提交时触发。</p>
+<p>具体代码体现：</p>
+<p>在git远端仓库的hooks目录下新建post-receive文件：</p>
+<pre><code>#!/bin/sh
+IS_BARE=$(git rev-parse --is-bare-repository)
+if [ -z &quot;$IS_BARE&quot; ]; then
+echo &gt;&amp;2 &quot;fatal: post-receive: IS_NOT_BARE&quot;
+exit 1
+fi
+
+unset GIT_DIR
+DeployPath=&quot;/var/www/gitRepoHtml&quot;
+
+echo &quot;===============================================&quot;
+cd $DeployPath
+echo &quot;deploying the webapp&quot;
+
+git fetch --all
+git reset --hard origin/master
+
+time=`date`
+echo &quot;web server pull at webserver at time: $time.&quot;
+echo &quot;================================================&quot;</code></pre><p>添加文件后，将权限改为755，用户改为git</p>
+<pre><code>chmod +755 post-receive
+chown git:git post-receive</code></pre><p>这样在开发者提交代码的时候，就会自动部署。</p>
+<p>可能出现的问题：<br>当有push上传时，github会回调，但问题是由于回调时用的是apache这个用户名，不是你ssh进去时用的那个用户名，所以你会发现apache这个用户名对于那个目录没有操作权限：</p>
+<pre><code>error: cannot open .git/FETCH_HEAD: Permission denied</code></pre><p>所以你需要先把ssh_user加到apache组中：</p>
+<pre><code>usermod -a -G apache ssh_user</code></pre><p>在Apache2中用户组为www-data,ssh_user设置为git</p>
+<pre><code>usermod -a -G www-data git    </code></pre><p>然后修改权限：</p>
+<pre><code>chmod -R g+w /var/www
+chown -R git:www-data /var/www
+chmod -R g+s /var/www</code></pre>]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jquery异步-datatable前端</title>
+    <url>/archives/4317f2cd.html</url>
+    <content><![CDATA[<p>基于JQuery的datatable更新示例：</p>
+<a id="more"></a>
+<pre><code>var InitiateEditableDataTable = function () {
+    return {
+        init: function () {
+        //Datatable Initiating
+    var oTable = $(&apos;#editabledatatable&apos;).dataTable({
+        &quot;aLengthMenu&quot;: [
+        [5, 15, 20, 100, -1],
+        [5, 15, 20, 100, &quot;All&quot;]
+        ],
+        &quot;iDisplayLength&quot;: 5,
+        &quot;sPaginationType&quot;: &quot;bootstrap&quot;,
+        &quot;sDom&quot;: &quot;Tflt&lt;&apos;row DTTTFooter&apos;&lt;&apos;col-sm-6&apos;i&gt;&lt;&apos;col-sm-6&apos;p&gt;&gt;&quot;,
+        &quot;oTableTools&quot;: {
+        &quot;aButtons&quot;: [
+                        &quot;print&quot;],
+        &quot;sSwfPath&quot;: &quot;assets/swf/copy_csv_xls_pdf.swf&quot;
+        },
+        &quot;language&quot;: {
+        &quot;search&quot;: &quot;&quot;,
+        &quot;sLengthMenu&quot;: &quot;_MENU_&quot;,
+        &quot;oPaginate&quot;: {
+        &quot;sPrevious&quot;: &quot;Prev&quot;,
+        &quot;sNext&quot;: &quot;Next&quot;
+        }
+        },
+        &quot;aoColumns&quot;: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          { &quot;bSortable&quot;: false }
+        ]
+        });
+        var isEditing = null;
+
+        //Add New Row
+        $(&apos;#editabledatatable_new&apos;).click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: &apos;POST&apos;,
+                url: &quot;car.action?action=getAllStaffNo&quot;,
+                dataType: &quot;json&quot;,
+                data: &quot;&quot;,
+                success: function (data, status) {
+                    fore = &apos;&lt;select name=&quot;staffno&quot; class=&quot;form-control&quot;&gt;&apos;;
+                    var inter = &apos;&apos;;
+                    var temp = &apos;&apos;;
+                    for(var i=0;i&lt;data.length;i++){
+                        temp = &apos;&lt;option value=&quot;&apos;+data[i]+&apos;&quot;&gt;&apos;+data[i]+&apos;&lt;/option&gt;&apos;;
+                        inter = inter + temp;
+                    }
+                    end = &apos;&lt;/select&gt;&apos;;
+                    var aiNew = oTable.fnAddData([&apos;&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,fore+inter+end,
+                                                  &apos;&lt;a href=&quot;#&quot; class=&quot;btn btn-success btn-xs save&quot;&gt;&lt;i class=&quot;fa fa-edit&quot;&gt;&lt;/i&gt; Save&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;btn btn-warning btn-xs cancel&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt; Cancel&lt;/a&gt;&apos;
+                                          ]);
+                    var nRow = oTable.fnGetNodes(aiNew[0]);
+                    editRow(oTable, nRow,data);
+                    isEditing = nRow;
+                }
+            })
+        });
+
+        //Delete an Existing Row
+        $(&apos;#editabledatatable&apos;).on(&quot;click&quot;, &apos;a.delete&apos;, function (e) {
+            e.preventDefault();
+            if (confirm(&quot;确认删除这行数据吗？&quot;) == false) {
+                return;
+            }
+            var nRow = $(this).parents(&apos;tr&apos;)[0];
+            var aData = oTable.fnGetData(nRow);
+
+            $.ajax({
+                type: &apos;POST&apos;,
+                url: &quot;car.action?action=deleteCar&quot;,
+                dataType: &quot;json&quot;,
+                data: {
+                     &quot;id&quot; : aData[0]
+                },
+                success: function (data,textStatus) {     
+                    if(textStatus==&quot;success&quot;){
+                        if(data.status==0){
+                            alert(data.mes);
+                            oTable.fnDeleteRow(nRow);
+                        }
+                    }else{
+                        alert(&quot;网络异常，请稍后再试！&quot;);
+                    }
+                },
+                error:function (XMLHttpRequest,textStatus,errorThrown){
+                    alert(&quot;error&quot;);     
+                }
+            })
+
+        });
+
+        //Cancel Editing or Adding a Row
+        $(&apos;#editabledatatable&apos;).on(&quot;click&quot;, &apos;a.cancel&apos;, function (e) {
+            e.preventDefault();
+            var input = $(&apos;input&apos;, isEditing);
+            if (input[0].value == &quot;&quot;) {
+                var nRow = $(this).parents(&apos;tr&apos;)[0];
+                oTable.fnDeleteRow(nRow);
+                isEditing = null;
+            } else {
+                restoreRow(oTable, isEditing);
+                isEditing = null;
+            }
+        });
+
+        //Edit A Row
+        $(&apos;#editabledatatable&apos;).on(&quot;click&quot;, &apos;a.edit&apos;, function (e) {
+            e.preventDefault();
+
+            var nRow = $(this).parents(&apos;tr&apos;)[0];
+
+            $.ajax({
+                type: &apos;POST&apos;,
+                url: &quot;car.action?action=getAllStaffNo&quot;,
+                dataType: &quot;json&quot;,
+                data: &quot;&quot;,
+                success: function (data, status) {
+
+                    if (isEditing !== null &amp;&amp; isEditing != nRow) {
+                        restoreRow(oTable, isEditing);
+                        editRow(oTable, nRow, data);
+                        isEditing = nRow;
+                    } else {
+                        editRow(oTable, nRow, data);
+                        isEditing = nRow;
+                    }
+                }
+            })
+        });
+
+        //Save an Editing Row
+        $(&apos;#editabledatatable&apos;).on(&quot;click&quot;, &apos;a.save&apos;, function (e) {
+            e.preventDefault();
+            if (this.innerHTML.indexOf(&quot;Save&quot;) &gt;= 0) {
+                var input = $(&apos;input&apos;, isEditing);
+                var select = $(&apos;select&apos;, isEditing);
+                var nRow = $(this).parents(&apos;tr&apos;)[0];
+
+                function CheckData() {
+                    var busNumberLe = input[2].value.length;
+                    var driverPhoneNoLe = input[4].value;
+                    var re = /^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$/;
+                    var driver = input[3].value.length;
+                    var carLine = input[5].value;
+                    var carNo = input[1].value.length;
+                    var carNoValue = input[1].value;
+                    var userNo = select[0].value.length;
+
+                    if(carNo&lt;3){
+                        alert(&quot;请填写正确的车辆号！&quot;);
+                        return false;
+                    }
+                    if(!(/^[a-z]{3}$/.test(carNoValue.substring(0,3)))){
+                        alert(&quot;车辆号格式不正确！&quot;)
+                        return false;
+                    }
+                    if (busNumberLe == 0) {
+                        alert(&quot;车牌号不能为空，请输入。&quot;)
+                        return false;
+                    }
+                    if (input[2].value.search(re) == -1) {
+                        alert(&quot;输入的车牌号格式不正确&quot;);
+                        return false;
+                    }
+                    if (driver == 0) {
+                        alert(&quot;请输入姓名！&quot;)
+                        return false;
+                    }
+                    if (!(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(driverPhoneNoLe))) {
+                        alert(&quot;不是完整的11位手机号或者正确的手机号前七位&quot;);
+                        return false;
+                    }if (userNo == 0) {
+                        alert(&quot;请输入职工号！&quot;)
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+
+                var jsonData = {  
+                         &quot;id&quot; : input[0].value, 
+                         &quot;carNo&quot; : input[1].value,
+                         &quot;carIdtiNumber&quot; : input[2].value,
+                         &quot;driver&quot; : input[3].value,
+                         &quot;driverPhoneNo&quot; : input[4].value, 
+                         &quot;carLineId&quot; : input[5].value,
+                         &quot;status&quot; : input[6].value,
+                         &quot;userNo&quot; : select[0].value
+
+                };
+                if(CheckData()){
+                    $.ajax({
+                        type: &apos;POST&apos;,
+                        url: &quot;car.action?action=saveByAJax&quot;,
+                        dataType: &quot;json&quot;,
+                        data: {
+                             &quot;ss&quot; : JSON.stringify(jsonData)
+                        },
+                        success: function (data, status) {
+                            if (data.status == 0) {
+                                alert(data.mes);
+                                saveRow(oTable, isEditing);
+                            }else{
+                                alert(data.mes);
+                                if(input[0].value==&quot;&quot;){
+                                    oTable.fnDeleteRow(nRow);
+                                }else{
+                                    saveRowError(oTable, isEditing);
+                                }
+                            }
+                            isEditing = null;
+                        },
+                        error:function (a,b,c){
+                            alert(&quot;error&quot;)
+                        }
+                    })
+                }
+            }
+        });
+
+
+        function restoreRow(oTable, nRow) {
+            var aData = oTable.fnGetData(nRow);
+            var jqTds = $(&apos;&gt;td&apos;, nRow);
+
+            for (var i = 0, iLen = jqTds.length; i &lt; iLen; i++) {
+                oTable.fnUpdate(aData[i], nRow, i, false);
+            }
+
+            oTable.fnDraw();
+        }
+
+        function editRow(oTable, nRow,data) {
+            var aData = oTable.fnGetData(nRow);
+            var jqTds = $(&apos;&gt;td&apos;, nRow);
+
+            fore = &apos;&lt;select name=&quot;staffno&quot; class=&quot;form-control&quot;&gt;&apos;;
+            var inter = &apos;&apos;;
+            var temp = &apos;&apos;;
+            for(var i=0;i&lt;data.length;i++){
+                temp = &apos;&lt;option value=&quot;&apos;+data[i]+&apos;&quot;&gt;&apos;+data[i]+&apos;&lt;/option&gt;&apos;;
+                inter = inter + temp;
+            }
+            end = &apos;&lt;/select&gt;&apos;;
+
+            jqTds[0].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:50px;&quot; class=&quot;form-control input-small&quot; disabled=&quot;true&quot; value=&quot;&apos; + aData[0] + &apos;&quot;&gt;&apos;;
+            jqTds[1].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:100px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[1] + &apos;&quot;&gt;&apos;;
+            jqTds[2].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:100px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[2] + &apos;&quot;&gt;&apos;;
+            jqTds[3].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:100px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[3] + &apos;&quot;&gt;&apos;;
+            jqTds[4].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:110px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[4] + &apos;&quot;&gt;&apos;;
+            jqTds[5].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:50px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[5] + &apos;&quot;&gt;&apos;;
+            jqTds[6].innerHTML = &apos;&lt;input type=&quot;text&quot; style=&quot;width:50px;&quot; class=&quot;form-control input-small&quot; value=&quot;&apos; + aData[6] + &apos;&quot;&gt;&apos;;
+            jqTds[7].innerHTML = fore+inter+end;
+            jqTds[8].innerHTML = &apos;&lt;a href=&quot;#&quot; class=&quot;btn btn-success btn-xs save&quot;&gt;&lt;i class=&quot;fa fa-save&quot;&gt;&lt;/i&gt; Save&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;btn btn-warning btn-xs cancel&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt; Cancel&lt;/a&gt;&apos;;
+        }
+
+        function saveRow(oTable, nRow,data) {
+            var jqInputs = $(&apos;input&apos;, nRow);
+            var select = $(&apos;select&apos;, nRow);
+            oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
+            oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
+            oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
+            oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
+            oTable.fnUpdate(jqInputs[4].value, nRow, 4, false);
+            oTable.fnUpdate(jqInputs[5].value, nRow, 5, false);
+            oTable.fnUpdate(jqInputs[6].value, nRow, 6, false);
+            oTable.fnUpdate(select[0].value, nRow, 7, false);
+            oTable.fnUpdate(&apos;&lt;a href=&quot;#&quot; class=&quot;btn btn-info btn-xs edit&quot;&gt;&lt;i class=&quot;fa fa-edit&quot;&gt;&lt;/i&gt; Edit&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;btn btn-danger btn-xs delete&quot;&gt;&lt;i class=&quot;fa fa-trash-o&quot;&gt;&lt;/i&gt; Delete&lt;/a&gt;&apos;, nRow, 8, false);
+            oTable.fnDraw();
+        }
+        function saveRowError(oTable, nRow) {
+            var jqInputs = $(&apos;input&apos;, nRow);
+            oTable.fnUpdate(&apos;&lt;a href=&quot;#&quot; class=&quot;btn btn-info btn-xs edit&quot;&gt;&lt;i class=&quot;fa fa-edit&quot;&gt;&lt;/i&gt; Edit&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;btn btn-danger btn-xs delete&quot;&gt;&lt;i class=&quot;fa fa-trash-o&quot;&gt;&lt;/i&gt; Delete&lt;/a&gt;&apos;, nRow, 8, false);
+            oTable.fnDraw();
+        }
+
+        function cancelEditRow(oTable, nRow) {
+            var jqInputs = $(&apos;input&apos;, nRow);
+            var select = $(&apos;select&apos;, nRow);
+            oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
+            oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
+            oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
+            oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
+            oTable.fnUpdate(jqInputs[4].value, nRow, 4, false);
+            oTable.fnUpdate(jqInputs[5].value, nRow, 5, false);
+            oTable.fnUpdate(jqInputs[6].value, nRow, 6, false);
+            oTable.fnUpdate(select[0].value, nRow, 7, false);
+            oTable.fnUpdate(&apos;&lt;a href=&quot;#&quot; class=&quot;btn btn-info btn-xs edit&quot;&gt;&lt;i class=&quot;fa fa-edit&quot;&gt;&lt;/i&gt; Edit&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;btn btn-danger btn-xs delete&quot;&gt;&lt;i class=&quot;fa fa-trash-o&quot;&gt;&lt;/i&gt; Delete&lt;/a&gt;&apos;, nRow, 8, false);
+            oTable.fnDraw();
+        }
+    }
+};}();</code></pre>]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>普通类如何调用spring实例化好的action操作数据库</title>
+    <url>/archives/ba5542b4.html</url>
+    <content><![CDATA[<p>普通的类如何使用service中配置的seesionFctory操作数据库，通过WebApplicationContext获取容器，即可得到spring中实例化好的action bean，这样就可以调用action中配置好的service。</p>
+<pre><code>public List&lt;BusLine&gt; saveBusLine(int busLineId,String RouteInfo,String loc) {
+    WebApplicationContext context = ContextLoader.getCurrentWebApplicationContext();
+    LineAction lineAction = (LineAction) context.getBean(&quot;LineAction&quot;);
+
+    BusLine busLine = new BusLine();
+    busLine.setBusLineId(busLineId);
+    busLine.setLoc(loc);
+    busLine.setRouteInfo(RouteInfo);
+
+    lineAction.getBusLineService().saveOrUpdate(busLine);
+    return null;
+}</code></pre>]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用js异步post body</title>
+    <url>/archives/760d761f.html</url>
+    <content><![CDATA[<pre><code>//AJAX异步请求
+var xmlHttp;
+//该函数用于创建一个XMLHttpRequest对象
+function createXMLHttpRequest() {
+    if (window.ActiveXObject) {
+        xmlHttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+    } else if (window.XMLHttpRequest) {
+        xmlHttp = new XMLHttpRequest();
+    }
+}
+
+function saveRoute(a,b) {
+    //创建一个XMLHttpRequest对象
+    createXMLHttpRequest();
+    //将状态触发器绑定到一个函数
+    xmlHttp.onreadystatechange = showStaus;
+    //通过GET方法向指定的URL建立服务器的调用
+
+    var parm = &quot;route=&quot;+a+&quot;&amp;points=&quot;+b;            //构造URL参数
+    xmlHttp.open(&quot;POST&quot;, &quot;phone!saveCplInfo.action?&quot;,true);
+
+    xmlHttp.setRequestHeader(&quot;cache-control&quot;,&quot;no-cache&quot;);
+    xmlHttp.setRequestHeader(&quot;contentType&quot;,&quot;text/html;charset=uft-8&quot;) //指定发送的编码
+    xmlHttp.setRequestHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded;&quot;);  //设置请求头信息
+    xmlHttp.send(parm); //设置为发送给服务器数据
+    //发送请求
+    //xmlHttp.send();
+}
+var flag = 0;
+function showStaus() {
+    //定义一个变量用于存放从服务器返回的响应结果
+    var result;
+
+    result = eval(&quot;(&quot;+xmlHttp.responseText+&quot;)&quot;);
+    if(flag != b){
+        alert(result.mes);
+        flag = b;
+    }
+
+}</code></pre><a id="more"></a><p>数据过长时不能使用get方式，使用post方式，将数据放到body中请求。</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>linux下生成图标</title>
+    <url>/archives/70247203.html</url>
+    <content><![CDATA[<p>sudo gedit   /usr/share/applications/webstorm.desktop</p>
+<p>内容输入：</p>
+<p>[Desktop Entry]<br>Encoding=UTF-8<br>Name=webstorm<br>Comment=webstorm IDE<br>Exec=/home/andrew/application/WebStorm-162.1812.21/bin/webstorm.sh<br>Icon=/home/andrew/application/WebStorm-162.1812.21/bin/webstorm.svg<br>Terminal=false<br>StartupNotify=true<br>Type=Application<br>Categories=Application;Development;</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决mysql 8小时断开连接问题，proxool连接池配置</title>
+    <url>/archives/5b07aded.html</url>
+    <content><![CDATA[<p>以下是web.xml的配置信息。</p><pre><code>&lt;servlet&gt;
+&lt;servlet-name&gt;proxoolServletConfigurator&lt;/servlet-name&gt;
+&lt;servlet-class&gt;
+org.logicalcobwebs.proxool.configuration.ServletConfigurator
+&lt;/servlet-class&gt;
+&lt;init-param&gt;
+&lt;param-name&gt;xmlFile&lt;/param-name&gt;
+&lt;param-value&gt;WEB-INF/proxool.xml&lt;/param-value&gt;
+&lt;/init-param&gt;
+&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;/servlet&gt;</code></pre><a id="more"></a>
+<p>在applicationContext.xml中配置proxool。</p>
+<pre><code>&lt;!-- 配置数据源 --&gt;
+&lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
+    &lt;property name=&quot;driverClassName&quot;&gt;
+        &lt;value&gt;org.logicalcobwebs.proxool.ProxoolDriver&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property name=&quot;url&quot;&gt;
+        &lt;value&gt;proxool.Pool_dbname&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;</code></pre><p>以下是proxool.xml的配置信息，放到web-inf目录下。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;proxool-config&gt;
+&lt;proxool&gt;
+    &lt;alias&gt;Pool_dbname&lt;/alias&gt;
+    &lt;driver-url&gt;jdbc:mysql://123456.com:3306/schoolbus?useUnicode=true&amp;amp;characterEncoding=utf8
+    &lt;/driver-url&gt;
+    &lt;driver-class&gt;com.mysql.jdbc.Driver&lt;/driver-class&gt;
+    &lt;driver-properties&gt;
+        &lt;property name=&quot;user&quot; value=&quot;123&quot; /&gt;
+        &lt;property name=&quot;password&quot; value=&quot;123456&quot; /&gt;
+    &lt;/driver-properties&gt;
+
+    &lt;!-- proxool自动侦察各个连接状态的时间间隔(毫秒),侦察到空闲的连接就马上回收,超时的销毁 --&gt;
+    &lt;house-keeping-sleep-time&gt;90000&lt;/house-keeping-sleep-time&gt;
+
+    &lt;maximumActiveTime&gt;600&lt;/maximumActiveTime&gt;
+
+    &lt;maximumConnectionLifetime&gt;7200&lt;/maximumConnectionLifetime&gt;
+    &lt;!-- 指因未有空闲连接可以分配而在队列中等候的最大请求数,超过这个请求数的用户连接就不会被接受 --&gt;
+    &lt;maximum-new-connections&gt;20&lt;/maximum-new-connections&gt;
+    &lt;!-- 最少保持的空闲连接数 --&gt;
+    &lt;prototype-count&gt;3&lt;/prototype-count&gt;
+    &lt;!-- 允许最大连接数,超过了这个连接，再有请求时，就排在队列中等候，最大的等待请求数由maximum-new- connections决定 --&gt;
+    &lt;maximum-connection-count&gt;20&lt;/maximum-connection-count&gt;
+    &lt;!-- 最小连接数 --&gt;
+    &lt;minimum-connection-count&gt;3&lt;/minimum-connection-count&gt;
+    &lt;!-- 在分配连接前后是否进行有效性测试，这个是解决本问题的关键 --&gt;
+    &lt;test-before-use&gt;true&lt;/test-before-use&gt;
+    &lt;test-after-use&gt;true&lt;/test-after-use&gt;
+    &lt;!-- 用于测试的SQL语句 --&gt;
+    &lt;house-keeping-test-sql&gt;SELECT CURRENT_USER&lt;/house-keeping-test-sql&gt;
+
+&lt;/proxool&gt;
+&lt;/proxool-config&gt;</code></pre><p>此时spring的hibernate的连接池配置完毕。</p>
+<p>单独hibernate的proxool配置如下：</p>
+<p>在hibernate.cfg.xml中只需要修改以下内容：</p>
+<pre><code>&lt;!-- Database connection settings --&gt;    
+&lt;property name=&quot;hibernate.connection.provider_class&quot;&gt;org.hibernate.connection.ProxoolConnectionProvider&lt;/property&gt;
+&lt;property name=&quot;hibernate.proxool.pool_alias&quot;&gt;Pool_dbname2&lt;/property&gt;
+&lt;property name=&quot;hibernate.proxool.xml&quot;&gt;proxool.xml&lt;/property&gt;</code></pre><p>proxool.xml内容同上，pool_alias改为Pool_dbname2为两个连接池。</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git的冲突解决</title>
+    <url>/archives/c1eb58d0.html</url>
+    <content><![CDATA[<p>现在，存在两个分支dev和MXJ，MXJ分支是合并自dev分支的，相当于目前是同一个版本，所以MXJ分支的内容和dev分支的完全一样，此时如果修改了MXJ分支，再把MXJ分支合并到dev分支，那么MXJ做的修改便会合并到dev分支上。<a id="more"></a><br>但如果MXJ分支被修改了，而dev分支也被修改了，（一般不要再dev分支上修改，而在自己的分支上修改，然后合并到dev分支，再把dev分支push到远端），恰好修改的又是同一部分内容，此时提交后，再合并到dev分支就会发生冲突，发生冲突后就必须先解决冲突再合并，<br>下图为此时MXJ分支中test.txt中修改后的内容。<br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_101_mxj1.PNG" alt="git_101"><br>点击Commit提交，<br>下图为dev分支修改后的内容<br> <img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_102_dev1.PNG" alt="git_102"><br>此时，如果我们做完了工作，想把我们自己分支的修改合并到dev分支，就会发生冲突，因为dev分支在相同的地方也做了修改，这样git就不知道该保留谁的修改。<br>下图为合并时产生了冲突，<br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_103_merge1.PNG" alt="git_103"></p>
+<p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们修改如下后保存：<br>上图表示，当前分支修改为abcde，而要合并到当前分支的修改为123456</p>
+<p>我们需要决定要合并到当前分支的内容是自己分支修改的内容还是dev分支修改的内容。<br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_104_merge2.PNG" alt="git_104"></p>
+<p>最终我们决定修改为abcde123，现在不能直接提交，而要先把文件放到暂存区，点击Add to index，如下图，再提交就会完成合并，冲突处理完，并完成合并后，就可以将dev分支push到远端。</p>
+<p><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_105_merge3.PNG" alt="git_105"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在eclipse上使用git</title>
+    <url>/archives/3f2b581e.html</url>
+    <content><![CDATA[<p>Eclipse里集成了git，所以使用比较方便。不需要再在git bash里输入命令。<br>从代码库clone项目后，将其导入eclipse。<br>在项目上点右键—&gt;Team<a id="more"></a><br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git001.PNG" alt="git001"></p>
+<p>写代码之前，先pull（从远端更新并合并），防止发生冲突，处理冲突会比较麻烦。<br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_002_pull.PNG" alt="git002"></p>
+<p>Switch To选择分支，New Branch新建一个自己的本地分支，此分支不需要push到远端，仅用于合并到dev分区。每个分支相当于不同版本的代码库。<br>写代码时，切换到自己的分支，如下图MXJ分支，目前在dev分支上。</p>
+<p><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_003_branch1.PNG" alt="git003"></p>
+<p>代码写完后，执行Commit，commit时需要填写提交信息，提交代码到本地分支自己的分支。<br>此时的提交只需要Commit，不用Commit and Push，因为此时还不需要发布到远端。</p>
+<p>接着再pull一遍，防止有人push过代码，此时有冲突，则需处理冲突。</p>
+<p>没有冲突后，再合并分支，Merge，把当前自己的分支合并到dev分支。<br><img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_004_merge.PNG" alt="git004"><br>有对勾的MXJ分支为现在所处的分支，选中dev分支表示把MXJ分支合并到dev分支，点击merge合并。合并后的dev分支的内容和MXJ分支的相同。<br> <img src="http://7xpl7l.com1.z0.glb.clouddn.com/hexo_git_005_merge2.PNG" alt="git005"><br>此时切换到dev分支，Switch To—&gt;dev，点击Push Branch ‘dev’。<br>dev分支会被推送到远端。</p>
+<p>不要把代码push到master分支。</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git使用简介</title>
+    <url>/archives/8d3dd6b3.html</url>
+    <content><![CDATA[<p>工作区–&gt;暂存区–&gt;本地库—–》远程库</p>
+<p>当修改了某个文件，给文件的修改是在工作区，<br>git add . 则是把工作区的修改放到暂存区，每当有修改，运行git add .都会把修改放到到暂存区<br>git commit -m “内容” git commit则是把暂存区所有git add的修改都提交到本地代码库。双引号里的内容为说明修改了哪些内容<br>git push origin master 把本地代码库推送到远程代码库，远程库的默认名是origin<a id="more"></a></p>
+<p>git add file1.txt<br>git add file2.txt<br>git commit -m “修改的内容”</p>
+<p>git status    要随时掌握工作区的状态，使用git status命令<br>git diff    如果git status告诉你有文件被修改过，用git diff可以查看修改内容</p>
+<p>git log 查看最近commit的内容</p>
+<p>git reset –hard HEAD^       会退到上一个版本 HEAD^^表示上上个版本<br>git reset –hard 376829   后悔了想回到刚才的最新版本,版本号没必要写全，前几位就可以了，Git会自动去找</p>
+<p>git reflog    如果后悔了，又找不到版本号了，使用它找回</p>
+<p>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。<br>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
+<p>git checkout – practice_git.c    撤销工作区的修改，不能删除添加的文件</p>
+<p>git reset HEAD practice_git.c     git add后，工作区的文件添加到暂存区，git reset后回退<br>，，回退到git add之前，只有工作区有修改的文件</p>
+<p>创建分支</p>
+<p>git branch dev   创建分支dev<br>git checkout dev 切换分支到dev</p>
+<p>git checkout -b dev 创建分支dev并切换到dev分支</p>
+<p>git checkout master 切换到master分支<br>git merge dev   合并dev分支到master分支</p>
+<p>git branch -d dev 删除dev分支</p>
+<p>git push origin master 把本地所有master分支的提交推送到远程库的master分支上<br>git push origin dev 把dev分支的提交推送到远程库dev分支上</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>javaFx1</title>
+    <url>/archives/46259795.html</url>
+    <content><![CDATA[<p>javaFx中文文档<br><a href="http://www.javafxchina.net/blog/docs/tutorial1/" target="_blank" rel="noopener">http://www.javafxchina.net/blog/docs/tutorial1/</a><br>ml3947的博客<br><a href="http://blog.csdn.net/ml3947" target="_blank" rel="noopener">http://blog.csdn.net/ml3947</a></p>
+<p>javaFX架构的顶层部分JavaFX场景图，是一个层级结构的节点树，表示所有用户界面的视觉元素。在场景图中的一个元素被称为一个节点(Node)。<a id="more"></a>每个节点都有一个ID、样式类和包围盒(bounding volume)。除了根节点之外，在场景图中的所有节点都有一个父节点、0个或多个子节点。</p>
+<p>允许使用Java的强大特性，例如泛型、注解、多线程、Lamda表达式(从Java8开始引入)</p>
+<p>##GLASS窗体工具包</p>
+<p>Glass窗体工具包(Glass Windowing Toolkit)在图2-1中处于整体架构的中间位置，它处于JavaFX图形技术栈的最底层。其主要职责是提供本地操作服务，例如窗体、计时器、皮肤。它是连接JavaFX层与本地操作系统的平台无关层。</p>
+<p>JavaFX应用程序线程：这是JavaFX应用开发者使用的主要线程。任何“活动”的场景都是窗体的一部分，它们都必需通过此线程来访问。场景图可以通过一个后台线程来创建和控制，但是如果其根节点与任何活动对象相关，则该场景图必需通过JavaFX应用程序线程来访问。这允许开发者在背景线程上创建复杂的场景图，而与此同时在“活动”场景中保持动画的流畅。由于JavaFX应用程序线程与Swing和AWT事件调度线程(EDT)不同，所以在将JavaFX代码嵌入到Swing应用程序中时必需小心。</p>
+<p>##布局</p>
+<p>布局容器(Layoutcontainer)或面板(Pane)允许对JavaFX应用程序场景图中的UI控件进行灵活、动态的排布。JavaFX Layout API包括下列容器类：</p>
+<p>● BorderPane类将其内容节点放到上、下、左、右、中各个区域中。</p>
+<p>● HBox类将其内容节点横向排成一行。</p>
+<p>● VBox类将其内容节点纵向排成一列。</p>
+<p>● StackPane类将其内容节点摞在一起。</p>
+<p>● GridPane类允许开发者创建一个灵活的网格，按行列来布局其内容节点。</p>
+<p>● FlowPane类将其内容按行或列进行”流式“布局，当遇到横向或纵向的边界时自动进行换行或换列。</p>
+<p>● TilePane类将其内容放到统一大小的单元格中。</p>
+<p>● AnchorPane类允许开发者创建锚节点，将控件停靠于布局的上下左右各边，也可以居中停靠。</p>
+<p>为了获得理想的布局结构，可以在JavaFX应用中嵌套使用各类布局。</p>
+<p>##视觉效果</p>
+<p>在JavaFX场景图中开发富客户端界面包括使用视觉效果来实时地美化JavaFX应用程序的外观。JavaFX的视觉效果主要是基于像素的图像，因此它们需要先获取场景图中节点渲染成图像，再将视觉效果添加上去。</p>
+<p>JavaFX中通过下面的类来提供一些常用的视觉效果：</p>
+<p>● Drop Shadow——应用视觉效果后将为给定的内容渲染一个在它的后面的阴影。</p>
+<p>● Reflection——在真实的内容后面渲染一个反射倒影。</p>
+<p>● Lighting——模仿一个光源的照射效果，使一个平面的对象看起来更真实、具有三维效果。</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>error:restriction on required library rt.jar test</title>
+    <url>/archives/f8f4ee05.html</url>
+    <content><![CDATA[<p>java eclipse</p>
+<p>Access restriction: The type ‘Application’ is not API (restriction on required library rt.jar)</p>
+<p>eclipse says this:<a id="more"></a></p>
+<p>Access restriction: The type ‘Application’ is not API (restriction on required library<br>‘/Library/Java/JavaVirtualMachines/jdk1.8.0_11.jdk/Contents/Home/jre/lib/ rt.jar’)</p>
+<p>Background: Eclipse access restrictions<br>Eclipse has a mechanism called access restrictions to prevent you from accidentally using classes which Eclipse thinks are not part of the public API. Usually, Eclipse is right about that, in both senses: We usually do not want to use something which is not part of the public API. And Eclipse is usually right about what is and what isn’t part of the public API.</p>
+<p>Problem<br>Now, there can be situations, where you want to use non-public API. And there can be situations, where Eclipse is not really right (that’s what happened to me, I just wanted to use javax.smartcardio). In that case, we get this error in Eclipse.</p>
+<p>Solution<br>The solution is to change the access restrictions. Go to the properties of your Java project, i.e. by selecting “Properties” from the context menu of the project in the “Package Explorer”. There, go to “Java Build Path”, tab “Libraries”. There, expand the library entry, select “Access rules”, “Edit…” and “Add…” a “Resolution: Accessible” with a corresponding rule pattern. For me that was “javax/smartcardio/<strong>“, for you it might instead be “com/apple/eawt/</strong>“.</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Django开始</title>
+    <url>/archives/bd7d9f58.html</url>
+    <content><![CDATA[<p>在wsgi文件夹下运行</p>
+<p><code>django-admin startproject myproject</code></p>
+<p>在项目文件夹myproject中运行 </p>
+<p><code>django-admin startapp myapp</code><a id="more"></a><br>            或<br><code>python manage.py startapp myapp</code></p>
+<p>产生app，在myproject子文件夹中的setting中添加应用myapp<br>在myproject文件夹中，运行</p>
+<p><code>python manage.py runserver [port]</code></p>
+<p>通过运行</p>
+<p><code>makemigrations</code></p>
+<p>告诉Django，已经对模型做了一些更改（在这个例子中，你创建了一个新的模型）并且会将这些更改存储为迁移文件。</p>
+<p><code>python manage.py makemigrations polls</code></p>
+<p>有一个命令可以运行这些迁移文件并自动管理你的数据库模式 —— 它叫做migrate，我们一会儿会用到它 —— 但是首先，让我们看一下迁移行为将会执行哪些SQL语句。sqlmigrate命令接收迁移文件的名字并返回它们的SQL语句：</p>
+<p><code>python manage.py sqlmigrate polls 0001</code></p>
+<p>再次运行migrate以在你的数据库中创建模型所对应的表：</p>
+<p><code>python manage.py migrate</code></p>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kali安装vmtools提示缺少内核头文件的解决办法</title>
+    <url>/archives/caa9943c.html</url>
+    <content><![CDATA[<p>Kali 1.06  安装Vmware tools 提示</p>
+<p>Searching for a valid kernel header path…<br>The path “” is not a valid path to the 3.7-trunk-686-pae kernel headers.<a id="more"></a><br>Would you like to change it? [yes]</p>
+<p>原因是缺少内核头文件。</p>
+<p>1.<code>apt-get install linux-headers-$( uname -r )</code></p>
+<p>提示未发现软件包,需要在软件源中添加内核头文件的源,<br>编辑 /etc/apt/source.list,添加</p>
+<p><code>deb http://http.kali.org/kali kali main non-free contrib
+deb-src http://http.kali.org/kali kali main non-free contrib</code></p>
+<p>2.<code>apt-get update</code>
+　　</p>
+<p>接着安装linux headers</p>
+<p><code>apt-get install linux-headers-$(uname -r)</code><br><code>ln -s /usr/src/linux-headers-$(uname -r)/include/generated/uapi/linux/version.h</code><br><code>/usr/src/linux-headers-$(uname -r)/include/linux/</code></p>
+<p><a href="http://http.kali.org/kali/pool/main/l/linux/" title="http://http.kali.org/kali/pool/main/l/linux/" target="_blank" rel="noopener">http://http.kali.org/kali/pool/main/l/linux/</a></p>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>rhc提示错误</title>
+    <url>/archives/1e794fa4.html</url>
+    <content><![CDATA[<p>openshift rhc成功安装Ruby和git以后，运行rhc setup时提示如下错误：</p>
+<p>C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in require’:<br> cannot load such file – dl/import (LoadError) from C:/<br>Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/<a id="more"></a>kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/au thentication/pageant.rb:1:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/authentication/agent/socket.rb:5:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/au thentication/agent.rb:22:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/authentication/key_manager.rb:4:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/au thentication/session.rb:4:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/net-ssh-2.9.2/lib/net/ssh.rb:11:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/ssh_helpe rs.rb:18:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/wizard.rb:77:in’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/wizard.rb :7:in <a href="module:RHC" target="_blank" rel="noopener">module:RHC</a>‘<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/wizard.rb:6:in’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands/ base.rb:4:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands/account.rb:2:in’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands/ account.rb:1:in &lt;top<br> (required)&gt;’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:inrequire’ from C:/Ruby22-x64/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54 :in require’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands.rb:189:inblock in load’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands. rb:188:in each’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/commands.rb:188:inload’ from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/lib/rhc/cli.rb:36 :in start’<br> from C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/rhc-1.35.1/bin/rhc:20:in’ from C:/Ruby22-x64/bin/rhc:23:in load’<br> from C:/Ruby22-x64/bin/rhc:23:in’</p>
+<p>解决方法如下：</p>
+<p>Updating net-ssh to 2.9.3.beta1 (as cremno suggested in a comment above) resolved my problem:</p>
+<p>For unix:</p>
+<p>get install net-ssh -v 2.9.3.beta1<br>For windows:</p>
+<p>gem install net-ssh -v 2.9.3.beta1<br>Before that I tried, but it didn’t help:</p>
+<p>get install net-ssh</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>RHC</tag>
+      </tags>
+  </entry>
+</search>
