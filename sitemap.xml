@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.fetdesign.com/tags/index.html</loc>
+    
+    <lastmod>2019-10-13T05:36:11.463Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.fetdesign.com/categories/index.html</loc>
+    
+    <lastmod>2019-10-13T05:35:38.473Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.fetdesign.com/archives/543ed636.html</loc>
     
     <lastmod>2019-07-13T15:05:47.244Z</lastmod>
@@ -166,13 +180,6 @@
     <loc>https://blog.fetdesign.com/about/index.html</loc>
     
     <lastmod>2019-01-02T04:08:41.790Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.fetdesign.com/categories/index.html</loc>
-    
-    <lastmod>2017-01-13T04:08:15.366Z</lastmod>
     
   </url>
   

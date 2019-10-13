@@ -17,7 +17,7 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>springboot异常：java.lang.NoClassDefFoundError antlr RecognitionException解决</title>
+    <title>springboot异常：java.lang.NoClassDefFoundError Antlr RecognitionException解决</title>
     <link href="https://blog.fetdesign.com/archives/543ed636.html"/>
     <id>https://blog.fetdesign.com/archives/543ed636.html</id>
     <published>2019-07-13T14:05:18.880Z</published>
@@ -38,7 +38,7 @@
   </entry>
   
   <entry>
-    <title>git hooks实现项目自动部署</title>
+    <title>Git Hooks实现项目自动部署</title>
     <link href="https://blog.fetdesign.com/archives/5280bf10.html"/>
     <id>https://blog.fetdesign.com/archives/5280bf10.html</id>
     <published>2019-02-14T03:16:39.875Z</published>
@@ -116,7 +116,7 @@
   </entry>
   
   <entry>
-    <title>pat 乙级 1001害死人不偿命的(3n+1)猜想</title>
+    <title>Pat 乙级 1001害死人不偿命的(3n+1)猜想</title>
     <link href="https://blog.fetdesign.com/archives/27a359ad.html"/>
     <id>https://blog.fetdesign.com/archives/27a359ad.html</id>
     <published>2019-02-08T03:49:17.124Z</published>
@@ -207,7 +207,7 @@
   </entry>
   
   <entry>
-    <title>spring上传文件</title>
+    <title>Spring上传文件</title>
     <link href="https://blog.fetdesign.com/archives/e3d4c9ae.html"/>
     <id>https://blog.fetdesign.com/archives/e3d4c9ae.html</id>
     <published>2017-01-13T04:37:01.000Z</published>
@@ -228,7 +228,7 @@
   </entry>
   
   <entry>
-    <title>利用git hooks进行自动部署</title>
+    <title>利用Git Hooks进行自动部署</title>
     <link href="https://blog.fetdesign.com/archives/a2d5c370.html"/>
     <id>https://blog.fetdesign.com/archives/a2d5c370.html</id>
     <published>2017-01-13T04:30:01.000Z</published>
@@ -250,7 +250,7 @@
   </entry>
   
   <entry>
-    <title>jquery异步-datatable前端</title>
+    <title>Jquery异步-Datatable前端</title>
     <link href="https://blog.fetdesign.com/archives/4317f2cd.html"/>
     <id>https://blog.fetdesign.com/archives/4317f2cd.html</id>
     <published>2016-11-06T04:38:01.000Z</published>
@@ -273,7 +273,7 @@
   </entry>
   
   <entry>
-    <title>普通类如何调用spring实例化好的action操作数据库</title>
+    <title>普通类如何调用Spring实例化好的action操作数据库</title>
     <link href="https://blog.fetdesign.com/archives/ba5542b4.html"/>
     <id>https://blog.fetdesign.com/archives/ba5542b4.html</id>
     <published>2016-11-06T04:14:01.000Z</published>
@@ -302,7 +302,7 @@
   </entry>
   
   <entry>
-    <title>使用js异步post body</title>
+    <title>使用Js异步post Body</title>
     <link href="https://blog.fetdesign.com/archives/760d761f.html"/>
     <id>https://blog.fetdesign.com/archives/760d761f.html</id>
     <published>2016-10-22T08:38:01.000Z</published>
@@ -360,7 +360,7 @@ function showStaus() {
   </entry>
   
   <entry>
-    <title>linux下生成图标</title>
+    <title>Linux下生成图标</title>
     <link href="https://blog.fetdesign.com/archives/70247203.html"/>
     <id>https://blog.fetdesign.com/archives/70247203.html</id>
     <published>2016-10-15T09:07:00.000Z</published>
@@ -389,7 +389,7 @@ function showStaus() {
   </entry>
   
   <entry>
-    <title>解决mysql 8小时断开连接问题，proxool连接池配置</title>
+    <title>解决Mysql 8小时断开连接问题，proxool连接池配置</title>
     <link href="https://blog.fetdesign.com/archives/5b07aded.html"/>
     <id>https://blog.fetdesign.com/archives/5b07aded.html</id>
     <published>2016-09-23T09:47:01.000Z</published>
@@ -420,7 +420,7 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
   </entry>
   
   <entry>
-    <title>git的冲突解决</title>
+    <title>Git的冲突解决</title>
     <link href="https://blog.fetdesign.com/archives/c1eb58d0.html"/>
     <id>https://blog.fetdesign.com/archives/c1eb58d0.html</id>
     <published>2016-05-07T11:15:01.000Z</published>
@@ -441,7 +441,7 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
   </entry>
   
   <entry>
-    <title>在eclipse上使用git</title>
+    <title>在Eclipse上使用git</title>
     <link href="https://blog.fetdesign.com/archives/3f2b581e.html"/>
     <id>https://blog.fetdesign.com/archives/3f2b581e.html</id>
     <published>2016-05-06T16:15:01.000Z</published>
@@ -462,7 +462,7 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
   </entry>
   
   <entry>
-    <title>git使用简介</title>
+    <title>Git使用简介</title>
     <link href="https://blog.fetdesign.com/archives/8d3dd6b3.html"/>
     <id>https://blog.fetdesign.com/archives/8d3dd6b3.html</id>
     <published>2016-05-02T15:32:01.000Z</published>
@@ -506,7 +506,7 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
   </entry>
   
   <entry>
-    <title>error:restriction on required library rt.jar test</title>
+    <title>Error:restriction on Required Library rt.jar Test</title>
     <link href="https://blog.fetdesign.com/archives/f8f4ee05.html"/>
     <id>https://blog.fetdesign.com/archives/f8f4ee05.html</id>
     <published>2016-03-20T13:25:20.000Z</published>

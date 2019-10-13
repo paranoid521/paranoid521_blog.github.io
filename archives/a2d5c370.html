@@ -10,9 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 3.9.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.4.1">
   <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
   <link rel="alternate" href="/atom.xml" title="Paranoid's cottage" type="application/atom+xml">
 
@@ -59,14 +59,14 @@
   <meta name="description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用git hooks进行自动部署">
+<meta property="og:title" content="利用Git Hooks进行自动部署">
 <meta property="og:url" content="https://blog.fetdesign.com/archives/a2d5c370.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
 <meta property="og:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-01-06T09:05:06.182Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用git hooks进行自动部署">
+<meta name="twitter:title" content="利用Git Hooks进行自动部署">
 <meta name="twitter:description" content="首先的有一个搭建好的git服务器，在想要自动部署的git库的hook文件中添加自动部署hook，在hook中将DeployDir配置为网站根目录，在网站根目录运行 git clone /usr/gitRepo/web.git将web文件克隆下来，这样在将更改提交到git仓库的时候，就会自动部署网站。">
   <link rel="canonical" href="https://blog.fetdesign.com/archives/a2d5c370">
 
@@ -82,7 +82,7 @@
   };
 </script>
 
-  <title>利用git hooks进行自动部署 | Paranoid's cottage</title>
+  <title>利用Git Hooks进行自动部署 | Paranoid's cottage</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131581164-2"></script>
     <script>
@@ -177,6 +177,19 @@
       
         
         
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
         <li class="menu-item menu-item-tags">
       
     
@@ -208,19 +221,6 @@
     
 
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
-
-  </li>
-      
-    
-      
-      
-        
-        
-        <li class="menu-item menu-item-about">
-      
-    
-
-    <a href="/about" rel="section"><i class="fa fa-fw fa-question-circle"></i>关于</a>
 
   </li>
       
@@ -293,7 +293,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            利用git hooks进行自动部署
+            利用Git Hooks进行自动部署
             
 
           
@@ -407,7 +407,7 @@ chmod -R g+s /var/www</code></pre>
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://blog.fetdesign.com/archives/a2d5c370.html" title="利用git hooks进行自动部署">https://blog.fetdesign.com/archives/a2d5c370.html</a>
+    <a href="https://blog.fetdesign.com/archives/a2d5c370.html" title="利用Git Hooks进行自动部署">https://blog.fetdesign.com/archives/a2d5c370.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -433,8 +433,8 @@ chmod -R g+s /var/www</code></pre>
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/archives/4317f2cd.html" rel="next" title="jquery异步-datatable前端">
-                  <i class="fa fa-chevron-left"></i> jquery异步-datatable前端
+                <a href="/archives/4317f2cd.html" rel="next" title="Jquery异步-Datatable前端">
+                  <i class="fa fa-chevron-left"></i> Jquery异步-Datatable前端
                 </a>
               
             </div>
@@ -443,8 +443,8 @@ chmod -R g+s /var/www</code></pre>
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/archives/e3d4c9ae.html" rel="prev" title="spring上传文件">
-                  spring上传文件 <i class="fa fa-chevron-right"></i>
+                <a href="/archives/e3d4c9ae.html" rel="prev" title="Spring上传文件">
+                  Spring上传文件 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -547,7 +547,18 @@ chmod -R g+s /var/www</code></pre>
       
         
       
-        <a href="https://github.com/yourname" title="GitHub &rarr; https://github.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="mailto:yourname@gmail.com" title="E-Mail &rarr; mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/yourname" title="Weibo &rarr; https://weibo.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
       </span>
     
   </div>
@@ -558,6 +569,18 @@ chmod -R g+s /var/www</code></pre>
   </div>
 
 
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://example.com" title="http://example.com" rel="noopener" target="_blank">Title</a>
+        </li>
+      
+    </ul>
+  </div>
 
       </div>
         <div class="back-to-top motion-element">
