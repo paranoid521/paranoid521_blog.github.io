@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.fetdesign.com/categories/index.html</loc>
+    
+    <lastmod>2019-10-27T13:53:18.802Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.fetdesign.com/archives/1c420fb5.html</loc>
     
     <lastmod>2019-10-27T11:37:52.589Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://blog.fetdesign.com/tags/index.html</loc>
     
     <lastmod>2019-10-13T09:00:57.635Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.fetdesign.com/categories/index.html</loc>
-    
-    <lastmod>2019-10-13T09:00:47.860Z</lastmod>
     
   </url>
   
