@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.fetdesign.com/"/>
-  <updated>2019-07-13T15:05:47.244Z</updated>
+  <updated>2019-10-27T11:37:06.198Z</updated>
   <id>https://blog.fetdesign.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot+Spring Security无法实现跨域解决办法</title>
+    <link href="https://blog.fetdesign.com/archives/1c420fb5.html"/>
+    <id>https://blog.fetdesign.com/archives/1c420fb5.html</id>
+    <published>2019-10-27T11:34:05.609Z</published>
+    <updated>2019-10-27T11:37:06.198Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;SpringBoot-Spring-Security无法实现跨域解决办法&quot;&gt;&lt;a href=&quot;#SpringBoot-Spring-Security无法实现跨域解决办法&quot; class=&quot;headerlink&quot; title=&quot;SpringBoot+Spring Security无法实现跨域解决办法&quot;&gt;&lt;/a&gt;SpringBoot+Spring Security无法实现跨域解决办法&lt;/h1&gt;&lt;p&gt;遇到一跨域问题，通过本方法解决。&lt;/p&gt;&lt;p&gt;版权声明：本文为博主原创文章，遵循&lt;a href=&quot;http://creativecommons.org/licenses/by-sa/4.0/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt; CC 4.0 BY-SA &lt;/a&gt;版权协议，转载请附上原文出处链接和本声明。&lt;/p&gt;&lt;p&gt;原文链接：&lt;a href=&quot;https://blog.csdn.net/w903328615/article/details/80503750&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/w903328615/article/details/80503750&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="https://blog.fetdesign.com/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="spring security" scheme="https://blog.fetdesign.com/tags/spring-security/"/>
+    
+      <category term="cros" scheme="https://blog.fetdesign.com/tags/cros/"/>
+    
+  </entry>
   
   <entry>
     <title>springboot异常：java.lang.NoClassDefFoundError Antlr RecognitionException解决</title>
@@ -502,29 +525,6 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
     
     
       <category term="java" scheme="https://blog.fetdesign.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Error:restriction on Required Library rt.jar Test</title>
-    <link href="https://blog.fetdesign.com/archives/f8f4ee05.html"/>
-    <id>https://blog.fetdesign.com/archives/f8f4ee05.html</id>
-    <published>2016-03-20T13:25:20.000Z</published>
-    <updated>2019-01-06T09:02:35.045Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;java eclipse&lt;/p&gt;
-&lt;p&gt;Access restriction: The type ‘Application’ is not API (restriction on required library rt.jar)&lt;/p&gt;
-&lt;p&gt;eclipse says this:
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="https://blog.fetdesign.com/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java" scheme="https://blog.fetdesign.com/tags/Java/"/>
     
   </entry>
   
