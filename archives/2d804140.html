@@ -66,19 +66,19 @@
      });
 </script>
 
-  <meta name="description" content="SpringBoot+Spring Security无法实现跨域解决办法遇到一跨域问题，通过本方法解决。版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。原文链接：https://blog.csdn.net/w903328615/article/details/80503750">
-<meta name="keywords" content="spring security,cros">
+  <meta name="description" content="跨域登录请求时，一直显示未登录，但后台已设置运行CROS跨域请求。通过Fiddler抓包发现登录数据没有问题，但请求未携带cookies，后台无法获取cookie。原因是两次请求不是同一个sessionid，服务器端，认为还没有登陆。解决方法是：允许客户端带上cookie，ajax设置xhrFields:{    withCredentials:true},">
+<meta name="keywords" content="跨域请求">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot+Spring Security无法实现跨域解决办法">
-<meta property="og:url" content="https://blog.fetdesign.com/archives/1c420fb5.html">
+<meta property="og:title" content="ajax跨域请求时，sessionId不一样，导致无法记住登陆状态">
+<meta property="og:url" content="https://blog.fetdesign.com/archives/2d804140.html">
 <meta property="og:site_name" content="Paranoid&#39;s cottage">
-<meta property="og:description" content="SpringBoot+Spring Security无法实现跨域解决办法遇到一跨域问题，通过本方法解决。版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。原文链接：https://blog.csdn.net/w903328615/article/details/80503750">
+<meta property="og:description" content="跨域登录请求时，一直显示未登录，但后台已设置运行CROS跨域请求。通过Fiddler抓包发现登录数据没有问题，但请求未携带cookies，后台无法获取cookie。原因是两次请求不是同一个sessionid，服务器端，认为还没有登陆。解决方法是：允许客户端带上cookie，ajax设置xhrFields:{    withCredentials:true},">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-27T11:37:52.589Z">
+<meta property="og:updated_time" content="2019-11-03T10:21:29.248Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot+Spring Security无法实现跨域解决办法">
-<meta name="twitter:description" content="SpringBoot+Spring Security无法实现跨域解决办法遇到一跨域问题，通过本方法解决。版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。原文链接：https://blog.csdn.net/w903328615/article/details/80503750">
-  <link rel="canonical" href="https://blog.fetdesign.com/archives/1c420fb5">
+<meta name="twitter:title" content="ajax跨域请求时，sessionId不一样，导致无法记住登陆状态">
+<meta name="twitter:description" content="跨域登录请求时，一直显示未登录，但后台已设置运行CROS跨域请求。通过Fiddler抓包发现登录数据没有问题，但请求未携带cookies，后台无法获取cookie。原因是两次请求不是同一个sessionid，服务器端，认为还没有登陆。解决方法是：允许客户端带上cookie，ajax设置xhrFields:{    withCredentials:true},">
+  <link rel="canonical" href="https://blog.fetdesign.com/archives/2d804140">
 
 
 <script id="page-configurations">
@@ -92,7 +92,7 @@
   };
 </script>
 
-  <title>SpringBoot+Spring Security无法实现跨域解决办法 | Paranoid's cottage</title>
+  <title>ajax跨域请求时，sessionId不一样，导致无法记住登陆状态 | Paranoid's cottage</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131581164-2"></script>
     <script>
@@ -289,7 +289,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.fetdesign.com/archives/1c420fb5.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.fetdesign.com/archives/2d804140.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Paranoid">
@@ -303,7 +303,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            SpringBoot+Spring Security无法实现跨域解决办法
+            ajax跨域请求时，sessionId不一样，导致无法记住登陆状态
             
 
           
@@ -320,7 +320,7 @@
                 
               
 
-              <time title="创建时间：2019-10-27 19:34:05 / 修改时间：19:37:52" itemprop="dateCreated datePublished" datetime="2019-10-27T19:34:05+08:00">2019-10-27</time>
+              <time title="创建时间：2019-11-03 18:13:44 / 修改时间：18:21:29" itemprop="dateCreated datePublished" datetime="2019-11-03T18:13:44+08:00">2019-11-03</time>
             </span>
           
             
@@ -341,6 +341,17 @@
 
                 
                 
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/ajax/" itemprop="url" rel="index">
+                    <span itemprop="name">ajax</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -356,17 +367,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="SpringBoot-Spring-Security无法实现跨域解决办法"><a href="#SpringBoot-Spring-Security无法实现跨域解决办法" class="headerlink" title="SpringBoot+Spring Security无法实现跨域解决办法"></a>SpringBoot+Spring Security无法实现跨域解决办法</h1><p>遇到一跨域问题，通过本方法解决。</p><p>版权声明：本文为博主原创文章，遵循<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0 BY-SA </a>版权协议，转载请附上原文出处链接和本声明。</p><p>原文链接：<a href="https://blog.csdn.net/w903328615/article/details/80503750" target="_blank" rel="noopener">https://blog.csdn.net/w903328615/article/details/80503750</a></p><a id="more"></a>
+        <p>跨域登录请求时，一直显示未登录，但后台已设置运行CROS跨域请求。<br>通过Fiddler抓包发现登录数据没有问题，但请求未携带cookies，后台无法获取cookie。原因是两次请求不是同一个sessionid，服务器端，认为还没有登陆。</p><p>解决方法是：<br>允许客户端带上cookie，ajax设置<br>xhrFields:{<br>    withCredentials:true<br>},</p><a id="more"></a>
 
+<p>再次请求，登录成功</p>
 
-<p>未使用Security时跨域:</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">import</span> org.slf4j.Logger;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> org.slf4j.LoggerFactory;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> org.springframework.beans.factory.annotation.Value;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> org.springframework.boot.autoconfigure.AutoConfigureBefore;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> org.springframework.context.annotation.Configuration;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> org.springframework.format.FormatterRegistry;</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">import</span> org.springframework.web.servlet.config.annotation.*;</span></span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@AutoConfigureBefore(SecurityConfig.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMvcConfigurer</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> addCorsMappings(CorsRegistry registry)&#123;</span><br><span class="line">        LOGGER.info(<span class="string">"跨域已设置"</span>);</span><br><span class="line">        registry.addMapping(<span class="string">"/**"</span>)</span><br><span class="line">                .allowedOrigins(<span class="string">"*"</span>)</span><br><span class="line">                .allowedMethods(<span class="string">"*"</span>)</span><br><span class="line">                .allowedHeaders(<span class="string">"*"</span>)</span><br><span class="line">                .allowCredentials(<span class="literal">true</span>)</span><br><span class="line">                .maxAge(<span class="number">3600</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>整合Security时发现只用上述方法前后端分离时仍存在跨域问题，解决方法如下：</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@Configuration</span></span><br><span class="line"><span class="variable">@AutoConfigureBefore</span>(Swagger2Configuration.class)</span><br><span class="line"><span class="variable">@EnableWebSecurity</span></span><br><span class="line"><span class="variable">@EnableGlobalMethodSecurity</span>(prePostEnabled = true)</span><br><span class="line"><span class="variable">@Order</span>(-<span class="number">1</span>)</span><br><span class="line">public class SecurityConfig extends WebSecurityConfigurerAdapter &#123;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    protected void configure(HttpSecurity http) throws Exception &#123;</span><br><span class="line">        <span class="selector-tag">http</span><span class="selector-class">.formLogin</span>()</span><br><span class="line">                <span class="selector-class">.loginProcessingUrl</span>(<span class="string">"/user/login"</span>)</span><br><span class="line">                <span class="selector-class">.loginPage</span>(<span class="string">"/singIn.html"</span>)</span><br><span class="line">                <span class="selector-class">.successHandler</span>(moyuAuthenticationSuccessHandler)</span><br><span class="line">                <span class="selector-class">.failureHandler</span>(moyuAuthenticationFailureHandler)</span><br><span class="line">                <span class="selector-class">.and</span>()</span><br><span class="line">                <span class="selector-class">.apply</span>(moyuSocialSecurityConfig)</span><br><span class="line">                <span class="selector-class">.and</span>()</span><br><span class="line">                <span class="selector-class">.rememberMe</span>()</span><br><span class="line">                <span class="selector-class">.tokenRepository</span>(persistentTokenRepository())</span><br><span class="line">                <span class="selector-class">.tokenValiditySeconds</span>(<span class="number">3600</span>*<span class="number">24</span>*<span class="number">7</span>)</span><br><span class="line">                <span class="selector-class">.userDetailsService</span>(userDetailsService)</span><br><span class="line">                <span class="selector-class">.and</span>()</span><br><span class="line">                <span class="selector-class">.authorizeRequests</span>()</span><br><span class="line">                <span class="selector-class">.antMatchers</span>(<span class="string">"/user/login"</span>,<span class="string">"/login"</span>,<span class="string">"/singIn.html"</span>,<span class="string">"**"</span>,<span class="string">"/**"</span>)<span class="selector-class">.permitAll</span>()</span><br><span class="line">                <span class="selector-class">.anyRequest</span>()</span><br><span class="line">                <span class="selector-class">.authenticated</span>()</span><br><span class="line">                <span class="selector-class">.and</span>()</span><br><span class="line">                <span class="selector-class">.cors</span>()</span><br><span class="line">                <span class="selector-class">.and</span>()</span><br><span class="line">                <span class="selector-class">.csrf</span>()<span class="selector-class">.disable</span>();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>重点加入代码：</p>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="keyword">and</span>()</span><br><span class="line">.<span class="built_in">cors</span>()<span class="comment">//新加入</span></span><br><span class="line">.<span class="keyword">and</span>()</span><br><span class="line">.<span class="built_in">csrf</span>().<span class="keyword">disable</span>();</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -383,7 +387,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://blog.fetdesign.com/archives/1c420fb5.html" title="SpringBoot+Spring Security无法实现跨域解决办法">https://blog.fetdesign.com/archives/1c420fb5.html</a>
+    <a href="https://blog.fetdesign.com/archives/2d804140.html" title="ajax跨域请求时，sessionId不一样，导致无法记住登陆状态">https://blog.fetdesign.com/archives/2d804140.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -399,9 +403,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/spring-security/" rel="tag"># spring security</a>
-            
-              <a href="/tags/cros/" rel="tag"># cros</a>
+              <a href="/tags/跨域请求/" rel="tag"># 跨域请求</a>
             
           </div>
         
@@ -411,8 +413,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/archives/543ed636.html" rel="next" title="springboot异常：java.lang.NoClassDefFoundError Antlr RecognitionException解决">
-                  <i class="fa fa-chevron-left"></i> springboot异常：java.lang.NoClassDefFoundError Antlr RecognitionException解决
+                <a href="/archives/1c420fb5.html" rel="next" title="SpringBoot+Spring Security无法实现跨域解决办法">
+                  <i class="fa fa-chevron-left"></i> SpringBoot+Spring Security无法实现跨域解决办法
                 </a>
               
             </div>
@@ -420,10 +422,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/archives/2d804140.html" rel="prev" title="ajax跨域请求时，sessionId不一样，导致无法记住登陆状态">
-                  ajax跨域请求时，sessionId不一样，导致无法记住登陆状态 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -472,8 +470,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBoot-Spring-Security无法实现跨域解决办法"><span class="nav-number">1.</span> <span class="nav-text">SpringBoot+Spring Security无法实现跨域解决办法</span></a></li></ol></div>
-        
 		
       </div>
       <!--/noindex-->
@@ -679,7 +675,7 @@
       repo: 'GitTalk',
       owner: 'paranoid521',
       admin: ['paranoid521'],
-      id: '0b09fd19f4267058c81ef93e8a4dcd96',
+      id: 'e1fe6c937e31c5f2d6f227bfa11fca6b',
         language: window.navigator.language || window.navigator.userLanguage,
       
       distractionFreeMode: 'true'

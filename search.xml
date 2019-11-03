@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ajax跨域请求时，sessionId不一样，导致无法记住登陆状态</title>
+    <url>/archives/2d804140.html</url>
+    <content><![CDATA[<p>跨域登录请求时，一直显示未登录，但后台已设置运行CROS跨域请求。<br>通过Fiddler抓包发现登录数据没有问题，但请求未携带cookies，后台无法获取cookie。原因是两次请求不是同一个sessionid，服务器端，认为还没有登陆。</p><p>解决方法是：<br>允许客户端带上cookie，ajax设置<br>xhrFields:{<br>    withCredentials:true<br>},</p><a id="more"></a>
+
+<p>再次请求，登录成功</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>ajax</category>
+      </categories>
+      <tags>
+        <tag>跨域请求</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringBoot+Spring Security无法实现跨域解决办法</title>
     <url>/archives/1c420fb5.html</url>
     <content><![CDATA[<h1 id="SpringBoot-Spring-Security无法实现跨域解决办法"><a href="#SpringBoot-Spring-Security无法实现跨域解决办法" class="headerlink" title="SpringBoot+Spring Security无法实现跨域解决办法"></a>SpringBoot+Spring Security无法实现跨域解决办法</h1><p>遇到一跨域问题，通过本方法解决。</p><p>版权声明：本文为博主原创文章，遵循<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0 BY-SA </a>版权协议，转载请附上原文出处链接和本声明。</p><p>原文链接：<a href="https://blog.csdn.net/w903328615/article/details/80503750" target="_blank" rel="noopener">https://blog.csdn.net/w903328615/article/details/80503750</a></p><a id="more"></a>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.fetdesign.com/"/>
-  <updated>2019-10-27T11:37:52.589Z</updated>
+  <updated>2019-11-03T10:21:29.248Z</updated>
   <id>https://blog.fetdesign.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ajax跨域请求时，sessionId不一样，导致无法记住登陆状态</title>
+    <link href="https://blog.fetdesign.com/archives/2d804140.html"/>
+    <id>https://blog.fetdesign.com/archives/2d804140.html</id>
+    <published>2019-11-03T10:13:44.242Z</published>
+    <updated>2019-11-03T10:21:29.248Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;跨域登录请求时，一直显示未登录，但后台已设置运行CROS跨域请求。&lt;br&gt;通过Fiddler抓包发现登录数据没有问题，但请求未携带cookies，后台无法获取cookie。原因是两次请求不是同一个sessionid，服务器端，认为还没有登陆。&lt;/p&gt;&lt;p&gt;解决方法是：&lt;br&gt;允许客户端带上cookie，ajax设置&lt;br&gt;xhrFields:{&lt;br&gt;    withCredentials:true&lt;br&gt;},&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程" scheme="https://blog.fetdesign.com/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="ajax" scheme="https://blog.fetdesign.com/categories/%E7%BC%96%E7%A8%8B/ajax/"/>
+    
+    
+      <category term="跨域请求" scheme="https://blog.fetdesign.com/tags/%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot+Spring Security无法实现跨域解决办法</title>
@@ -503,28 +526,6 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
     
     
       <category term="Git" scheme="https://blog.fetdesign.com/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javaFx1</title>
-    <link href="https://blog.fetdesign.com/archives/46259795.html"/>
-    <id>https://blog.fetdesign.com/archives/46259795.html</id>
-    <published>2016-04-13T15:12:12.000Z</published>
-    <updated>2019-01-06T09:02:44.303Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;javaFx中文文档&lt;br&gt;&lt;a href=&quot;http://www.javafxchina.net/blog/docs/tutorial1/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.javafxchina.net/blog/docs/tutorial1/&lt;/a&gt;&lt;br&gt;ml3947的博客&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/ml3947&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://blog.csdn.net/ml3947&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;javaFX架构的顶层部分JavaFX场景图，是一个层级结构的节点树，表示所有用户界面的视觉元素。在场景图中的一个元素被称为一个节点(Node)。
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="https://blog.fetdesign.com/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="java" scheme="https://blog.fetdesign.com/tags/java/"/>
     
   </entry>
   
