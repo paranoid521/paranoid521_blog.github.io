@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Paranoid&#39;s cottage</title>
+  <title>Hello World!</title>
   
-  <subtitle>I would rather sit on a pumpkin and have it all to myself, than be crowded on a velvet cushion.</subtitle>
+  <subtitle>...</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.fetdesign.com/"/>
-  <updated>2019-11-03T10:22:14.152Z</updated>
+  <updated>2021-04-11T00:52:15.530Z</updated>
   <id>https://blog.fetdesign.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://blog.fetdesign.com/archives/0.html"/>
+    <id>https://blog.fetdesign.com/archives/0.html</id>
+    <published>2020-11-21T00:38:11.785Z</published>
+    <updated>2021-04-11T00:52:15.530Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Ubuntu-搭建-OpenVPN-服务&quot;&gt;&lt;a href=&quot;#Ubuntu-搭建-OpenVPN-服务&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu 搭建 OpenVPN 服务&quot;&gt;&lt;/a&gt;Ubuntu 搭建 OpenVPN 服务&lt;/h1&gt;&lt;p&gt;2019 年 04 月 20 日&lt;/p&gt;&lt;p&gt;本文介绍如何在 Ubuntu 系统上搭建 OpenVPN 服务。&lt;/p&gt;&lt;p&gt;文章导读：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.r9it.com/20190420/install-openvpn.html#安装-openvpn&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;安装 OpenVPN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;创建证书和秘钥&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.r9it.com/20190420/install-openvpn.html#修改并初始化环境变量&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;修改并初始化环境变量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.r9it.com/20190420/install-openvpn.html#创建秘钥&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;创建秘钥&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.r9it.com/20190420/install-openvpn.html#创建服务器端配置文件serverconf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;创建服务器端配置文件(server.conf)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.r9it.com/20190420/install-openvpn.html#配置内核和防火墙启动服务端&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;配置内核和防火墙，启动服务端&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.r9it.com/20190420/install-openvpn.html#创建客户端配置文件-clientovpn-用于客户端软件使用&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;创建客户端配置文件 client.ovpn （用于客户端软件使用）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.r9it.com/20190420/install-openvpn.html#在路由器上创建虚拟服务器&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;在路由器上创建虚拟服务器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.r9it.com/20190420/install-openvpn.html#启动客户端&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;启动客户端&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.r9it.com/20190420/install-openvpn.html#参考连接&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;参考连接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>ajax跨域请求时，sessionId不一样，导致无法记住登陆状态</title>
@@ -496,28 +526,6 @@ org.logicalcobwebs.proxool.configuration.ServletConfigurator
     <summary type="html">
     
       &lt;p&gt;Eclipse里集成了git，所以使用比较方便。不需要再在git bash里输入命令。&lt;br&gt;从代码库clone项目后，将其导入eclipse。&lt;br&gt;在项目上点右键—&amp;gt;Team
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="https://blog.fetdesign.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Git" scheme="https://blog.fetdesign.com/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git使用简介</title>
-    <link href="https://blog.fetdesign.com/archives/8d3dd6b3.html"/>
-    <id>https://blog.fetdesign.com/archives/8d3dd6b3.html</id>
-    <published>2016-05-02T15:32:01.000Z</published>
-    <updated>2019-01-06T09:05:28.846Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;工作区–&amp;gt;暂存区–&amp;gt;本地库—–》远程库&lt;/p&gt;
-&lt;p&gt;当修改了某个文件，给文件的修改是在工作区，&lt;br&gt;git add . 则是把工作区的修改放到暂存区，每当有修改，运行git add .都会把修改放到到暂存区&lt;br&gt;git commit -m “内容” git commit则是把暂存区所有git add的修改都提交到本地代码库。双引号里的内容为说明修改了哪些内容&lt;br&gt;git push origin master 把本地代码库推送到远程代码库，远程库的默认名是origin
     
     </summary>
     
