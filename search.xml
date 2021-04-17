@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title>Ubuntu 搭建 OpenVPN 服务</title>
     <url>/archives/0.html</url>
-    <content><![CDATA[<h1 id="Ubuntu-搭建-OpenVPN-服务"><a href="#Ubuntu-搭建-OpenVPN-服务" class="headerlink" title="Ubuntu 搭建 OpenVPN 服务"></a>Ubuntu 搭建 OpenVPN 服务</h1><p>2019 年 04 月 20 日</p><p>本文介绍如何在 Ubuntu 系统上搭建 OpenVPN 服务。</p><p>文章导读：</p><ul>
+    <content><![CDATA[<p>转自：   <a href="https://www.cnblogs.com/EasonJim/p/8339600.html" target="_blank" rel="noopener">https://www.cnblogs.com/EasonJim/p/8339600.html</a></p><p>本文介绍如何在 Ubuntu 系统上搭建 OpenVPN 服务。</p><p>文章导读：</p><ul>
 <li><a href="http://www.r9it.com/20190420/install-openvpn.html#安装-openvpn" target="_blank" rel="noopener">安装 OpenVPN</a></li>
 <li>创建证书和秘钥<ul>
 <li><a href="http://www.r9it.com/20190420/install-openvpn.html#修改并初始化环境变量" target="_blank" rel="noopener">修改并初始化环境变量</a></li>
@@ -126,6 +126,13 @@
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">push</span> "<span class="selector-tag">dhcp-option</span> <span class="selector-tag">DNS</span> 208<span class="selector-class">.67</span><span class="selector-class">.222</span><span class="selector-class">.222</span>"</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">push</span> "<span class="selector-tag">dhcp-option</span> <span class="selector-tag">DNS</span> 208<span class="selector-class">.67</span><span class="selector-class">.220</span><span class="selector-class">.220</span>"</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>编程</category>
+        <category>ajax</category>
+      </categories>
+      <tags>
+        <tag>跨域请求</tag>
+      </tags>
   </entry>
   <entry>
     <title>ajax跨域请求时，sessionId不一样，导致无法记住登陆状态</title>

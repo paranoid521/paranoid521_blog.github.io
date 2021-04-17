@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.fetdesign.com/"/>
-  <updated>2021-04-11T00:52:15.530Z</updated>
+  <updated>2021-04-17T10:08:55.120Z</updated>
   <id>https://blog.fetdesign.com/</id>
   
   <author>
@@ -17,15 +17,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>Ubuntu 搭建 OpenVPN 服务</title>
     <link href="https://blog.fetdesign.com/archives/0.html"/>
     <id>https://blog.fetdesign.com/archives/0.html</id>
     <published>2020-11-21T00:38:11.785Z</published>
-    <updated>2021-04-11T00:52:15.530Z</updated>
+    <updated>2021-04-17T10:08:55.120Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Ubuntu-搭建-OpenVPN-服务&quot;&gt;&lt;a href=&quot;#Ubuntu-搭建-OpenVPN-服务&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu 搭建 OpenVPN 服务&quot;&gt;&lt;/a&gt;Ubuntu 搭建 OpenVPN 服务&lt;/h1&gt;&lt;p&gt;2019 年 04 月 20 日&lt;/p&gt;&lt;p&gt;本文介绍如何在 Ubuntu 系统上搭建 OpenVPN 服务。&lt;/p&gt;&lt;p&gt;文章导读：&lt;/p&gt;&lt;ul&gt;
+      &lt;p&gt;转自：   &lt;a href=&quot;https://www.cnblogs.com/EasonJim/p/8339600.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/EasonJim/p/8339600.html&lt;/a&gt;&lt;/p&gt;&lt;p&gt;本文介绍如何在 Ubuntu 系统上搭建 OpenVPN 服务。&lt;/p&gt;&lt;p&gt;文章导读：&lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.r9it.com/20190420/install-openvpn.html#安装-openvpn&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;安装 OpenVPN&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;创建证书和秘钥&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.r9it.com/20190420/install-openvpn.html#修改并初始化环境变量&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;修改并初始化环境变量&lt;/a&gt;&lt;/li&gt;
@@ -43,6 +43,12 @@
     </summary>
     
     
+      <category term="编程" scheme="https://blog.fetdesign.com/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="ajax" scheme="https://blog.fetdesign.com/categories/%E7%BC%96%E7%A8%8B/ajax/"/>
+    
+    
+      <category term="跨域请求" scheme="https://blog.fetdesign.com/tags/%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/"/>
     
   </entry>
   
